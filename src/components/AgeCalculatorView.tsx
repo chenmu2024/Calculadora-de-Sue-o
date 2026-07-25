@@ -11,6 +11,7 @@ interface AgeCalculatorViewProps {
 export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMainCalculator }) => {
   const [selectedAgeId, setSelectedAgeId] = useState<string>('adult');
   const [inputExactAge, setInputExactAge] = useState<string>('28');
+  const [ageWarning, setAgeWarning] = useState<string | null>(null);
   const [chronotype, setChronotype] = useState<'owl' | 'lark' | 'neutral'>('neutral');
 
   // Life Modifiers state
@@ -20,6 +21,18 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
   const [isSick, setIsSick] = useState<boolean>(false);
   const [targetWakeTime, setTargetWakeTime] = useState<string>('07:00');
   const [copyDiagnosisSuccess, setCopyDiagnosisSuccess] = useState<boolean>(false);
+
+  // Load saved preferences
+  React.useEffect(() => {
+    try {
+      const savedAge = localStorage.getItem('calc_exactAge');
+      if (savedAge) {
+        handleExactAgeChange(savedAge, true); // true = avoid saving during load
+      }
+    } catch (e) {
+      console.warn("Could not read from local storage");
+    }
+  }, []);
 
   const handleShareDiagnosis = () => {
     const text = `📊 Mi Recomendación de Sueño (${selectedGroup.name} - ${inputExactAge} años):\n` +
@@ -41,10 +54,23 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
   };
 
   // Auto detect group if exact age is typed
-  const handleExactAgeChange = (val: string) => {
+  const handleExactAgeChange = (val: string, skipSave = false) => {
     setInputExactAge(val);
+    if (!skipSave) {
+      try { localStorage.setItem('calc_exactAge', val); } catch (e) {}
+    }
+
     const num = parseFloat(val);
-    if (isNaN(num)) return;
+    if (isNaN(num)) {
+      setAgeWarning(null);
+      return;
+    }
+
+    if (num < 0 || num > 120) {
+      setAgeWarning('Por favor, ingresa una edad válida (0-120 años).');
+    } else {
+      setAgeWarning(null);
+    }
 
     if (num < 1) {
       setSelectedAgeId('baby');
@@ -156,22 +182,29 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
             </p>
           </div>
 
-          <div className="flex items-center gap-3 w-full md:w-auto">
-            <label htmlFor="exact-age-input" className="text-xs font-bold text-indigo-300 whitespace-nowrap cursor-pointer">
-              Edad exacta (años):
-            </label>
-            <input
-              id="exact-age-input"
-              aria-label="Edad exacta en años"
-              type="number"
-              min="0"
-              max="110"
-              value={inputExactAge}
-              onChange={(e) => handleExactAgeChange(e.target.value)}
-              className="bg-slate-950 border border-indigo-500/40 rounded-xl px-4 py-2 text-white font-extrabold text-center w-24 text-base focus:outline-none focus:border-indigo-400"
-              placeholder="Ej. 28"
-            />
-          </div>
+            <div className="flex flex-col items-end">
+              <div className="flex items-center gap-3 w-full md:w-auto">
+                <label htmlFor="exact-age-input" className="text-xs font-bold text-indigo-300 whitespace-nowrap cursor-pointer">
+                  Edad exacta (años):
+                </label>
+                <input
+                  id="exact-age-input"
+                  aria-label="Edad exacta en años"
+                  type="number"
+                  min="0"
+                  max="120"
+                  value={inputExactAge}
+                  onChange={(e) => handleExactAgeChange(e.target.value)}
+                  className="bg-slate-950 border border-indigo-500/40 rounded-xl px-4 py-2 text-white font-extrabold text-center w-24 text-base focus:outline-none focus:border-indigo-400"
+                  placeholder="Ej. 28"
+                />
+              </div>
+              {ageWarning && (
+                <span className="text-xs text-amber-400 mt-2 font-medium bg-amber-950/40 px-2 py-1 rounded">
+                  {ageWarning}
+                </span>
+              )}
+            </div>
         </div>
 
         {/* Age Group Quick Cards */}
@@ -284,7 +317,7 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
               </button>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white mt-1">
-              Etapa: {selectedGroup.name}
+              Calcular horas de sueño recomendadas: Etapa {selectedGroup.name}
             </h2>
             <p className="text-xs text-slate-400 mt-1">
               Rango de edad correspondiente: <strong className="text-slate-200">{selectedGroup.ageRange}</strong>

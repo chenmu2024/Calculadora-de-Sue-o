@@ -439,6 +439,23 @@ export const ArticlesView: React.FC = () => {
         {/* Content Body formatted with rich styling */}
         <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 text-slate-300 text-sm sm:text-base leading-relaxed space-y-4">
           {renderMarkdownContent(selectedArticle.contentMarkdown)}
+          
+          <div className="mt-8 p-6 bg-gradient-to-r from-indigo-950 to-slate-900 border border-indigo-500/30 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h4 className="text-white font-bold text-lg mb-1">¿Listo para optimizar tu descanso?</h4>
+              <p className="text-slate-400 text-sm">Utiliza nuestra herramienta gratuita para calcular tus ciclos exactos.</p>
+            </div>
+            <button
+              onClick={() => {
+                window.location.hash = '#home';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="whitespace-nowrap px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-sm shadow-lg shadow-indigo-600/30 transition-all flex items-center gap-2"
+            >
+              <ArrowLeft className="w-4 h-4 rotate-180" />
+              Calcula tu ciclo de sueño
+            </button>
+          </div>
         </div>
 
         {/* Tag Keywords Footer */}

@@ -145,32 +145,36 @@ export const CustomTimePicker: React.FC<CustomTimePickerProps> = ({
       <div className="flex items-center gap-1.5 pt-1 sm:pt-4 sm:ml-2 border-t sm:border-t-0 sm:border-l border-slate-800 sm:pl-3 w-full sm:w-auto justify-center">
         <button
           type="button"
+          aria-label="Restar 30 minutos a la hora actual"
           onClick={() => addMinutesToCurrentTime(-30)}
-          className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-colors border border-slate-700/80 active:scale-95"
+          className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-colors border border-slate-700/80 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
           title="Restar 30 minutos"
         >
           -30m
         </button>
         <button
           type="button"
+          aria-label="Restar 15 minutos a la hora actual"
           onClick={() => addMinutesToCurrentTime(-15)}
-          className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-bold transition-colors border border-indigo-900/60 active:scale-95"
+          className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-bold transition-colors border border-indigo-900/60 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
           title="Restar 15 minutos"
         >
           -15m
         </button>
         <button
           type="button"
+          aria-label="Sumar 15 minutos a la hora actual"
           onClick={() => addMinutesToCurrentTime(15)}
-          className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-bold transition-colors border border-indigo-900/60 active:scale-95"
+          className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-bold transition-colors border border-indigo-900/60 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
           title="Sumar 15 minutos"
         >
           +15m
         </button>
         <button
           type="button"
+          aria-label="Sumar 30 minutos a la hora actual"
           onClick={() => addMinutesToCurrentTime(30)}
-          className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-colors border border-slate-700/80 active:scale-95"
+          className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-colors border border-slate-700/80 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
           title="Sumar 30 minutos"
         >
           +30m

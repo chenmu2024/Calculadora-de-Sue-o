@@ -36,6 +36,67 @@ export default function App() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
   const [isReportModalOpen, setIsReportModalOpen] = useState<boolean>(false);
 
+  // Sync with window.location.pathname & hash (for backward compatibility)
+  useEffect(() => {
+    const handleUrlChange = () => {
+      const pathname = window.location.pathname.replace(/\/$/, '') || '/';
+      const hash = window.location.hash.replace('#', '');
+
+      let tab = 'home';
+
+      // Legacy Hash Migration
+      if (hash === 'calculadora-horas-de-sueno') tab = 'age-calculator';
+      else if (hash === 'app-calculadora-de-sueno') tab = 'app-reviews';
+      else if (hash === 'siestas' || hash === 'calculadora-siestas') tab = 'nap';
+      else if (hash === 'diario-sueno' || hash === 'diario') tab = 'diary';
+      else if (hash === 'blog' || hash.includes('como-calcular') || hash.includes('insomnio')) tab = 'blog';
+      else if (hash === 'sonidos' || hash === 'ruido-blanco') tab = 'sounds';
+      else if (hash === 'sobre-nosotros' || hash === 'about') tab = 'about';
+      else if (hash === 'contacto' || hash === 'contact') tab = 'contact';
+      else if (hash === 'politica-privacidad' || hash === 'privacy') tab = 'privacy';
+      else if (hash === 'terminos-de-uso' || hash === 'terms') tab = 'terms';
+      // Clean Pathname Match
+      else if (pathname === '/calculadora-horas-de-sueno') tab = 'age-calculator';
+      else if (pathname === '/app-calculadora-de-sueno') tab = 'app-reviews';
+      else if (pathname === '/siestas') tab = 'nap';
+      else if (pathname === '/diario-sueno') tab = 'diary';
+      else if (pathname === '/blog') tab = 'blog';
+      else if (pathname === '/sonidos') tab = 'sounds';
+      else if (pathname === '/sobre-nosotros') tab = 'about';
+      else if (pathname === '/contacto') tab = 'contact';
+      else if (pathname === '/politica-privacidad') tab = 'privacy';
+      else if (pathname === '/terminos-de-uso') tab = 'terms';
+      else if (pathname === '/' || pathname === '/calculadora') {
+        try {
+          const stored = localStorage.getItem('calc_lastTab');
+          if (stored && ['home', 'age-calculator', 'nap', 'diary', 'blog', 'sounds', 'app-reviews'].includes(stored)) {
+             tab = stored;
+          }
+        } catch(e) {}
+      }
+
+      setCurrentTab(tab);
+    };
+
+    handleUrlChange();
+    window.addEventListener('popstate', handleUrlChange);
+    window.addEventListener('hashchange', handleUrlChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleUrlChange);
+      window.removeEventListener('hashchange', handleUrlChange);
+    };
+  }, []);
+
+  // Save current tab to local storage whenever it changes (only main tabs)
+  useEffect(() => {
+    if (['home', 'age-calculator', 'nap', 'diary', 'blog', 'sounds', 'app-reviews'].includes(currentTab)) {
+      try {
+        localStorage.setItem('calc_lastTab', currentTab);
+      } catch (e) {}
+    }
+  }, [currentTab]);
+
   // Dynamic Document Meta Engine (Title, Description, Canonical, OG, Path Routing & Schema)
   useEffect(() => {
     const seoData: { [key: string]: { title: string; desc: string; path: string } } = {
@@ -192,47 +253,6 @@ export default function App() {
     scriptTag.textContent = JSON.stringify(dynamicSchema);
 
   }, [currentTab]);
-
-  // Sync with window.location.pathname & hash (for backward compatibility)
-  useEffect(() => {
-    const handleUrlChange = () => {
-      const pathname = window.location.pathname.replace(/\/$/, '') || '/';
-      const hash = window.location.hash.replace('#', '');
-
-      // Legacy Hash Migration
-      if (hash === 'calculadora-horas-de-sueno') { setCurrentTab('age-calculator'); return; }
-      if (hash === 'app-calculadora-de-sueno') { setCurrentTab('app-reviews'); return; }
-      if (hash === 'siestas' || hash === 'calculadora-siestas') { setCurrentTab('nap'); return; }
-      if (hash === 'diario-sueno' || hash === 'diario') { setCurrentTab('diary'); return; }
-      if (hash === 'blog' || hash.includes('como-calcular') || hash.includes('insomnio')) { setCurrentTab('blog'); return; }
-      if (hash === 'sonidos' || hash === 'ruido-blanco') { setCurrentTab('sounds'); return; }
-      if (hash === 'sobre-nosotros' || hash === 'about') { setCurrentTab('about'); return; }
-      if (hash === 'contacto' || hash === 'contact') { setCurrentTab('contact'); return; }
-      if (hash === 'politica-privacidad' || hash === 'privacy') { setCurrentTab('privacy'); return; }
-      if (hash === 'terminos-de-uso' || hash === 'terms') { setCurrentTab('terms'); return; }
-
-      // Clean Pathname Match
-      if (pathname === '/calculadora-horas-de-sueno') setCurrentTab('age-calculator');
-      else if (pathname === '/app-calculadora-de-sueno') setCurrentTab('app-reviews');
-      else if (pathname === '/siestas') setCurrentTab('nap');
-      else if (pathname === '/diario-sueno') setCurrentTab('diary');
-      else if (pathname === '/blog') setCurrentTab('blog');
-      else if (pathname === '/sonidos') setCurrentTab('sounds');
-      else if (pathname === '/sobre-nosotros') setCurrentTab('about');
-      else if (pathname === '/contacto') setCurrentTab('contact');
-      else if (pathname === '/politica-privacidad') setCurrentTab('privacy');
-      else if (pathname === '/terminos-de-uso') setCurrentTab('terms');
-      else if (pathname === '/' || pathname === '/calculadora') setCurrentTab('home');
-    };
-
-    handleUrlChange();
-    window.addEventListener('popstate', handleUrlChange);
-    window.addEventListener('hashchange', handleUrlChange);
-    return () => {
-      window.removeEventListener('popstate', handleUrlChange);
-      window.removeEventListener('hashchange', handleUrlChange);
-    };
-  }, []);
 
   const handleSelectResultForVisualizer = (res: SleepCycleResult) => {
     setSelectedResult(res);

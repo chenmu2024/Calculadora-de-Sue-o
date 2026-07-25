@@ -398,7 +398,7 @@ export const SleepCalculatorWidget: React.FC<SleepCalculatorWidgetProps> = ({
       {/* Results Header */}
       <div className="text-center mb-6 relative z-10">
         <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
-          {mode === 'wake_time' ? 'Deberías acostarte a una de estas horas:' : 'Deberías despertarte a una de estas horas:'}
+          Calculadora de ciclos de sueño: ¿A qué hora {mode === 'wake_time' ? 'acostarte' : 'despertarte'}?
         </h2>
         <p className="text-xs text-slate-400">
           Calculado con latencia de {latencyMinutes} min y ciclos ultradianos de {cycleLengthMinutes} minutos.
@@ -553,7 +553,7 @@ export const SleepCalculatorWidget: React.FC<SleepCalculatorWidgetProps> = ({
             <div className="flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-amber-300" />
               <h3 className="text-base sm:text-lg font-extrabold text-white">
-                Tu Cronograma Recomendado de Higiene Nocturna
+                ¿Cómo funciona nuestro calculador de ciclos de sueño? Cronograma recomendado
               </h3>
             </div>
             <div className="flex items-center gap-2 self-start sm:self-auto">

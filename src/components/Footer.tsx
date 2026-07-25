@@ -113,6 +113,15 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentTab }) => {
         </div>
 
         {/* Footer Keywords List (Comparativa de las mejores calculadoras de sueño) */}
+        <div className="pt-6 border-t border-slate-900 pb-2 text-[10px] text-slate-500">
+          <p className="mb-2"><strong>Otras calculadoras y comparativas de sueño populares:</strong></p>
+          <div className="flex flex-wrap gap-x-4 gap-y-2">
+            <button onClick={() => { setCurrentTab('app-reviews'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-400 underline decoration-slate-700 underline-offset-2">Comparativa de las mejores calculadoras de sueño</button>
+            <button onClick={() => { setCurrentTab('app-reviews'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-400 underline decoration-slate-700 underline-offset-2">Calculadoras de sueño alternativas a Runtastic y Adidas</button>
+            <button onClick={() => { setCurrentTab('app-reviews'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-400 underline decoration-slate-700 underline-offset-2">Mejores calculadoras de ciclo de sueño</button>
+          </div>
+        </div>
+
         <div className="pt-6 border-t border-slate-900 flex items-center justify-between flex-wrap gap-4 text-[11px] text-slate-500">
           <div>
             © 2026 <strong>Calculadora de Sueño</strong> | xn--calculadoradesueo-uxb.org. Todos los derechos reservados.

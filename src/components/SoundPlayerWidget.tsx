@@ -13,6 +13,35 @@ export const SoundPlayerWidget: React.FC = () => {
   const [breathingPhase, setBreathingPhase] = useState<'Inhala' | 'Mantén' | 'Exhala'>('Inhala');
   const [breathingCount, setBreathingCount] = useState<number>(4);
 
+  // Load preferences
+  useEffect(() => {
+    try {
+      const savedVol = localStorage.getItem('sound_volume');
+      if (savedVol) setVolume(parseFloat(savedVol));
+      
+      const savedTimer = localStorage.getItem('sound_timer');
+      if (savedTimer) {
+        if (savedTimer === 'null') setTimerMinutes(null);
+        else setTimerMinutes(parseInt(savedTimer, 10));
+      }
+    } catch (e) {
+      console.warn("Could not read local storage for sound preferences.");
+    }
+  }, []);
+
+  const handleVolumeChange = (v: number) => {
+    setVolume(v);
+    try { localStorage.setItem('sound_volume', v.toString()); } catch (e) {}
+    if (activeSound) {
+      sleepAudio.setVolume(v);
+    }
+  };
+
+  const handleTimerChange = (val: number | null) => {
+    setTimerMinutes(val);
+    try { localStorage.setItem('sound_timer', val === null ? 'null' : val.toString()); } catch (e) {}
+  };
+
   // 4-7-8 Breathing Timer Loop
   useEffect(() => {
     let breathInterval: any = null;
@@ -82,12 +111,6 @@ export const SoundPlayerWidget: React.FC = () => {
     }
   };
 
-  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newVol = parseFloat(e.target.value);
-    setVolume(newVol);
-    sleepAudio.setVolume(newVol);
-  };
-
   const sounds: { id: SoundType; name: string; desc: string; icon: any; isNew?: boolean }[] = [
     { id: 'brown', name: 'Ruido Marrón', desc: 'Frecuencia grave profunda ideal para calmar pensamientos rumiantes.', icon: Waves, isNew: true },
     { id: 'green', name: 'Ruido Verde', desc: 'Frecuencias medias naturales (~500Hz) similares a bosques y ríos.', icon: Trees, isNew: true },
@@ -135,7 +158,7 @@ export const SoundPlayerWidget: React.FC = () => {
               max="1"
               step="0.05"
               value={volume}
-              onChange={handleVolumeChange}
+              onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
               className="w-20 accent-indigo-500 cursor-pointer"
             />
           </div>
@@ -148,7 +171,7 @@ export const SoundPlayerWidget: React.FC = () => {
               <button
                 key={m}
                 onClick={() => {
-                  setTimerMinutes(m);
+                  handleTimerChange(m);
                   if (activeSound) setTimeLeftSeconds(m * 60);
                 }}
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-colors ${
