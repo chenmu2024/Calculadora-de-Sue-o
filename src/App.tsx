@@ -40,8 +40,8 @@ export default function App() {
   useEffect(() => {
     const seoData: { [key: string]: { title: string; desc: string; hash: string } } = {
       home: {
-        title: 'Calculadora de Sueño 90 Minutos | Ciclos y Horas para Despertar Fresco',
-        desc: 'Calculadora de sueño médica basada en ciclos de 90 minutos. Descubre a qué hora acostarte o despertarte sin cansancio, calcula el impacto de la cafeína y registra tu diario TCC-I.',
+        title: 'Calculadora de Sueño | Ciclos de 90 Minutos',
+        desc: 'Calculadora de ciclos de sueño de 90 minutos. Descubre tu hora ideal para despertar con energía, calcula tu descanso y test de cronotipo.',
         hash: 'calculadora'
       },
       'age-calculator': {
