@@ -36,63 +36,63 @@ export default function App() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
   const [isReportModalOpen, setIsReportModalOpen] = useState<boolean>(false);
 
-  // Dynamic Document Meta Engine (Title, Description, Canonical, OG, Hash & Schema)
+  // Dynamic Document Meta Engine (Title, Description, Canonical, OG, Path Routing & Schema)
   useEffect(() => {
-    const seoData: { [key: string]: { title: string; desc: string; hash: string } } = {
+    const seoData: { [key: string]: { title: string; desc: string; path: string } } = {
       home: {
         title: 'Calculadora de Sueño | Ciclos de 90 Minutos',
         desc: 'Calculadora de ciclos de sueño de 90 minutos. Descubre tu hora ideal para despertar con energía, calcula tu descanso y test de cronotipo.',
-        hash: 'calculadora'
+        path: '/'
       },
       'age-calculator': {
         title: 'Horas de Sueño por Edad - Calculadora Científica Recomendada',
         desc: 'Descubre cuántas horas de sueño necesitas según tu edad con la tabla oficial de la National Sleep Foundation. Recomendaciones de 0 a 65+ años.',
-        hash: 'calculadora-horas-de-sueno'
+        path: '/calculadora-horas-de-sueno'
       },
       nap: {
         title: 'Calculadora de Siestas y Power Naps - Evita la Inercia del Sueño',
         desc: 'Calcula el tiempo ideal para tu siesta de 20 o 90 minutos. Evita despertar aturdido y recarga energía al máximo sin alterar tu sueño nocturno.',
-        hash: 'siestas'
+        path: '/siestas'
       },
       diary: {
         title: 'Diario de Sueño TCC-I - Calcula tu Eficiencia de Sueño Real',
         desc: 'Herramienta de Registro y Diario de Sueño para Terapia Cognitivo Conductual del Insomnio (TCC-I). Mide tu eficiencia de sueño y genera informes para médicos.',
-        hash: 'diario-sueno'
+        path: '/diario-sueno'
       },
       'app-reviews': {
         title: 'Las Mejores Apps de Sueño Comparativa - Adidas Runtastic y Alternativas',
         desc: 'Análisis detallado y comparativa de las mejores aplicaciones para monitorizar el sueño en 2026: Adidas Runtastic Sleep Better, Sleep Cycle y calculadores online.',
-        hash: 'app-calculadora-de-sueno'
+        path: '/app-calculadora-de-sueno'
       },
       blog: {
         title: 'Guías de Higiene del Sueño y Cronobiología - Artículos Médicos',
         desc: 'Artículos científicos sobre insomnio, apnea del sueño, ritmos circadianos, cafeína y cronotipo revisados por neurólogos y especialistas en medicina del sueño.',
-        hash: 'blog'
+        path: '/blog'
       },
       sounds: {
         title: 'Reproductor de Ruido Blanco, Rosa y Marrón para Dormir Mejor',
         desc: 'Generador y reproductor de sonido relajante para inducir el sueño. Escucha ruido blanco, lluvia, olas del mar y ruido rosa sin anuncios.',
-        hash: 'sonidos'
+        path: '/sonidos'
       },
       about: {
         title: 'Sobre Nosotros - Misión y Rigor Científico | Calculadora de Sueño',
         desc: 'Conoce al equipo de cronobiología y médicos especialistas detrás de CalculadoraDeSueño.es. Compromiso con la salud circadiana y la divulgación rigurosa.',
-        hash: 'sobre-nosotros'
+        path: '/sobre-nosotros'
       },
       contact: {
         title: 'Contacto y Soporte - Calculadora de Sueño España',
         desc: 'Ponte en contacto con nuestro equipo médico y técnico para consultas, sugerencias de funcionalidades o reportes de usabilidad.',
-        hash: 'contacto'
+        path: '/contacto'
       },
       privacy: {
         title: 'Política de Privacidad y Proteccion de Datos | calculadoradesueño.org',
         desc: 'Garantía de privacidad total. Todos tus datos del diario de sueño y cálculos se guardan 100% de forma local en tu dispositivo.',
-        hash: 'politica-privacidad'
+        path: '/politica-privacidad'
       },
       terms: {
         title: 'Términos y Condiciones de Uso | calculadoradesueño.org',
         desc: 'Términos de servicio de la aplicación web Calculadora de Sueño. Información médica de carácter divulgativo e informativo.',
-        hash: 'terminos-de-uso'
+        path: '/terminos-de-uso'
       }
     };
 
@@ -117,19 +117,24 @@ export default function App() {
     let ogDesc = document.querySelector('meta[property="og:description"]');
     if (ogDesc) ogDesc.setAttribute('content', currentSeo.desc);
 
-    // Update Canonical URL
+    // Update Canonical & OG URL
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    const baseUrl = 'https://calculadoradesueno.org/';
-    canonical.setAttribute('href', currentTab === 'home' ? baseUrl : `${baseUrl}#${currentSeo.hash}`);
+    const baseUrl = 'https://calculadoradesueno.org';
+    const targetUrl = currentSeo.path === '/' ? `${baseUrl}/` : `${baseUrl}${currentSeo.path}`;
+    canonical.setAttribute('href', targetUrl);
 
-    // Sync Location Hash in Address Bar without Page Jump
-    if (window.location.hash !== `#${currentSeo.hash}`) {
-      window.history.replaceState(null, '', `#${currentSeo.hash}`);
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute('content', targetUrl);
+
+    // Clean Path Routing without #
+    const targetPath = currentSeo.path;
+    if (window.location.pathname !== targetPath || window.location.hash) {
+      window.history.pushState(null, '', targetPath);
     }
 
     // Dynamic Breadcrumb & WebPage Schema JSON-LD Injection for Google Rich Snippets
@@ -143,22 +148,22 @@ export default function App() {
               '@type': 'ListItem',
               'position': 1,
               'name': 'Inicio',
-              'item': baseUrl
+              'item': `${baseUrl}/`
             },
             ...(currentTab !== 'home' ? [
               {
                 '@type': 'ListItem',
                 'position': 2,
                 'name': currentSeo.title.split('|')[0].trim(),
-                'item': `${baseUrl}#${currentSeo.hash}`
+                'item': targetUrl
               }
             ] : [])
           ]
         },
         {
           '@type': 'MedicalWebPage',
-          '@id': `${baseUrl}#${currentSeo.hash}`,
-          'url': `${baseUrl}#${currentSeo.hash}`,
+          '@id': targetUrl,
+          'url': targetUrl,
           'name': currentSeo.title,
           'description': currentSeo.desc,
           'inLanguage': 'es-ES',
@@ -171,7 +176,7 @@ export default function App() {
           'publisher': {
             '@type': 'Organization',
             'name': 'Calculadora de Sueño España',
-            'url': baseUrl
+            'url': `${baseUrl}/`
           }
         }
       ]
@@ -188,26 +193,45 @@ export default function App() {
 
   }, [currentTab]);
 
-  // Sync with window.location.hash for direct SEO landing pages and back/forward navigation
+  // Sync with window.location.pathname & hash (for backward compatibility)
   useEffect(() => {
-    const handleHashChange = () => {
+    const handleUrlChange = () => {
+      const pathname = window.location.pathname.replace(/\/$/, '') || '/';
       const hash = window.location.hash.replace('#', '');
-      if (hash === 'calculadora-horas-de-sueno') setCurrentTab('age-calculator');
-      else if (hash === 'app-calculadora-de-sueno') setCurrentTab('app-reviews');
-      else if (hash === 'siestas' || hash === 'calculadora-siestas') setCurrentTab('nap');
-      else if (hash === 'diario-sueno' || hash === 'diario') setCurrentTab('diary');
-      else if (hash === 'blog' || hash.includes('como-calcular') || hash.includes('insomnio')) setCurrentTab('blog');
-      else if (hash === 'sonidos' || hash === 'ruido-blanco') setCurrentTab('sounds');
-      else if (hash === 'sobre-nosotros' || hash === 'about') setCurrentTab('about');
-      else if (hash === 'contacto' || hash === 'contact') setCurrentTab('contact');
-      else if (hash === 'politica-privacidad' || hash === 'privacy') setCurrentTab('privacy');
-      else if (hash === 'terminos-de-uso' || hash === 'terms') setCurrentTab('terms');
-      else if (hash === 'calculadora' || hash === '') setCurrentTab('home');
+
+      // Legacy Hash Migration
+      if (hash === 'calculadora-horas-de-sueno') { setCurrentTab('age-calculator'); return; }
+      if (hash === 'app-calculadora-de-sueno') { setCurrentTab('app-reviews'); return; }
+      if (hash === 'siestas' || hash === 'calculadora-siestas') { setCurrentTab('nap'); return; }
+      if (hash === 'diario-sueno' || hash === 'diario') { setCurrentTab('diary'); return; }
+      if (hash === 'blog' || hash.includes('como-calcular') || hash.includes('insomnio')) { setCurrentTab('blog'); return; }
+      if (hash === 'sonidos' || hash === 'ruido-blanco') { setCurrentTab('sounds'); return; }
+      if (hash === 'sobre-nosotros' || hash === 'about') { setCurrentTab('about'); return; }
+      if (hash === 'contacto' || hash === 'contact') { setCurrentTab('contact'); return; }
+      if (hash === 'politica-privacidad' || hash === 'privacy') { setCurrentTab('privacy'); return; }
+      if (hash === 'terminos-de-uso' || hash === 'terms') { setCurrentTab('terms'); return; }
+
+      // Clean Pathname Match
+      if (pathname === '/calculadora-horas-de-sueno') setCurrentTab('age-calculator');
+      else if (pathname === '/app-calculadora-de-sueno') setCurrentTab('app-reviews');
+      else if (pathname === '/siestas') setCurrentTab('nap');
+      else if (pathname === '/diario-sueno') setCurrentTab('diary');
+      else if (pathname === '/blog') setCurrentTab('blog');
+      else if (pathname === '/sonidos') setCurrentTab('sounds');
+      else if (pathname === '/sobre-nosotros') setCurrentTab('about');
+      else if (pathname === '/contacto') setCurrentTab('contact');
+      else if (pathname === '/politica-privacidad') setCurrentTab('privacy');
+      else if (pathname === '/terminos-de-uso') setCurrentTab('terms');
+      else if (pathname === '/' || pathname === '/calculadora') setCurrentTab('home');
     };
 
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    handleUrlChange();
+    window.addEventListener('popstate', handleUrlChange);
+    window.addEventListener('hashchange', handleUrlChange);
+    return () => {
+      window.removeEventListener('popstate', handleUrlChange);
+      window.removeEventListener('hashchange', handleUrlChange);
+    };
   }, []);
 
   const handleSelectResultForVisualizer = (res: SleepCycleResult) => {
