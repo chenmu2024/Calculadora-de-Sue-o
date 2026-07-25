@@ -79,10 +79,12 @@ export const SleepDebtCalculator: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <label className="text-xs text-slate-300 font-bold whitespace-nowrap">
+          <label htmlFor="target-hours-select" className="text-xs text-slate-300 font-bold whitespace-nowrap cursor-pointer">
             Objetivo Diario:
           </label>
           <select
+            id="target-hours-select"
+            aria-label="Objetivo diario de horas de sueño"
             value={targetHours}
             onChange={(e) => setTargetHours(parseFloat(e.target.value))}
             className="bg-slate-800 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-indigo-300 font-bold focus:outline-none"
@@ -108,6 +110,7 @@ export const SleepDebtCalculator: React.FC = () => {
         {dayNames.slice(0, activeDaysCount).map((day, idx) => {
           const val = hoursList[idx];
           const isDeficit = val < targetHours;
+          const dayInputId = `sleep-hours-day-${idx}`;
           return (
             <div
               key={day}
@@ -117,8 +120,12 @@ export const SleepDebtCalculator: React.FC = () => {
                   : 'bg-emerald-950/20 border-emerald-500/30'
               }`}
             >
-              <span className="text-xs font-bold text-slate-300 block mb-1">{day}</span>
+              <label htmlFor={dayInputId} className="text-xs font-bold text-slate-300 block mb-1 cursor-pointer">
+                {day}
+              </label>
               <input
+                id={dayInputId}
+                aria-label={`Horas dormidas el ${day}`}
                 type="number"
                 step="0.5"
                 min="2"

@@ -483,8 +483,13 @@ export const ArticlesView: React.FC = () => {
         {/* Real-Time Keyword Search Bar */}
         <div className="pt-2 max-w-xl mx-auto">
           <div className="relative">
+            <label htmlFor="article-search-input" className="sr-only">
+              Buscar artículos
+            </label>
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
+              id="article-search-input"
+              aria-label="Buscar artículos"
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}

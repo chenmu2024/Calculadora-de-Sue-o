@@ -50,6 +50,7 @@ export const CustomTimePicker: React.FC<CustomTimePickerProps> = ({
         <Clock className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
         <select
           id={id ? `${id}-hour` : undefined}
+          aria-label="Seleccionar hora"
           value={currentHour}
           onChange={handleHourChange}
           className="bg-transparent text-xs font-bold text-indigo-300 focus:outline-none cursor-pointer text-center"
@@ -63,6 +64,7 @@ export const CustomTimePicker: React.FC<CustomTimePickerProps> = ({
         <span className="text-xs font-bold text-slate-400">:</span>
         <select
           id={id ? `${id}-minute` : undefined}
+          aria-label="Seleccionar minuto"
           value={currentMinute}
           onChange={handleMinuteChange}
           className="bg-transparent text-xs font-bold text-indigo-300 focus:outline-none cursor-pointer text-center"
@@ -77,15 +79,21 @@ export const CustomTimePicker: React.FC<CustomTimePickerProps> = ({
     );
   }
 
+  const hourId = id ? `${id}-hour` : 'time-picker-hour';
+  const minuteId = id ? `${id}-minute` : 'time-picker-minute';
+
   return (
     <div className={`flex items-center justify-center gap-2 bg-slate-900 border-2 border-indigo-500/40 rounded-2xl p-3 shadow-inner ${className}`}>
       <Clock className="w-6 h-6 text-indigo-400 shrink-0 hidden sm:block" />
       
       {/* Hours Selector */}
       <div className="flex flex-col items-center">
-        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Hora</span>
+        <label htmlFor={hourId} className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1 cursor-pointer">
+          Hora
+        </label>
         <select
-          id={id ? `${id}-hour` : 'time-picker-hour'}
+          id={hourId}
+          aria-label="Seleccionar hora"
           value={currentHour}
           onChange={handleHourChange}
           className="bg-slate-950 border border-indigo-500/30 rounded-xl px-3 py-2 text-xl sm:text-2xl font-black text-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer text-center shadow-md min-w-[90px]"
@@ -102,9 +110,12 @@ export const CustomTimePicker: React.FC<CustomTimePickerProps> = ({
 
       {/* Minutes Selector */}
       <div className="flex flex-col items-center">
-        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Minuto</span>
+        <label htmlFor={minuteId} className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1 cursor-pointer">
+          Minuto
+        </label>
         <select
-          id={id ? `${id}-minute` : 'time-picker-minute'}
+          id={minuteId}
+          aria-label="Seleccionar minuto"
           value={currentMinute}
           onChange={handleMinuteChange}
           className="bg-slate-950 border border-indigo-500/30 rounded-xl px-3 py-2 text-xl sm:text-2xl font-black text-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer text-center shadow-md min-w-[75px]"

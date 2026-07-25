@@ -437,8 +437,10 @@ export const SleepDiaryWidget: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1">Fecha de la Noche</label>
+            <label htmlFor="diary-date-input" className="block text-xs font-bold text-slate-300 mb-1 cursor-pointer">Fecha de la Noche</label>
             <input
+              id="diary-date-input"
+              aria-label="Fecha de la noche"
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
@@ -448,7 +450,7 @@ export const SleepDiaryWidget: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1">Hora de Meterme a la Cama</label>
+            <label htmlFor="diary-bedtime-hour" className="block text-xs font-bold text-slate-300 mb-1 cursor-pointer">Hora de Meterme a la Cama</label>
             <CustomTimePicker
               value={bedTime}
               onChange={(val) => setBedTime(val)}
@@ -458,8 +460,10 @@ export const SleepDiaryWidget: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1">Minutos para Dormirme (Latencia)</label>
+            <label htmlFor="diary-latency-input" className="block text-xs font-bold text-slate-300 mb-1 cursor-pointer">Minutos para Dormirme (Latencia)</label>
             <input
+              id="diary-latency-input"
+              aria-label="Minutos para dormirme"
               type="number"
               min="0"
               max="180"
@@ -471,7 +475,7 @@ export const SleepDiaryWidget: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1">Hora de Salir de la Cama</label>
+            <label htmlFor="diary-waketime-hour" className="block text-xs font-bold text-slate-300 mb-1 cursor-pointer">Hora de Salir de la Cama</label>
             <CustomTimePicker
               value={wakeTime}
               onChange={(val) => setWakeTime(val)}
@@ -483,8 +487,10 @@ export const SleepDiaryWidget: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1">Despertares Nocturnos (Minutos totales despierto)</label>
+            <label htmlFor="diary-awakenings-input" className="block text-xs font-bold text-slate-300 mb-1 cursor-pointer">Despertares Nocturnos (Minutos totales despierto)</label>
             <input
+              id="diary-awakenings-input"
+              aria-label="Minutos totales despierto en la noche"
               type="number"
               min="0"
               max="240"
@@ -501,6 +507,7 @@ export const SleepDiaryWidget: React.FC = () => {
                 <button
                   key={s}
                   type="button"
+                  aria-label={`Calificación de energía ${s} de 5`}
                   onClick={() => setFeelScore(s)}
                   className={`w-9 h-8 rounded-lg font-bold text-xs transition-colors ${
                     feelScore === s ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
@@ -513,8 +520,10 @@ export const SleepDiaryWidget: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1">Notas Adicionales</label>
+            <label htmlFor="diary-notes-input" className="block text-xs font-bold text-slate-300 mb-1 cursor-pointer">Notas Adicionales</label>
             <input
+              id="diary-notes-input"
+              aria-label="Notas adicionales de la noche"
               type="text"
               placeholder="Ej. Cena ligera, sonido blanco activo"
               value={notes}

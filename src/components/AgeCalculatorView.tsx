@@ -137,10 +137,12 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
           </div>
 
           <div className="flex items-center gap-3 w-full md:w-auto">
-            <label className="text-xs font-bold text-indigo-300 whitespace-nowrap">
+            <label htmlFor="exact-age-input" className="text-xs font-bold text-indigo-300 whitespace-nowrap cursor-pointer">
               Edad exacta (años):
             </label>
             <input
+              id="exact-age-input"
+              aria-label="Edad exacta en años"
               type="number"
               min="0"
               max="110"
@@ -466,18 +468,20 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800">
               <div>
-                <h4 className="text-sm font-extrabold text-white flex items-center gap-2">
+                <h3 className="text-sm font-extrabold text-white flex items-center gap-2">
                   <Clock className="w-4 h-4 text-emerald-400" />
                   Calculadora Inversa: Si tienes que despertarte a una hora específica
-                </h4>
+                </h3>
                 <p className="text-[11px] text-slate-400">
                   Ingresa la hora en la que te levantas (colegio, trabajo, biberón) para calcular las horas de ir a la cama adaptadas a {selectedGroup.name}.
                 </p>
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-slate-300">Hora Despertar:</span>
+                <label htmlFor="target-wake-time-input" className="text-xs font-bold text-slate-300 cursor-pointer">Hora Despertar:</label>
                 <input
+                  id="target-wake-time-input"
+                  aria-label="Hora exacta de despertar"
                   type="time"
                   value={targetWakeTime}
                   onChange={(e) => setTargetWakeTime(e.target.value)}

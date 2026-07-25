@@ -81,15 +81,17 @@ export const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({ setCur
               </div>
 
               <div className="flex items-center justify-between p-2 rounded-xl bg-slate-900 border border-slate-800">
-                <div>
+                <label htmlFor="ads-consent-checkbox" className="cursor-pointer flex-1 mr-2">
                   <div className="font-bold text-white">Cookies de Anuncios Personalizados (Google AdSense)</div>
                   <div className="text-[11px] text-slate-400">Anuncios relevantes basados en navegación mediante red de socios de Google.</div>
-                </div>
+                </label>
                 <input 
+                  id="ads-consent-checkbox"
+                  aria-label="Cookies de Anuncios Personalizados (Google AdSense)"
                   type="checkbox" 
                   checked={advertisingConsent}
                   onChange={(e) => setAdvertisingConsent(e.target.checked)}
-                  className="rounded bg-slate-950 border-slate-700 text-indigo-600 focus:ring-indigo-500 w-4 h-4"
+                  className="rounded bg-slate-950 border-slate-700 text-indigo-600 focus:ring-indigo-500 w-4 h-4 cursor-pointer"
                 />
               </div>
             </div>

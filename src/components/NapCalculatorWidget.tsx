@@ -304,8 +304,10 @@ export const NapCalculatorWidget: React.FC = () => {
 
             {useCustomStartTime && (
               <div className="mt-2 flex items-center gap-2 pt-2 border-t border-slate-800">
-                <span className="text-[11px] text-slate-300 font-bold">Inicio:</span>
+                <label htmlFor="nap-custom-start-time" className="text-[11px] text-slate-300 font-bold cursor-pointer">Inicio:</label>
                 <input
+                  id="nap-custom-start-time"
+                  aria-label="Hora de inicio de la siesta"
                   type="time"
                   value={customStartTime}
                   onChange={(e) => setCustomStartTime(e.target.value)}
@@ -543,8 +545,10 @@ export const NapCalculatorWidget: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold text-slate-300">Hora habitual de despertar:</span>
+            <label htmlFor="nap-morning-wake-time" className="text-xs font-bold text-slate-300 cursor-pointer">Hora habitual de despertar:</label>
             <input
+              id="nap-morning-wake-time"
+              aria-label="Hora habitual de despertar por la mañana"
               type="time"
               value={morningWakeTime}
               onChange={(e) => setMorningWakeTime(e.target.value)}

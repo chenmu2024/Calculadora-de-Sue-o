@@ -154,10 +154,12 @@ export const ContactView: React.FC<ContactViewProps> = ({ setCurrentTab }) => {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-300">
+                  <label htmlFor="contact-name" className="text-xs font-bold text-slate-300">
                     Nombre Completo <span className="text-rose-400">*</span>
                   </label>
                   <input
+                    id="contact-name"
+                    aria-label="Nombre Completo"
                     type="text"
                     required
                     placeholder="Ej. María García"
@@ -168,10 +170,12 @@ export const ContactView: React.FC<ContactViewProps> = ({ setCurrentTab }) => {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-300">
+                  <label htmlFor="contact-email" className="text-xs font-bold text-slate-300">
                     Correo Electrónico <span className="text-rose-400">*</span>
                   </label>
                   <input
+                    id="contact-email"
+                    aria-label="Correo Electrónico"
                     type="email"
                     required
                     placeholder="tu@email.com"
@@ -183,10 +187,12 @@ export const ContactView: React.FC<ContactViewProps> = ({ setCurrentTab }) => {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-300">
+                <label htmlFor="contact-subject" className="text-xs font-bold text-slate-300">
                   Asunto de la Consulta
                 </label>
                 <select
+                  id="contact-subject"
+                  aria-label="Asunto de la consulta"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -200,10 +206,12 @@ export const ContactView: React.FC<ContactViewProps> = ({ setCurrentTab }) => {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-300">
+                <label htmlFor="contact-message" className="text-xs font-bold text-slate-300">
                   Mensaje <span className="text-rose-400">*</span>
                 </label>
                 <textarea
+                  id="contact-message"
+                  aria-label="Mensaje"
                   required
                   rows={5}
                   placeholder="Escribe aquí tu consulta o comentario detallado..."
@@ -217,6 +225,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ setCurrentTab }) => {
                 <input
                   type="checkbox"
                   id="consent"
+                  aria-label="Acepto la política de privacidad"
                   required
                   checked={formData.consent}
                   onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}

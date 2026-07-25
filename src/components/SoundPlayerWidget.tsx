@@ -124,8 +124,12 @@ export const SoundPlayerWidget: React.FC = () => {
         {/* Volume & Timer Controls */}
         <div className="flex flex-wrap items-center gap-4 bg-slate-800/80 p-3 rounded-2xl border border-slate-700 w-full sm:w-auto">
           <div className="flex items-center gap-2">
-            <Volume2 className="w-4 h-4 text-slate-400" />
+            <label htmlFor="sound-volume-slider" className="cursor-pointer">
+              <Volume2 className="w-4 h-4 text-slate-400" />
+            </label>
             <input
+              id="sound-volume-slider"
+              aria-label="Control de volumen de sonido"
               type="range"
               min="0"
               max="1"

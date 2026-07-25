@@ -81,15 +81,17 @@ export const SleepEnvironmentWidget: React.FC = () => {
             {/* Temperature Slider */}
             <div className="bg-slate-800/60 border border-slate-700/70 p-4 rounded-2xl space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-200 flex items-center gap-1.5">
+                <label htmlFor="temp-range-input" className="text-xs font-bold text-slate-200 flex items-center gap-1.5 cursor-pointer">
                   <Thermometer className="w-4 h-4 text-rose-400" />
                   <span>Temperatura del Dormitorio:</span>
-                </span>
+                </label>
                 <span className="text-xs font-extrabold text-amber-300 bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-700">
                   {temp}°C {temp >= 16 && temp <= 19 ? '✓ Ideal (16-19°C)' : temp > 22 ? '⚠️ Demasiado cálido' : ''}
                 </span>
               </div>
               <input
+                id="temp-range-input"
+                aria-label="Temperatura del dormitorio en grados Celsius"
                 type="range"
                 min="14"
                 max="28"
@@ -135,11 +137,13 @@ export const SleepEnvironmentWidget: React.FC = () => {
             {/* Noise & Toggles */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="bg-slate-800/60 border border-slate-700/70 p-4 rounded-2xl space-y-2">
-                <span className="text-xs font-bold text-slate-200 flex items-center gap-1.5">
+                <label htmlFor="noise-level-select" className="text-xs font-bold text-slate-200 flex items-center gap-1.5 cursor-pointer">
                   <Volume2 className="w-4 h-4 text-teal-400" />
                   <span>Nivel de Ruido:</span>
-                </span>
+                </label>
                 <select
+                  id="noise-level-select"
+                  aria-label="Nivel de ruido ambiental"
                   value={noise}
                   onChange={(e) => setNoise(e.target.value)}
                   className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
@@ -151,8 +155,10 @@ export const SleepEnvironmentWidget: React.FC = () => {
               </div>
 
               <div className="bg-slate-800/60 border border-slate-700/70 p-4 rounded-2xl space-y-2 flex flex-col justify-center">
-                <label className="flex items-center gap-2 cursor-pointer">
+                <label htmlFor="tech-in-bed-checkbox" className="flex items-center gap-2 cursor-pointer">
                   <input
+                    id="tech-in-bed-checkbox"
+                    aria-label="Uso móvil o televisión en la cama"
                     type="checkbox"
                     checked={techInBed}
                     onChange={(e) => setTechInBed(e.target.checked)}
@@ -160,8 +166,10 @@ export const SleepEnvironmentWidget: React.FC = () => {
                   />
                   <span className="text-xs text-slate-200 font-semibold">Uso móvil/TV en la cama</span>
                 </label>
-                <label className="flex items-center gap-2 cursor-pointer">
+                <label htmlFor="ventilation-checkbox" className="flex items-center gap-2 cursor-pointer">
                   <input
+                    id="ventilation-checkbox"
+                    aria-label="Buena ventilación y humedad óptima"
                     type="checkbox"
                     checked={ventilation}
                     onChange={(e) => setVentilation(e.target.checked)}

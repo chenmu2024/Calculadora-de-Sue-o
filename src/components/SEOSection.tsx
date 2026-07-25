@@ -347,8 +347,13 @@ export const SEOSection: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             {/* Search Input Box */}
             <div className="relative w-full sm:flex-1">
+              <label htmlFor="faq-search-input" className="sr-only">
+                Buscar duda en preguntas frecuentes
+              </label>
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
+                id="faq-search-input"
+                aria-label="Buscar duda en preguntas frecuentes"
                 type="text"
                 placeholder="Buscar duda (ej. cafeína, Runtastic, inercia, niños)..."
                 value={searchQuery}
