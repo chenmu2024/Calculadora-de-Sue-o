@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Users, Clock, CheckCircle2, Sparkles, AlertTriangle, Lightbulb, Calendar, ArrowRight, RefreshCw, Sliders, Zap, Activity, HeartPulse, Brain, Heart, Layers } from 'lucide-react';
+import { Users, Clock, CheckCircle2, Sparkles, AlertTriangle, Lightbulb, Calendar, ArrowRight, RefreshCw, Sliders, Zap, Activity, HeartPulse, Brain, Heart, Layers, Share2, Copy, Check } from 'lucide-react';
 import { AGE_GROUPS } from '../data/sleepData';
 import { AgeGroupConfig } from '../types';
-import { downloadCalendarEvent } from '../utils/sleepCalculations';
+import { downloadCalendarEvent, getGoogleCalendarUrl } from '../utils/sleepCalculations';
 
 interface AgeCalculatorViewProps {
   onSyncToMainCalculator?: (mode: 'wake_time' | 'bed_time', time: string) => void;
@@ -19,6 +19,26 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
   const [isHighStress, setIsHighStress] = useState<boolean>(false);
   const [isSick, setIsSick] = useState<boolean>(false);
   const [targetWakeTime, setTargetWakeTime] = useState<string>('07:00');
+  const [copyDiagnosisSuccess, setCopyDiagnosisSuccess] = useState<boolean>(false);
+
+  const handleShareDiagnosis = () => {
+    const text = `📊 Mi Recomendación de Sueño (${selectedGroup.name} - ${inputExactAge} años):\n` +
+      `• Horas recomendadas: ${adjustedMin.toFixed(1)} - ${adjustedMax.toFixed(1)} hrs (${selectedGroup.recCyclesMin}-${selectedGroup.recCyclesMax} ciclos)\n` +
+      `• Horario sugerido: Acostarse ${schedule.bedStr} ➔ Despertar ${schedule.wakeStr}\n` +
+      `Calcula tu horario ideal en: ${window.location.href}`;
+
+    if (navigator.share) {
+      navigator.share({
+        title: `Recomendación de Sueño - ${selectedGroup.name}`,
+        text: text,
+        url: window.location.href,
+      }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(text);
+      setCopyDiagnosisSuccess(true);
+      setTimeout(() => setCopyDiagnosisSuccess(false), 2500);
+    }
+  };
 
   // Auto detect group if exact age is typed
   const handleExactAgeChange = (val: string) => {
@@ -240,9 +260,29 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
       <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-slate-800">
           <div>
-            <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider">
-              Diagnóstico Biológico Personalizado
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider">
+                Diagnóstico Biológico Personalizado
+              </span>
+              <button
+                type="button"
+                onClick={handleShareDiagnosis}
+                className="ml-2 inline-flex items-center gap-1 text-[11px] font-bold text-amber-300 hover:text-amber-200 bg-amber-950/60 hover:bg-amber-900/80 px-2.5 py-1 rounded-full border border-amber-700/60 transition-colors"
+                title="Compartir diagnóstico"
+              >
+                {copyDiagnosisSuccess ? (
+                  <>
+                    <Check className="w-3 h-3 text-emerald-400" />
+                    <span>¡Copiado!</span>
+                  </>
+                ) : (
+                  <>
+                    <Share2 className="w-3 h-3 text-amber-300" />
+                    <span>Compartir Diagnóstico</span>
+                  </>
+                )}
+              </button>
+            </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white mt-1">
               Etapa: {selectedGroup.name}
             </h2>
@@ -434,7 +474,22 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
               </div>
             </div>
 
-            <div className="flex items-center gap-2 w-full sm:w-auto shrink-0">
+            <div className="flex items-center gap-2 w-full sm:w-auto shrink-0 flex-wrap">
+              <a
+                href={getGoogleCalendarUrl(
+                  `Alarma Recomendada (${selectedGroup.name})`,
+                  schedule.wake24,
+                  `Recordatorio de despertar biológico para ${selectedGroup.name}`
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-2.5 rounded-xl bg-indigo-950/90 hover:bg-indigo-900 text-indigo-200 font-bold text-xs flex items-center gap-1.5 border border-indigo-700 transition-colors"
+                title="Añadir a Google Calendar"
+              >
+                <Calendar className="w-3.5 h-3.5 text-amber-300" />
+                <span>GCalendar</span>
+              </a>
+
               <button
                 onClick={() => {
                   downloadCalendarEvent(
@@ -443,10 +498,10 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
                     `Recordatorio de despertar biológico para ${selectedGroup.name}`
                   );
                 }}
-                className="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold text-xs flex items-center gap-1.5 border border-slate-700 transition-colors"
+                className="px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs flex items-center gap-1.5 border border-slate-700 transition-colors"
+                title="Descargar archivo iCal (.ics)"
               >
-                <Calendar className="w-3.5 h-3.5" />
-                <span>Añadir Alarma</span>
+                <span>.iCal</span>
               </button>
 
               {onSyncToMainCalculator && (
@@ -458,7 +513,7 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
                   className="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-lg shadow-indigo-600/30 transition-all"
                 >
                   <Zap className="w-3.5 h-3.5" />
-                  <span>Sincronizar en Calculadora</span>
+                  <span>Sincronizar</span>
                 </button>
               )}
             </div>
@@ -499,42 +554,89 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
               // Calculate 3 bedtime options: Optimal (Max Hours), Standard (Min Hours), Minimum (-1.5h)
               const latencyMin = 15; // 15 mins to fall asleep
 
-              const calcBed = (hoursNeeded: number) => {
+              const calcBedObj = (hoursNeeded: number) => {
                 const bDate = new Date(wakeDate.getTime() - (hoursNeeded * 60 + latencyMin) * 60 * 1000);
-                return bDate.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', hour12: true }).toUpperCase();
+                const time12 = bDate.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', hour12: true }).toUpperCase();
+                const time24 = bDate.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', hour12: false });
+                return { time12, time24 };
               };
 
-              const bedOpt = calcBed(adjustedMax);
-              const bedStd = calcBed(adjustedMin);
-              const bedMin = calcBed(Math.max(4, adjustedMin - 1.5));
+              const bedOpt = calcBedObj(adjustedMax);
+              const bedStd = calcBedObj(adjustedMin);
+              const bedMin = calcBedObj(Math.max(4, adjustedMin - 1.5));
 
               return (
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                  <div className="bg-slate-950 p-3.5 rounded-xl border border-emerald-500/30">
-                    <div className="text-emerald-400 font-bold mb-1 flex items-center justify-between">
-                      <span>🌟 Descanso Óptimo</span>
-                      <span className="text-[10px] bg-emerald-950 text-emerald-300 px-1.5 py-0.5 rounded">{adjustedMax.toFixed(1)}h</span>
+                  <div className="bg-slate-950 p-3.5 rounded-xl border border-emerald-500/30 flex flex-col justify-between space-y-2">
+                    <div>
+                      <div className="text-emerald-400 font-bold mb-1 flex items-center justify-between">
+                        <span>🌟 Descanso Óptimo</span>
+                        <span className="text-[10px] bg-emerald-950 text-emerald-300 px-1.5 py-0.5 rounded">{adjustedMax.toFixed(1)}h</span>
+                      </div>
+                      <div className="text-lg font-black text-white">{bedOpt.time12}</div>
+                      <div className="text-[10px] text-slate-400 mt-1">Ir a la cama a esta hora garantiza la máxima regeneración celular.</div>
                     </div>
-                    <div className="text-lg font-black text-white">{bedOpt}</div>
-                    <div className="text-[10px] text-slate-400 mt-1">Ir a la cama a esta hora garantiza la máxima regeneración celular y REM.</div>
+                    {onSyncToMainCalculator && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onSyncToMainCalculator('bed_time', bedOpt.time24);
+                          document.getElementById('calculadora-principal')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="mt-2 w-full text-[10px] font-bold text-emerald-300 hover:text-emerald-100 bg-emerald-950/80 hover:bg-emerald-900 py-1.5 rounded-lg border border-emerald-800 transition-colors flex items-center justify-center gap-1"
+                      >
+                        <Zap className="w-3 h-3" />
+                        <span>Usar {bedOpt.time12} en Calculadora</span>
+                      </button>
+                    )}
                   </div>
 
-                  <div className="bg-slate-950 p-3.5 rounded-xl border border-indigo-500/30">
-                    <div className="text-indigo-300 font-bold mb-1 flex items-center justify-between">
-                      <span>✅ Descanso Estándar</span>
-                      <span className="text-[10px] bg-indigo-950 text-indigo-300 px-1.5 py-0.5 rounded">{adjustedMin.toFixed(1)}h</span>
+                  <div className="bg-slate-950 p-3.5 rounded-xl border border-indigo-500/30 flex flex-col justify-between space-y-2">
+                    <div>
+                      <div className="text-indigo-300 font-bold mb-1 flex items-center justify-between">
+                        <span>✅ Descanso Estándar</span>
+                        <span className="text-[10px] bg-indigo-950 text-indigo-300 px-1.5 py-0.5 rounded">{adjustedMin.toFixed(1)}h</span>
+                      </div>
+                      <div className="text-lg font-black text-white">{bedStd.time12}</div>
+                      <div className="text-[10px] text-slate-400 mt-1">Cumple el volumen mínimo recomendado para el rendimiento diario.</div>
                     </div>
-                    <div className="text-lg font-black text-white">{bedStd}</div>
-                    <div className="text-[10px] text-slate-400 mt-1">Cumple el volumen mínimo recomendado para el rendimiento diario.</div>
+                    {onSyncToMainCalculator && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onSyncToMainCalculator('bed_time', bedStd.time24);
+                          document.getElementById('calculadora-principal')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="mt-2 w-full text-[10px] font-bold text-indigo-300 hover:text-indigo-100 bg-indigo-950/80 hover:bg-indigo-900 py-1.5 rounded-lg border border-indigo-800 transition-colors flex items-center justify-center gap-1"
+                      >
+                        <Zap className="w-3 h-3" />
+                        <span>Usar {bedStd.time12} en Calculadora</span>
+                      </button>
+                    )}
                   </div>
 
-                  <div className="bg-slate-950 p-3.5 rounded-xl border border-amber-500/30">
-                    <div className="text-amber-300 font-bold mb-1 flex items-center justify-between">
-                      <span>⚠️ Descanso Mínimo</span>
-                      <span className="text-[10px] bg-amber-950 text-amber-300 px-1.5 py-0.5 rounded">{(adjustedMin - 1.5).toFixed(1)}h</span>
+                  <div className="bg-slate-950 p-3.5 rounded-xl border border-amber-500/30 flex flex-col justify-between space-y-2">
+                    <div>
+                      <div className="text-amber-300 font-bold mb-1 flex items-center justify-between">
+                        <span>⚠️ Descanso Mínimo</span>
+                        <span className="text-[10px] bg-amber-950 text-amber-300 px-1.5 py-0.5 rounded">{(adjustedMin - 1.5).toFixed(1)}h</span>
+                      </div>
+                      <div className="text-lg font-black text-white">{bedMin.time12}</div>
+                      <div className="text-[10px] text-slate-400 mt-1">Límite mínimo ocasional para evitar inercia del sueño intensa.</div>
                     </div>
-                    <div className="text-lg font-black text-white">{bedMin}</div>
-                    <div className="text-[10px] text-slate-400 mt-1">Límite mínimo ocasional para evitar inercia del sueño intensa.</div>
+                    {onSyncToMainCalculator && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onSyncToMainCalculator('bed_time', bedMin.time24);
+                          document.getElementById('calculadora-principal')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="mt-2 w-full text-[10px] font-bold text-amber-300 hover:text-amber-100 bg-amber-950/80 hover:bg-amber-900 py-1.5 rounded-lg border border-amber-800 transition-colors flex items-center justify-center gap-1"
+                      >
+                        <Zap className="w-3 h-3" />
+                        <span>Usar {bedMin.time12} en Calculadora</span>
+                      </button>
+                    )}
                   </div>
                 </div>
               );

@@ -100,6 +100,37 @@ export function calculateSleepTimes(
   return results;
 }
 
+// Generate Google Calendar Web Link
+export function getGoogleCalendarUrl(
+  title: string,
+  timeStr24: string,
+  description: string
+): string {
+  const now = new Date();
+  const [h, m] = timeStr24.split(':').map((v) => parseInt(v, 10));
+  const eventDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m, 0);
+
+  if (eventDate < now) {
+    eventDate.setDate(eventDate.getDate() + 1);
+  }
+
+  const endDate = new Date(eventDate.getTime() + 15 * 60000);
+
+  const formatGCalDate = (d: Date) => {
+    return d.toISOString().replace(/-|:|\.\d\d\d/g, '');
+  };
+
+  const datesStr = `${formatGCalDate(eventDate)}/${formatGCalDate(endDate)}`;
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: title,
+    details: description,
+    dates: datesStr
+  });
+
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
+
 // Generate ICAL file content for alarm / calendar reminder
 export function downloadCalendarEvent(
   title: string,

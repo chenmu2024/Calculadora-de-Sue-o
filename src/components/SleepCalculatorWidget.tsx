@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Clock, Moon, Sun, Play, Calendar, Zap, Info, ShieldCheck, Sparkles, CheckCircle2, Sliders, Share2, Eye, RefreshCw, Bookmark, Star, Printer, Trash2 } from 'lucide-react';
 import { CalculationMode, SleepCycleResult } from '../types';
-import { calculateSleepTimes, downloadCalendarEvent } from '../utils/sleepCalculations';
+import { calculateSleepTimes, downloadCalendarEvent, getGoogleCalendarUrl } from '../utils/sleepCalculations';
 import { CustomTimePicker } from './CustomTimePicker';
 
 interface SleepCalculatorWidgetProps {
@@ -491,36 +491,55 @@ export const SleepCalculatorWidget: React.FC<SleepCalculatorWidgetProps> = ({
 
               {/* Action Toolbar */}
               <div className="pt-3 border-t border-slate-700/50 flex items-center justify-between gap-1.5 flex-wrap">
-                <button
-                  onClick={() => downloadCalendarEvent(
-                    `Alarma Ciclo de Sueño: ${res.time}`,
-                    res.time24,
-                    `Recordatorio de dormir/despertar para completar ${res.cycles} ciclos (${res.hoursFormatted})`
-                  )}
-                  className="flex items-center gap-1.5 text-xs text-indigo-300 hover:text-indigo-100 font-semibold bg-indigo-950/60 hover:bg-indigo-900 px-2.5 py-1.5 rounded-lg border border-indigo-800 transition-colors"
-                >
-                  <Calendar className="w-3.5 h-3.5" />
-                  <span>Añadir Alarma</span>
-                </button>
-
-                <button
-                  onClick={() => handleShareResult(res)}
-                  className="flex items-center gap-1 text-xs text-slate-300 hover:text-white bg-slate-900/80 px-2 py-1.5 rounded-lg border border-slate-700"
-                  title="Compartir resultado"
-                >
-                  <Share2 className="w-3.5 h-3.5 text-amber-300" />
-                  <span>{sharedNotice === res.time ? '¡Listo!' : 'Compartir'}</span>
-                </button>
-
-                {onSelectResultForVisualizer && (
-                  <button
-                    onClick={() => onSelectResultForVisualizer(res)}
-                    className="flex items-center gap-1 text-xs text-indigo-400 hover:text-indigo-200 font-semibold underline"
+                <div className="flex items-center gap-1">
+                  <a
+                    href={getGoogleCalendarUrl(
+                      `Alarma Ciclo de Sueño: ${displayTime}`,
+                      res.time24,
+                      `Recordatorio de dormir/despertar para completar ${res.cycles} ciclos (${res.hoursFormatted})`
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-[11px] text-indigo-300 hover:text-indigo-100 font-semibold bg-indigo-950/80 hover:bg-indigo-900 px-2 py-1.5 rounded-lg border border-indigo-800 transition-colors"
+                    title="Añadir evento a Google Calendar"
                   >
-                    <Eye className="w-3.5 h-3.5" />
-                    <span>Ver Fases</span>
+                    <Calendar className="w-3 h-3 text-amber-300" />
+                    <span>GCalendar</span>
+                  </a>
+
+                  <button
+                    onClick={() => downloadCalendarEvent(
+                      `Alarma Ciclo de Sueño: ${displayTime}`,
+                      res.time24,
+                      `Recordatorio de dormir/despertar para completar ${res.cycles} ciclos (${res.hoursFormatted})`
+                    )}
+                    className="flex items-center gap-1 text-[11px] text-slate-300 hover:text-white font-semibold bg-slate-900/80 hover:bg-slate-800 px-2 py-1.5 rounded-lg border border-slate-700 transition-colors"
+                    title="Descargar archivo iCal (.ics) para iCal/Outlook"
+                  >
+                    <span>.iCal</span>
                   </button>
-                )}
+                </div>
+
+                <div className="flex items-center gap-1">
+                  <button
+                    onClick={() => handleShareResult(res)}
+                    className="flex items-center gap-1 text-[11px] text-slate-300 hover:text-white bg-slate-900/80 px-2 py-1.5 rounded-lg border border-slate-700"
+                    title="Compartir resultado"
+                  >
+                    <Share2 className="w-3 h-3 text-amber-300" />
+                    <span>{sharedNotice === res.time ? '¡Listo!' : 'Compartir'}</span>
+                  </button>
+
+                  {onSelectResultForVisualizer && (
+                    <button
+                      onClick={() => onSelectResultForVisualizer(res)}
+                      className="flex items-center gap-1 text-[11px] text-indigo-400 hover:text-indigo-200 font-semibold underline ml-1"
+                    >
+                      <Eye className="w-3 h-3" />
+                      <span>Ver Fases</span>
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           );

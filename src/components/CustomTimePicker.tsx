@@ -44,6 +44,17 @@ export const CustomTimePicker: React.FC<CustomTimePickerProps> = ({
     onChange(`${currentHour || '07'}:${newM}`);
   };
 
+  const addMinutesToCurrentTime = (deltaMinutes: number) => {
+    const h = parseInt(currentHour || '7', 10);
+    const m = parseInt(currentMinute || '0', 10);
+    let totalMinutes = h * 60 + m + deltaMinutes;
+    // Normalize to 0..1439
+    totalMinutes = ((totalMinutes % 1440) + 1440) % 1440;
+    const newH = Math.floor(totalMinutes / 60).toString().padStart(2, '0');
+    const newM = (totalMinutes % 60).toString().padStart(2, '0');
+    onChange(`${newH}:${newM}`);
+  };
+
   if (size === 'normal') {
     return (
       <div className={`flex items-center gap-1 bg-slate-900 border border-slate-700 rounded-xl px-2 py-1.5 ${className}`}>
@@ -83,49 +94,87 @@ export const CustomTimePicker: React.FC<CustomTimePickerProps> = ({
   const minuteId = id ? `${id}-minute` : 'time-picker-minute';
 
   return (
-    <div className={`flex items-center justify-center gap-2 bg-slate-900 border-2 border-indigo-500/40 rounded-2xl p-3 shadow-inner ${className}`}>
-      <Clock className="w-6 h-6 text-indigo-400 shrink-0 hidden sm:block" />
-      
-      {/* Hours Selector */}
-      <div className="flex flex-col items-center">
-        <label htmlFor={hourId} className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1 cursor-pointer">
-          Hora
-        </label>
-        <select
-          id={hourId}
-          aria-label="Seleccionar hora"
-          value={currentHour}
-          onChange={handleHourChange}
-          className="bg-slate-950 border border-indigo-500/30 rounded-xl px-3 py-2 text-xl sm:text-2xl font-black text-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer text-center shadow-md min-w-[90px]"
-        >
-          {hours.map((h) => (
-            <option key={h.value} value={h.value} className="bg-slate-900 text-white text-sm">
-              {h.label}
-            </option>
-          ))}
-        </select>
+    <div className={`flex flex-col sm:flex-row items-center justify-center gap-3 bg-slate-900 border-2 border-indigo-500/40 rounded-2xl p-3 sm:p-4 shadow-inner ${className}`}>
+      <div className="flex items-center justify-center gap-2">
+        <Clock className="w-6 h-6 text-indigo-400 shrink-0 hidden sm:block" />
+        
+        {/* Hours Selector */}
+        <div className="flex flex-col items-center">
+          <label htmlFor={hourId} className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1 cursor-pointer">
+            Hora
+          </label>
+          <select
+            id={hourId}
+            aria-label="Seleccionar hora"
+            value={currentHour}
+            onChange={handleHourChange}
+            className="bg-slate-950 border border-indigo-500/30 rounded-xl px-3 py-2 text-xl sm:text-2xl font-black text-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer text-center shadow-md min-w-[90px]"
+          >
+            {hours.map((h) => (
+              <option key={h.value} value={h.value} className="bg-slate-900 text-white text-sm">
+                {h.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <span className="text-2xl sm:text-3xl font-black text-indigo-400 pt-4 animate-pulse">:</span>
+
+        {/* Minutes Selector */}
+        <div className="flex flex-col items-center">
+          <label htmlFor={minuteId} className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1 cursor-pointer">
+            Minuto
+          </label>
+          <select
+            id={minuteId}
+            aria-label="Seleccionar minuto"
+            value={currentMinute}
+            onChange={handleMinuteChange}
+            className="bg-slate-950 border border-indigo-500/30 rounded-xl px-3 py-2 text-xl sm:text-2xl font-black text-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer text-center shadow-md min-w-[75px]"
+          >
+            {minutes.map((m) => (
+              <option key={m.value} value={m.value} className="bg-slate-900 text-white text-sm">
+                {m.value} min
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
-      <span className="text-2xl sm:text-3xl font-black text-indigo-400 pt-4 animate-pulse">:</span>
-
-      {/* Minutes Selector */}
-      <div className="flex flex-col items-center">
-        <label htmlFor={minuteId} className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1 cursor-pointer">
-          Minuto
-        </label>
-        <select
-          id={minuteId}
-          aria-label="Seleccionar minuto"
-          value={currentMinute}
-          onChange={handleMinuteChange}
-          className="bg-slate-950 border border-indigo-500/30 rounded-xl px-3 py-2 text-xl sm:text-2xl font-black text-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer text-center shadow-md min-w-[75px]"
+      {/* Stepper Quick Buttons */}
+      <div className="flex items-center gap-1.5 pt-1 sm:pt-4 sm:ml-2 border-t sm:border-t-0 sm:border-l border-slate-800 sm:pl-3 w-full sm:w-auto justify-center">
+        <button
+          type="button"
+          onClick={() => addMinutesToCurrentTime(-30)}
+          className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-colors border border-slate-700/80 active:scale-95"
+          title="Restar 30 minutos"
         >
-          {minutes.map((m) => (
-            <option key={m.value} value={m.value} className="bg-slate-900 text-white text-sm">
-              {m.value} min
-            </option>
-          ))}
-        </select>
+          -30m
+        </button>
+        <button
+          type="button"
+          onClick={() => addMinutesToCurrentTime(-15)}
+          className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-bold transition-colors border border-indigo-900/60 active:scale-95"
+          title="Restar 15 minutos"
+        >
+          -15m
+        </button>
+        <button
+          type="button"
+          onClick={() => addMinutesToCurrentTime(15)}
+          className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-bold transition-colors border border-indigo-900/60 active:scale-95"
+          title="Sumar 15 minutos"
+        >
+          +15m
+        </button>
+        <button
+          type="button"
+          onClick={() => addMinutesToCurrentTime(30)}
+          className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-colors border border-slate-700/80 active:scale-95"
+          title="Sumar 30 minutos"
+        >
+          +30m
+        </button>
       </div>
     </div>
   );
