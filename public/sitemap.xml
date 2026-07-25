@@ -4,79 +4,67 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://calculadoradesueno.org/</loc>
+    <loc>https://xn--calculadoradesueo-uxb.org/</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://calculadoradesueno.org/#home</loc>
+    <loc>https://xn--calculadoradesueo-uxb.org/calculadora-horas-de-sueno</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://calculadoradesueno.org/#sleep-debt</loc>
+    <loc>https://xn--calculadoradesueo-uxb.org/siestas</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://calculadoradesueno.org/#nap</loc>
-    <lastmod>2026-07-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://calculadoradesueno.org/#chronotype</loc>
-    <lastmod>2026-07-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://calculadoradesueno.org/#cbti-journal</loc>
+    <loc>https://xn--calculadoradesueo-uxb.org/diario-sueno</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://calculadoradesueno.org/#articles</loc>
+    <loc>https://xn--calculadoradesueo-uxb.org/app-calculadora-de-sueno</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://xn--calculadoradesueo-uxb.org/blog</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://calculadoradesueno.org/#sound-generator</loc>
+    <loc>https://xn--calculadoradesueo-uxb.org/sonidos</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://calculadoradesueno.org/#faq</loc>
-    <lastmod>2026-07-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://calculadoradesueno.org/#about</loc>
+    <loc>https://xn--calculadoradesueo-uxb.org/sobre-nosotros</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://calculadoradesueno.org/#contact</loc>
+    <loc>https://xn--calculadoradesueo-uxb.org/contacto</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://calculadoradesueno.org/#privacy</loc>
+    <loc>https://xn--calculadoradesueo-uxb.org/politica-privacidad</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://calculadoradesueno.org/#terms</loc>
+    <loc>https://xn--calculadoradesueo-uxb.org/terminos-de-uso</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

@@ -37,7 +37,7 @@ export const AboutUsView: React.FC<AboutUsViewProps> = ({ setCurrentTab }) => {
         </div>
 
         <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-          En <strong>calculadoradesueño.org</strong> (dominio oficial <em>xn--calculadoradesueo-uxb.org</em>), creemos que un descanso reparador no debería ser un lujo ni depender de costosas suscripciones. Naciese con el objetivo de proporcionar a millones de hispanohablantes algoritmos precisos basados en la regla de los 90 minutos de ultradián, la escala de somnolencia de Epworth y los principios de la Terapia Cognitivo-Conductual para el Insomnio (TCC-I).
+          En <strong>xn--calculadoradesueo-uxb.org</strong>, creemos que un descanso reparador no debería ser un lujo ni depender de costosas suscripciones. Naciese con el objetivo de proporcionar a millones de hispanohablantes algoritmos precisos basados en la regla de los 90 minutos de ultradián, la escala de somnolencia de Epworth y los principios de la Terapia Cognitivo-Conductual para el Insomnio (TCC-I).
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
@@ -164,7 +164,7 @@ export const AboutUsView: React.FC<AboutUsViewProps> = ({ setCurrentTab }) => {
           <span>Aviso Médico y Transparencia</span>
         </h2>
         <p className="leading-relaxed">
-          El contenido publicado en <strong>calculadoradesueño.org</strong> tiene fines exclusivamente informativos, educativos y de autocuidado. Nuestras herramientas no constituyen asesoramiento médico profesional, diagnóstico ni tratamiento para trastornos clínicos del sueño como la apnea obstructiva del sueño (AOS), insomnio crónico o narcolepsia. Si experimentas somnolencia diurna excesiva o despertares asfixiantes, te recomendamos consultar con un médico somnólogo certificado.
+          El contenido publicado en <strong>xn--calculadoradesueo-uxb.org</strong> tiene fines exclusivamente informativos, educativos y de autocuidado. Nuestras herramientas no constituyen asesoramiento médico profesional, diagnóstico ni tratamiento para trastornos clínicos del sueño como la apnea obstructiva del sueño (AOS), insomnio crónico o narcolepsia. Si experimentas somnolencia diurna excesiva o despertares asfixiantes, te recomendamos consultar con un médico somnólogo certificado.
         </p>
 
         <div className="pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4">

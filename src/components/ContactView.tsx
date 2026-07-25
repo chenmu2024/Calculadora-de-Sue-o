@@ -48,7 +48,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ setCurrentTab }) => {
           Contacto - Calculadora de Sueño
         </h1>
         <p className="text-slate-300 text-base leading-relaxed">
-          ¿Tienes preguntas, sugerencias de mejora o deseas colaborar con <strong>calculadoradesueño.org</strong>? Estamos a tu disposición.
+          ¿Tienes preguntas, sugerencias de mejora o deseas colaborar con <strong>xn--calculadoradesueo-uxb.org</strong>? Estamos a tu disposición.
         </p>
       </div>
 
@@ -66,20 +66,20 @@ export const ContactView: React.FC<ContactViewProps> = ({ setCurrentTab }) => {
               <div className="space-y-1">
                 <span className="text-slate-400 font-semibold block">Correo Electrónico Principal:</span>
                 <a 
-                  href="mailto:contacto@calculadoradesueño.org" 
+                  href="mailto:contacto@xn--calculadoradesueo-uxb.org" 
                   className="text-indigo-400 hover:underline font-mono font-bold block text-sm"
                 >
-                  contacto@calculadoradesueño.org
+                  contacto@xn--calculadoradesueo-uxb.org
                 </a>
               </div>
 
               <div className="space-y-1">
                 <span className="text-slate-400 font-semibold block">Soporte Técnico y SEO:</span>
                 <a 
-                  href="mailto:soporte@calculadoradesueño.org" 
+                  href="mailto:soporte@xn--calculadoradesueo-uxb.org" 
                   className="text-slate-300 hover:underline font-mono block text-xs"
                 >
-                  soporte@calculadoradesueño.org
+                  soporte@xn--calculadoradesueo-uxb.org
                 </a>
               </div>
 

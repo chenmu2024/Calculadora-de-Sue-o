@@ -85,12 +85,12 @@ export default function App() {
         path: '/contacto'
       },
       privacy: {
-        title: 'Política de Privacidad y Proteccion de Datos | calculadoradesueño.org',
+        title: 'Política de Privacidad y Proteccion de Datos | xn--calculadoradesueo-uxb.org',
         desc: 'Garantía de privacidad total. Todos tus datos del diario de sueño y cálculos se guardan 100% de forma local en tu dispositivo.',
         path: '/politica-privacidad'
       },
       terms: {
-        title: 'Términos y Condiciones de Uso | calculadoradesueño.org',
+        title: 'Términos y Condiciones de Uso | xn--calculadoradesueo-uxb.org',
         desc: 'Términos de servicio de la aplicación web Calculadora de Sueño. Información médica de carácter divulgativo e informativo.',
         path: '/terminos-de-uso'
       }
@@ -124,7 +124,7 @@ export default function App() {
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    const baseUrl = 'https://calculadoradesueno.org';
+    const baseUrl = 'https://xn--calculadoradesueo-uxb.org';
     const targetUrl = currentSeo.path === '/' ? `${baseUrl}/` : `${baseUrl}${currentSeo.path}`;
     canonical.setAttribute('href', targetUrl);
 

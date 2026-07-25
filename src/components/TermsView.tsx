@@ -19,7 +19,7 @@ export const TermsView: React.FC<TermsViewProps> = ({ setCurrentTab }) => {
           Términos y Condiciones de Uso
         </h1>
         <p className="text-slate-400 text-xs sm:text-sm">
-          Última actualización: <strong>23 de Julio de 2026</strong> | Dominio: <strong>calculadoradesueño.org</strong>
+          Última actualización: <strong>23 de Julio de 2026</strong> | Dominio: <strong>xn--calculadoradesueo-uxb.org</strong>
         </p>
       </div>
 
@@ -35,7 +35,7 @@ export const TermsView: React.FC<TermsViewProps> = ({ setCurrentTab }) => {
           </div>
         </div>
         <p className="text-slate-300">
-          Los resultados generados por <strong>calculadoradesueño.org</strong> (gráficos de ciclos, cálculo de horas por edad, tiempos de eliminación de cafeína y eficiencia de sueño TCC-I) son estimaciones estadísticas con fines puramente informativos y de educación sobre estilos de vida saludables. <strong>No constituyen un diagnóstico médico, prescripción ni consulta clínica.</strong>
+          Los resultados generados por <strong>xn--calculadoradesueo-uxb.org</strong> (gráficos de ciclos, cálculo de horas por edad, tiempos de eliminación de cafeína y eficiencia de sueño TCC-I) son estimaciones estadísticas con fines puramente informativos y de educación sobre estilos de vida saludables. <strong>No constituyen un diagnóstico médico, prescripción ni consulta clínica.</strong>
         </p>
       </div>
 
@@ -60,10 +60,10 @@ export const TermsView: React.FC<TermsViewProps> = ({ setCurrentTab }) => {
             <span>2. Propiedad Intelectual</span>
           </h2>
           <p>
-            Todos los textos, logotipos, algoritmos, diseños interactivos, código fuente e ilustraciones presentes en <strong>calculadoradesueño.org</strong> están protegidos por las leyes internacionales de propiedad intelectual y derechos de autor.
+            Todos los textos, logotipos, algoritmos, diseños interactivos, código fuente e ilustraciones presentes en <strong>xn--calculadoradesueo-uxb.org</strong> están protegidos por las leyes internacionales de propiedad intelectual y derechos de autor.
           </p>
           <p>
-            Queda prohibida la reproducción total o parcial, venta o redistribución no autorizada del software o contenidos sin la cita explícita del dominio y enlace de retorno (backlink) a <code>https://calculadoradesueño.org</code>.
+            Queda prohibida la reproducción total o parcial, venta o redistribución no autorizada del software o contenidos sin la cita explícita del dominio y enlace de retorno (backlink) a <code>https://xn--calculadoradesueo-uxb.org</code>.
           </p>
         </section>
 
@@ -74,7 +74,7 @@ export const TermsView: React.FC<TermsViewProps> = ({ setCurrentTab }) => {
             <span>3. Uso Permitido y Limitación de Responsabilidad</span>
           </h2>
           <p>
-            El usuario se compromete a hacer un uso lícito y ético del sitio web. El equipo de <strong>calculadoradesueño.org</strong> no se hace responsable de:
+            El usuario se compromete a hacer un uso lícito y ético del sitio web. El equipo de <strong>xn--calculadoradesueo-uxb.org</strong> no se hace responsable de:
           </p>
           <ul className="list-disc list-inside space-y-1 text-slate-300 pl-2">
             <li>Interrupciones temporales del servicio debidas a mantenimiento técnico o fallos del proveedor de alojamiento.</li>
@@ -104,8 +104,8 @@ export const TermsView: React.FC<TermsViewProps> = ({ setCurrentTab }) => {
         <p className="text-slate-400">
           Si tienes alguna consulta legal sobre estos términos, por favor contacta con nosotros en:
         </p>
-        <a href="mailto:contacto@calculadoradesueño.org" className="text-indigo-400 hover:underline font-bold font-mono">
-          contacto@calculadoradesueño.org
+        <a href="mailto:contacto@xn--calculadoradesueo-uxb.org" className="text-indigo-400 hover:underline font-bold font-mono">
+          contacto@xn--calculadoradesueo-uxb.org
         </a>
       </div>
 

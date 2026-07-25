@@ -19,7 +19,7 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({ setCurrent
           Política de Privacidad
         </h1>
         <p className="text-slate-400 text-xs sm:text-sm">
-          Última actualización: <strong>23 de Julio de 2026</strong> | Dominio: <strong>calculadoradesueño.org</strong>
+          Última actualización: <strong>23 de Julio de 2026</strong> | Dominio: <strong>xn--calculadoradesueo-uxb.org</strong>
         </p>
       </div>
 
@@ -36,7 +36,7 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({ setCurrent
         </div>
 
         <p>
-          En <strong>calculadoradesueño.org</strong> (denominación técnica de dominio <em>xn--calculadoradesueo-uxb.org</em>), respetamos profundamente tu intimidad. Toda la suite de herramientas (incluyendo el diario de sueño TCC-I, el calculador de cafeína, el test de cronotipo y la calculadora de ciclos) procesa la información de forma exclusivamente local en tu propio navegador web mediante JavaScript y almacenamiento web local (HTML5 <code>localStorage</code>).
+          En <strong>xn--calculadoradesueo-uxb.org</strong>, respetamos profundamente tu intimidad. Toda la suite de herramientas (incluyendo el diario de sueño TCC-I, el calculador de cafeína, el test de cronotipo y la calculadora de ciclos) procesa la información de forma exclusivamente local en tu propio navegador web mediante JavaScript y almacenamiento web local (HTML5 <code>localStorage</code>).
         </p>
       </div>
 
@@ -50,7 +50,7 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({ setCurrent
             <span>1. Responsable del Tratamiento de Datos</span>
           </h2>
           <p>
-            El responsable del tratamiento de los datos en esta web es el equipo gestor de <strong>calculadoradesueño.org</strong>. Puedes contactar con nuestro Delegado de Protección de Datos (DPD) a través del correo electrónico: <a href="mailto:privacidad@calculadoradesueño.org" className="text-indigo-400 hover:underline font-mono">privacidad@calculadoradesueño.org</a>.
+            El responsable del tratamiento de los datos en esta web es el equipo gestor de <strong>xn--calculadoradesueo-uxb.org</strong>. Puedes contactar con nuestro Delegado de Protección de Datos (DPD) a través del correo electrónico: <a href="mailto:privacidad@xn--calculadoradesueo-uxb.org" className="text-indigo-400 hover:underline font-mono">privacidad@xn--calculadoradesueo-uxb.org</a>.
           </p>
         </section>
 
@@ -139,7 +139,7 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({ setCurrent
             <li>Oponerte al tratamiento o solicitar la limitación de su procesamiento.</li>
           </ul>
           <p className="pt-1">
-            Para ejercer cualquiera de estos derechos, envía un correo formal a <a href="mailto:privacidad@calculadoradesueño.org" className="text-indigo-400 hover:underline font-mono">privacidad@calculadoradesueño.org</a>.
+            Para ejercer cualquiera de estos derechos, envía un correo formal a <a href="mailto:privacidad@xn--calculadoradesueo-uxb.org" className="text-indigo-400 hover:underline font-mono">privacidad@xn--calculadoradesueo-uxb.org</a>.
           </p>
         </section>
 

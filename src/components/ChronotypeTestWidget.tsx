@@ -87,14 +87,14 @@ export const ChronotypeTestWidget: React.FC = () => {
       colibri: 'Colibrí Intermedio 🕊️'
     };
     const cName = resultType ? names[resultType] : 'Colibrí';
-    const text = `¡Descubrí mi cronotipo circadiano en calculadoradesueño.org! Mi resultado: ${cName}. Descubre tu mejor horario de sueño y productividad gratis.`;
+    const text = `¡Descubrí mi cronotipo circadiano en xn--calculadoradesueo-uxb.org! Mi resultado: ${cName}. Descubre tu mejor horario de sueño y productividad gratis.`;
 
     if (navigator.share) {
       try {
         await navigator.share({
           title: 'Test de Cronotipo de Sueño',
           text,
-          url: 'https://calculadoradesueño.org/#test-cronotipo'
+          url: 'https://xn--calculadoradesueo-uxb.org/calculadora-horas-de-sueno'
         });
         return;
       } catch (e) {

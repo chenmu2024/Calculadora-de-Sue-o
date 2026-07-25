@@ -29,20 +29,20 @@ export const ArticlesView: React.FC = () => {
         'author': {
           '@type': 'Organization',
           'name': 'Equipo de Cronobiología de Calculadora de Sueño España',
-          'url': 'https://calculadoradesueno.org/#sobre-nosotros'
+          'url': 'https://xn--calculadoradesueo-uxb.org/sobre-nosotros'
         },
         'publisher': {
           '@type': 'Organization',
           'name': 'Calculadora de Sueño',
-          'url': 'https://calculadoradesueno.org',
+          'url': 'https://xn--calculadoradesueo-uxb.org/',
           'logo': {
             '@type': 'ImageObject',
-            'url': 'https://calculadoradesueno.org/logo.png'
+            'url': 'https://xn--calculadoradesueo-uxb.org/logo.png'
           }
         },
         'mainEntityOfPage': {
           '@type': 'WebPage',
-          '@id': `https://calculadoradesueno.org/#${selectedArticle.slug}`
+          '@id': `https://xn--calculadoradesueo-uxb.org/blog?article=${selectedArticle.slug}`
         }
       };
 
@@ -116,7 +116,7 @@ export const ArticlesView: React.FC = () => {
         if (match[1] && match[2]) {
           const label = match[1];
           const url = match[2];
-          const isInternal = url.includes('calculadoradesueño.org') || url.startsWith('#') || url.startsWith('/');
+          const isInternal = url.includes('xn--calculadoradesueo-uxb.org') || url.includes('calculadoradesueño.org') || url.startsWith('#') || url.startsWith('/');
           parts.push(
             <a
               key={match.index}
@@ -265,11 +265,11 @@ export const ArticlesView: React.FC = () => {
               "@type": "VideoObject",
               "name": "Cómo calcular tu ciclo de sueño en 60 segundos",
               "description": "Aprende el método científico exacto de los 90 minutos y 15 minutos de latencia para despertar fresco y sin inercia del sueño.",
-              "thumbnailUrl": "https://calculadoradesueno.org/og-video-thumbnail.jpg",
+              "thumbnailUrl": "https://xn--calculadoradesueo-uxb.org/og-video-thumbnail.jpg",
               "uploadDate": "2026-01-15T08:00:00+00:00",
               "duration": "PT1M",
-              "contentUrl": "https://calculadoradesueno.org/video-ciclo-sueno-60s.mp4",
-              "embedUrl": "https://calculadoradesueno.org/#como-calcular-mi-ciclo-de-sueno"
+              "contentUrl": "https://xn--calculadoradesueo-uxb.org/video-ciclo-sueno-60s.mp4",
+              "embedUrl": "https://xn--calculadoradesueo-uxb.org/blog"
             })}
           </script>
         )}

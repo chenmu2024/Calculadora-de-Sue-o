@@ -22,7 +22,7 @@ export const SEOSection: React.FC = () => {
         "@context": "https://schema.org",
         "@type": "MedicalWebPage",
         "name": "Guía Científica de Ciclos de Sueño y Cronobiología",
-        "url": "https://calculadoradesueno.org/#guias",
+        "url": "https://xn--calculadoradesueo-uxb.org/blog",
         "about": {
           "@type": "MedicalCondition",
           "name": "Higiene del Sueño e Inercia del Sueño"
@@ -45,28 +45,28 @@ export const SEOSection: React.FC = () => {
             "position": 1,
             "name": "Selecciona tu hora objetivo",
             "text": "Elige la hora a la que deseas despertar o la hora a la que te acostarás.",
-            "url": "https://calculadoradesueno.org/#calculadora-principal"
+            "url": "https://xn--calculadoradesueo-uxb.org/"
           },
           {
             "@type": "HowToStep",
             "position": 2,
             "name": "Añade la latencia de sueño (15 minutos)",
             "text": "El algoritmo añade automáticamente 15 minutos promedio que el ser humano tarda en dormirse.",
-            "url": "https://calculadoradesueno.org/#sec-como-funciona"
+            "url": "https://xn--calculadoradesueo-uxb.org/"
           },
           {
             "@type": "HowToStep",
             "position": 3,
             "name": "Calcula bloques de 90 minutos",
             "text": "Selecciona entre 5 ciclos (7.5 horas de descanso) o 6 ciclos (9 horas de descanso).",
-            "url": "https://calculadoradesueno.org/#sec-formula"
+            "url": "https://xn--calculadoradesueo-uxb.org/"
           },
           {
             "@type": "HowToStep",
             "position": 4,
             "name": "Programa tu alarma en la hora sugerida",
             "text": "Ajusta tu alarma a una hora donde finalice un ciclo para despertar en fase de sueño ligero.",
-            "url": "https://calculadoradesueno.org/#calculadora-principal"
+            "url": "https://xn--calculadoradesueo-uxb.org/"
           }
         ]
       },
@@ -78,7 +78,7 @@ export const SEOSection: React.FC = () => {
           "@type": "SpeakableSpecification",
           "cssSelector": ["#sec-como-funciona p", "#sec-formula p"]
         },
-        "url": "https://calculadoradesueno.org/"
+        "url": "https://xn--calculadoradesueo-uxb.org/"
       },
       {
         "@context": "https://schema.org",

@@ -82,7 +82,7 @@ export const AppReviewsView: React.FC = () => {
             <span>¿Sigue funcionando la calculadora de sueño Runtastic?</span>
           </div>
           <div>
-            Aunque la aplicación original se ha ido descontinuando en favor de la suite unificada de salud de Adidas, sus principios científicos siguen estando vivos en nuestra herramienta web <strong>calculadoradesueño.org</strong>, permitiéndote calcular ciclos de forma 100% gratuita y sin ocupar espacio en tu teléfono.
+            Aunque la aplicación original se ha ido descontinuando en favor de la suite unificada de salud de Adidas, sus principios científicos siguen estando vivos en nuestra herramienta web <strong>xn--calculadoradesueo-uxb.org</strong>, permitiéndote calcular ciclos de forma 100% gratuita y sin ocupar espacio en tu teléfono.
           </div>
         </div>
       </div>
@@ -221,7 +221,7 @@ export const AppReviewsView: React.FC = () => {
               <tr className="bg-indigo-950/40 font-bold border-l-4 border-l-amber-400">
                 <td className="py-3 px-3 text-white flex items-center gap-2">
                   <Zap className="w-4 h-4 text-amber-300" />
-                  <span>calculadoradesueño.org (Web)</span>
+                  <span>xn--calculadoradesueo-uxb.org (Web)</span>
                 </td>
                 <td className="py-3 px-3 text-emerald-400 font-bold">✓ Temporizador Vivo</td>
                 <td className="py-3 px-3 text-slate-500">✗ No requiere micro</td>

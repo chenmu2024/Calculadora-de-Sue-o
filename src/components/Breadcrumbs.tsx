@@ -37,6 +37,23 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ currentTab, setCurrent
   const info = getTabInfo();
 
   useEffect(() => {
+    const tabPaths: Record<string, string> = {
+      home: '/',
+      'age-calculator': '/calculadora-horas-de-sueno',
+      nap: '/siestas',
+      diary: '/diario-sueno',
+      'app-reviews': '/app-calculadora-de-sueno',
+      blog: '/blog',
+      sounds: '/sonidos',
+      about: '/sobre-nosotros',
+      contact: '/contacto',
+      privacy: '/politica-privacidad',
+      terms: '/terminos-de-uso'
+    };
+    const currentPath = tabPaths[currentTab] || '/';
+    const baseUrl = 'https://xn--calculadoradesueo-uxb.org';
+    const itemUrl = currentPath === '/' ? `${baseUrl}/` : `${baseUrl}${currentPath}`;
+
     const breadcrumbSchema = {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
@@ -45,19 +62,19 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ currentTab, setCurrent
           '@type': 'ListItem',
           'position': 1,
           'name': 'Inicio',
-          'item': 'https://calculadoradesueno.org/'
+          'item': `${baseUrl}/`
         },
         {
           '@type': 'ListItem',
           'position': 2,
           'name': info.category,
-          'item': `https://calculadoradesueno.org/#${currentTab}`
+          'item': itemUrl
         },
         {
           '@type': 'ListItem',
           'position': 3,
           'name': info.name,
-          'item': `https://calculadoradesueno.org/#${currentTab}`
+          'item': itemUrl
         }
       ]
     };

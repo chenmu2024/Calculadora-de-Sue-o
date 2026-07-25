@@ -73,7 +73,7 @@ export const Header: React.FC<HeaderProps> = ({
                 Calculadora de Sueño
               </span>
               <span className="hidden sm:block text-xs text-indigo-400 font-medium">
-                calculadoradesueño.org
+                xn--calculadoradesueo-uxb.org
               </span>
             </div>
           </div>

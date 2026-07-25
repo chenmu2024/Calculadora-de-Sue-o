@@ -120,14 +120,14 @@ export const SleepCalculatorWidget: React.FC<SleepCalculatorWidgetProps> = ({
   };
 
   const handleShareResult = async (res: SleepCycleResult) => {
-    const shareText = `⏰ Calculé mi ciclo de sueño en calculadoradesueño.org:\nIdeal ${mode === 'wake_time' ? 'acostarme' : 'despertarme'} a las ${res.time} (${res.cycles} ciclos, ${res.hoursFormatted}). ¡Pruébalo gratis!`;
+    const shareText = `⏰ Calculé mi ciclo de sueño en xn--calculadoradesueo-uxb.org:\nIdeal ${mode === 'wake_time' ? 'acostarme' : 'despertarme'} a las ${res.time} (${res.cycles} ciclos, ${res.hoursFormatted}). ¡Pruébalo gratis!`;
     
     if (navigator.share) {
       try {
         await navigator.share({
           title: 'Calculadora de Sueño - Mi Horario Ideal',
           text: shareText,
-          url: 'https://calculadoradesueño.org'
+          url: 'https://xn--calculadoradesueo-uxb.org/'
         });
         return;
       } catch (e) {

@@ -27,7 +27,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentTab }) => {
               Tu guía científica de ciclos del sueño. Calculadora gratis online para optimizar tu descanso diario.
             </p>
             <div className="text-[11px] text-indigo-400 font-mono">
-              Domain: calculadoradesueño.org (xn--calculadoradesueo-uxb.org)
+              Domain: xn--calculadoradesueo-uxb.org
             </div>
           </div>
 
@@ -115,7 +115,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentTab }) => {
         {/* Footer Keywords List (Comparativa de las mejores calculadoras de sueño) */}
         <div className="pt-6 border-t border-slate-900 flex items-center justify-between flex-wrap gap-4 text-[11px] text-slate-500">
           <div>
-            © 2026 <strong>Calculadora de Sueño</strong> | calculadoradesueño.org. Todos los derechos reservados.
+            © 2026 <strong>Calculadora de Sueño</strong> | xn--calculadoradesueo-uxb.org. Todos los derechos reservados.
           </div>
           <div className="flex items-center gap-3">
             <button onClick={() => { setCurrentTab('about'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-slate-300 cursor-pointer">
