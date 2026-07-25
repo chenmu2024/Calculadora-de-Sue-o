@@ -354,7 +354,7 @@ A continuación se desglosan los escenarios recomendados para un adulto que nece
 | **4 Ciclos** | 6 Horas (360 min) | 15 min | **12:45 AM** | **Mínimo Aceptable:** Funcional para emergencias puntuales, no sostenible a largo plazo. |
 | **3 Ciclos** | 4.5 Horas (270 min) | 15 min | **2:15 AM** | **Riesgo Severo:** Produce privación aguda de descanso y declive en la velocidad de reacción. |
 
-Para automatizar este proceso en un segundo sin tener que realizar cálculos matemáticos manuales cada noche, utiliza nuestra herramienta principal en [xn--calculadoradesueo-uxb.org](https://xn--calculadoradesueo-uxb.org/). El algoritmo calcula instantáneamente las ventanas exactas según si eliges tu hora de despertar o tu hora de acostarte.
+Para automatizar este proceso en un segundo sin tener que realizar cálculos matemáticos manuales cada noche, utiliza nuestra [calculadora de ciclos de sueño](#home). El algoritmo calcula instantáneamente las ventanas exactas según si eliges tu hora de despertar o tu hora de acostarte.
 
 ---
 
@@ -368,7 +368,7 @@ Si tu alarma suena mientras te encuentras en el fondo de la **Fase N3 (Sueño Pr
 > * Reducción de hasta un 40% en la velocidad de procesamiento cognitivo durante los primeros 30 a 60 minutos del día.
 > * Irritabilidad y deseo compulsivo de posponer la alarma (snooze).
 
-Al ajustar tus hábitos mediante un **calculador de ciclos de sueño**, coordinas la alarma para que resuene durante la ventana de transición al final de la Fase REM o inicio de N1. En esta fase, los niveles de cortisol matutino comiencen a elevarse naturalmente y el cuerpo está fisiológicamente listo para despertar con lucidez.
+Al ajustar tus hábitos mediante un **[calculador de ciclos de sueño](#home)**, coordinas la alarma para que resuene durante la ventana de transición al final de la Fase REM o inicio de N1. En esta fase, los niveles de cortisol matutino comiencen a elevarse naturalmente y el cuerpo está fisiológicamente listo para despertar con lucidez.
 
 ---
 
@@ -377,7 +377,7 @@ Al ajustar tus hábitos mediante un **calculador de ciclos de sueño**, coordina
 Es fundamental comprender que los 90 minutos son un valor promedio poblacional. Diversos factores cotidianos pueden alargar o acortar la duración de tus ciclos individuales:
 
 ### A. La Sombra de la Cafeína y los Receptores de Adenosina
-La cafeína es un antagonista competitivo de la adenosina. Al ocupar los receptores A1 y A2A en el cerebro, impide que la presión homeostática de sueño envíe la señal de fatiga. Teniendo una vida media de aproximadamente **5.7 horas**, consumir un café a las 5:00 PM significa que a las 10:42 PM mantendrás el 50% de la sustancia activa en tu torrente sanguíneo, fragmentando la Fase N3. Puedes evaluar tu nivel residual en la [Calculadora de Cafeína y Sueño](https://xn--calculadoradesueo-uxb.org/).
+La cafeína es un antagonista competitivo de la adenosina. Al ocupar los receptores A1 y A2A en el cerebro, impide que la presión homeostática de sueño envíe la señal de fatiga. Teniendo una vida media de aproximadamente **5.7 horas**, consumir un café a las 5:00 PM significa que a las 10:42 PM mantendrás el 50% de la sustancia activa en tu torrente sanguíneo, fragmentando la Fase N3. Puedes evaluar tu nivel residual usando nuestra **[calculadora de cafeína](#home)**.
 
 ### B. Impacto del Alcohol en la Arquitectura del Sueño
 Aunque el etanol tiene efectos sedantes iniciales que reducen la latencia de entrada al descanso, induce una alteración metabólica severa en la segunda mitad de la noche:
@@ -396,9 +396,9 @@ Para maximizar la eficacia de la **calculadora de ciclos de sueño**, sigue este
 
 1. **Fija una Hora de Despertar Invariable:** Despiértate a la misma hora exacta los 7 días de la semana (incluidos sábados y domingos). Esto ancla el núcleo supraquiasmático.
 2. **Exposición a la Luz Solar Matutina:** Recibe de 10 a 15 minutos de luz solar directa en los primeros 30 minutos tras levantarte para suprimir la melatonina residual y activar el cortisol saludable.
-3. **Calcula tu Hora de Acostarte:** Ingresa tu hora de despertar fija en [Calculadora de Sueño Online](https://xn--calculadoradesueo-uxb.org/) y elige la opción de 5 o 6 ciclos.
+3. **Calcula tu Hora de Acostarte:** Ingresa tu hora de despertar fija en la **[calculadora de sueño online](#home)** y elige la opción de 5 o 6 ciclos.
 4. **Crea una Ventana de Desconexión de 60 Minutos:** Apaga dispositivos electrónicos 1 hora antes de la hora sugerida y reduce la iluminación de tu hogar a tonos cálidos.
-5. **Registra tus Sensaciones en un Diario:** Utiliza nuestro [Diario de Sueño Digital](https://xn--calculadoradesueo-uxb.org/diario-sueno) para anotar si te despiertas de forma natural antes de la alarma o si experimentas fatiga, ajustando la latencia en la herramienta.
+5. **Registra tus Sensaciones en un Diario:** Utiliza nuestro **[diario de sueño digital](#diario-sueno)** para anotar si te despiertas de forma natural antes de la alarma o si experimentas fatiga, ajustando la latencia en la herramienta.
 
 ---
 
@@ -411,7 +411,7 @@ Desde el punto de vista de la arquitectura circadiana, **7.5 horas es significat
 Si te despiertas de forma natural 10 o 15 minutos antes de que suene tu despertador, **debes levantarte inmediatamente**. Tu cerebro ha completado un ciclo ultradiano de forma perfecta. Si vuelves a dormirte, iniciarás un nuevo ciclo que la alarma cortará a los pocos minutos, dejándote más cansado que antes.
 
 ### ¿Los niños tienen los mismos ciclos de 90 minutos que los adultos?
-No. Los bebés y niños pequeños poseen ciclos ultradianos más cortos, de aproximadamente **50 a 60 minutos**. A medida que el sistema nervioso central se desarrolla durante la infancia, la duración del ciclo se expande gradualmente hasta estabilizarse en los 90 minutos del adulto hacia la adolescencia. Puedes consultar los requerimientos por rango de edad en nuestra sección [Calculador de Horas de Sueño por Edad](https://xn--calculadoradesueo-uxb.org/calculadora-horas-de-sueno).
+No. Los bebés y niños pequeños poseen ciclos ultradianos más cortos, de aproximadamente **50 a 60 minutos**. A medida que el sistema nervioso central se desarrolla durante la infancia, la duración del ciclo se expande gradualmente hasta estabilizarse en los 90 minutos del adulto hacia la adolescencia. Puedes consultar los requerimientos por rango de edad en nuestra sección para **[calcular horas de sueño por edad](#calculadora-horas-de-sueno)**.
 
 ---
 
@@ -463,7 +463,7 @@ A continuación se presenta el desglose clínico elaborado por consensos de la [
 | **Adultos (18-64 años)** | 7 a 9 horas | 5 - 6 ciclos | Mantenimiento metabólico, depuración glinfática y equilibrio emocional. |
 | **Adultos mayores (65+ años)** | 7 a 8 horas | 4.5 - 5.5 ciclos | Conservación cognitiva y prevención del estrés oxidativo. |
 
-Para obtener una recomendación adaptada a tu perfil en segundos, visita nuestro módulo interactivo [Calculador de Horas de Sueño por Edad](https://xn--calculadoradesueo-uxb.org/calculadora-horas-de-sueno).
+Para obtener una recomendación adaptada a tu perfil en segundos, visita nuestro módulo interactivo de la **[calculadora de horas de sueño](#calculadora-horas-de-sueno)**.
 
 ---
 
@@ -512,7 +512,7 @@ Un error masivo consiste en intentar reparar 10 horas de deuda durmiendo 14 hora
 Para saldar la deuda de forma segura y efectiva, aplica las siguientes pautas médicas:
 
 * **Estrategia de Extensión Progresiva:** Añade entre **30 y 60 minutos adicionales de sueño** cada noche durante 1 o 2 semanas consecutivas hasta eliminar los síntomas de cansancio matutino.
-* **Siestas de Potencia (Power Naps) de 20 Minutos:** Realiza una siesta entre la 1:00 PM y las 3:00 PM con una duración estricta de 20 minutos. Esto permite limpiar la adenosina del Proceso S sin entrar en Fase N3 profunda, evitando la inercia del sueño. Puedes calcular la duración de tus siestas en nuestra herramienta [Calculadora de Siestas Power Nap](https://xn--calculadoradesueo-uxb.org/siestas).
+* **Siestas de Potencia (Power Naps) de 20 Minutos:** Realiza una siesta entre la 1:00 PM y las 3:00 PM con una duración estricta de 20 minutos. Esto permite limpiar la adenosina del Proceso S sin entrar en Fase N3 profunda, evitando la inercia del sueño. Puedes calcular la duración de tus siestas en nuestra herramienta **[calculadora de siestas](#siestas)**.
 * **Consistencia del Fin de Semana:** No desvíes tu hora de despertar habitual en más de 60 minutos durante los fines de semana.
 
 ---
@@ -526,7 +526,7 @@ El Dr. Michael Breus y la investigación en cronobiología clasifican a los sere
 3. **Cronotipo Lobo (Nocturnos / Búhos, ~15% de la población):** Tienen dificultades para despertar temprano. Su pico de creatividad surge a partir de las 6:00 PM. Requieren ajustar sus ciclos a horarios más tardíos.
 4. **Cronotipo Delfín (Sueño ligero / Insomne, ~15% de la población):** Presentan fragmentación del sueño y alta sensibilidad a estímulos. Prosperan con rutinas de relajación estrictas.
 
-Descubre cuál es tu perfil genético realizando nuestro [Test de Cronotipo de 2 Minutos](https://xn--calculadoradesueo-uxb.org/calculadora-horas-de-sueno).
+Descubre cuál es tu perfil genético realizando nuestro **[test de cronotipo](#calculadora-horas-de-sueno)** en 2 minutos.
 
 ---
 
@@ -540,7 +540,7 @@ No. Existe una métrica clínica llamada **Eficiencia del Sueño**:
 
 **Eficiencia del Sueño (%) = (Tiempo Total Dormido / Tiempo Total en Cama) × 100**
 
-Una eficiencia del **85% o superior** se considera saludable. Pasar 9 horas en la cama pero permanecer despierto 2 horas por insomnio resulta en solo 7 horas de sueño real. Puedes registrar tu eficiencia en el [Diario de Sueño](https://xn--calculadoradesueo-uxb.org/diario-sueno).
+Una eficiencia del **85% o superior** se considera saludable. Pasar 9 horas en la cama pero permanecer despierto 2 horas por insomnio resulta en solo 7 horas de sueño real. Puedes registrar tu eficiencia en nuestro **[diario de sueño](#diario-sueno)**.
 
 ### ¿Las calculadoras de horas de sueño sirven para personas que trabajan en turnos de noche?
 Sí. Los trabajadores nocturnos o en turnos rotativos deben aplicar la regla de los 90 minutos a su ventana de descanso diurno, utilizando persianas 100% opacas, antifaz y tapones para simular la oscuridad nocturna y proteger la secreción de melatonina.
@@ -578,7 +578,7 @@ Historicamente, la evaluación del descanso se ha basado en tres grandes pilares
 > **Pilares Tecnológicos de Medición:**
 > 1. **Polisomnografía (PSG):** Estándar de oro clínico en laboratorio hospitalario.
 > 2. **Actigrafía y Sensórica:** Acelerómetros, micrófonos y PPG (Sleep Cycle, Smartwatches).
-> 3. **Calculadoras Web Algorítmicas:** Basadas en modelos poblacionales (xn--calculadoradesueo-uxb.org).
+> 3. **Calculadoras Web Algorítmicas:** Basadas en modelos poblacionales como nuestra **[calculadora de sueño](#home)**.
 
 1. **Polisomnografía (PSG):** Monitorea ondas cerebrales (EEG), movimientos oculares (EOG), tono muscular (EMG) y saturación de oxígeno (SpO2). Es el método de diagnóstico de referencia para trastornos como la apnea del sueño.
 2. **Actigrafía y Sensores en Dispositivos Móviles:** Miden los movimientos corporales en la cama mediante acelerómetros triaxiales y analizan patrones sonoros de respiración.
@@ -601,7 +601,7 @@ Con el paso del tiempo, las grandes aplicaciones móviles sufrieron transformaci
 * **Consumo Intensivo de Batería:** Mantener la aplicación en primer plano con el micrófono y acelerómetro activos durante toda la noche degradaba la salud de la batería del smartphone.
 * **Preocupaciones de Privacidad de Datos:** La recolección de archivos de audio nocturnos y datos de geolocalización generó recelo entre los usuarios.
 
-Esto impulsó el surgimiento de plataformas web directas y respetuosas de la privacidad como [xn--calculadoradesueo-uxb.org](https://xn--calculadoradesueo-uxb.org/), que brindan resultados inmediatos en 1 segundo, son 100% gratuitas y no requieren instalar software ni ceder datos personales.
+Esto impulsó el surgimiento de plataformas web directas y respetuosas de la privacidad como nuestra **[calculadora de sueño](#home)**, que brindan resultados inmediatos en 1 segundo, son 100% gratuitas y no requieren instalar software ni ceder datos personales.
 
 ---
 
@@ -642,10 +642,10 @@ Para lograr un descanso perfecto cada noche, te sugerimos implementar el siguien
 > * **[Paso 3: Calculadora de Sueño]** ──► Sincroniza tu alarma a bloques de 90 minutos.
 > * **[Paso 4: Diario de Sueño]** ──► Registra tu eficiencia y nivel de energía.
 
-1. **Determina tu perfil biológico:** Realiza el [Test de Cronotipo](https://xn--calculadoradesueo-uxb.org/calculadora-horas-de-sueno) para conocer tus ventanas naturales de máxima melatonina.
-2. **Controla el consumo de estimulantes:** Utiliza la [Calculadora de Impacto de Cafeína](https://xn--calculadoradesueo-uxb.org/) para garantizar que tu nivel de cafeína residual a la hora de acostarte sea inferior a 25 mg.
-3. **Planifica tus ciclos ultradianos:** Ingresa tu hora fijada en la [Calculadora de Sueño Principal](https://xn--calculadoradesueo-uxb.org/) para ajustar tu despertador a bloques de 90 minutos.
-4. **Analiza tus resultados:** Revisa tus anotaciones semanales en la sección de [Reseñas y Comparativas de Apps](https://xn--calculadoradesueo-uxb.org/app-calculadora-de-sueno) y en el [Diario de Sueño](https://xn--calculadoradesueo-uxb.org/diario-sueno).
+1. **Determina tu perfil biológico:** Realiza el **[test de cronotipo](#calculadora-horas-de-sueno)** para conocer tus ventanas naturales de máxima melatonina.
+2. **Controla el consumo de estimulantes:** Utiliza la **[calculadora de cafeína](#home)** para garantizar que tu nivel de cafeína residual a la hora de acostarte sea inferior a 25 mg.
+3. **Planifica tus ciclos ultradianos:** Ingresa tu hora fijada en la **[calculadora de sueño](#home)** para ajustar tu despertador a bloques de 90 minutos.
+4. **Analiza tus resultados:** Revisa tus anotaciones semanales en la sección de **[comparativa de calculadoras de sueño](#app-reviews)** y en nuestro **[diario de sueño](#diario-sueno)**.
 
 ---
 
