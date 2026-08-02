@@ -16,6 +16,46 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", app: "Calculadora de Sueño" });
 });
 
+app.get("/sitemap.xml", (req, res) => {
+  const baseUrl = "https://xn--calculadoradesueo-uxb.org";
+  const date = new Date().toISOString().split('T')[0];
+  
+  const urls = Object.keys(seoData).map(route => {
+    let priority = "0.8";
+    let changefreq = "weekly";
+    if (route === '/') {
+      priority = "1.0";
+      changefreq = "daily";
+    } else if (route === '/calculadora-horas-de-sueno' || route === '/siestas' || route === '/app-calculadora-de-sueno' || route === '/blog') {
+      priority = "0.9";
+    } else if (route === '/diario-sueno') {
+      priority = "0.85";
+    } else if (route === '/politica-privacidad' || route === '/terminos-de-uso') {
+      priority = "0.5";
+      changefreq = "monthly";
+    } else {
+      priority = "0.7";
+      changefreq = "monthly";
+    }
+    
+    return `
+  <url>
+    <loc>${baseUrl}${route === '/' ? '' : route}</loc>
+    <lastmod>${date}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`;
+  }).join('');
+
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>`;
+
+  res.header('Content-Type', 'application/xml');
+  res.send(sitemap);
+});
+
 const seoData: Record<string, { title: string, desc: string }> = {
   '/': {
     title: 'Calculadora de Sueño | Ciclos de 90 Minutos para Despertar con Energía',
@@ -115,14 +155,18 @@ async function startServer() {
     
     // We add a middleware to intercept HTML requests and inject SEO data
     app.use("*", async (req, res, next) => {
-      if (req.originalUrl.startsWith('/api')) {
+      if (req.originalUrl.startsWith('/api') || req.originalUrl === '/sitemap.xml') {
         return next();
       }
       try {
         let template = fs.readFileSync(path.resolve(process.cwd(), 'index.html'), 'utf-8');
         template = await vite.transformIndexHtml(req.originalUrl, template);
+        const cleanUrl = req.originalUrl.split('?')[0].replace(/\/$/, '') || '/';
+        const isKnownRoute = !!seoData[cleanUrl];
+        
         const html = injectMeta(template, req.originalUrl.split('?')[0]);
-        res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
+        const statusCode = isKnownRoute ? 200 : 404;
+        res.status(statusCode).set({ 'Content-Type': 'text/html' }).end(html);
       } catch (e: any) {
         vite.ssrFixStacktrace(e);
         next(e);
@@ -139,8 +183,12 @@ async function startServer() {
       const templatePath = path.join(distPath, "index.html");
       if (fs.existsSync(templatePath)) {
         let template = fs.readFileSync(templatePath, 'utf-8');
+        const cleanUrl = req.originalUrl.split('?')[0].replace(/\/$/, '') || '/';
+        const isKnownRoute = !!seoData[cleanUrl];
+        
         const html = injectMeta(template, req.originalUrl.split('?')[0]);
-        res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
+        const statusCode = isKnownRoute ? 200 : 404;
+        res.status(statusCode).set({ 'Content-Type': 'text/html' }).end(html);
       } else {
         res.status(404).send('Not Found');
       }

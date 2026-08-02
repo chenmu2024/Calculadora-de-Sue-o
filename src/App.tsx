@@ -26,6 +26,8 @@ const AboutUsView = lazy(() => import('./components/AboutUsView').then(m => ({ d
 const ContactView = lazy(() => import('./components/ContactView').then(m => ({ default: m.ContactView })));
 const PrivacyPolicyView = lazy(() => import('./components/PrivacyPolicyView').then(m => ({ default: m.PrivacyPolicyView })));
 const TermsView = lazy(() => import('./components/TermsView').then(m => ({ default: m.TermsView })));
+const NotFoundView = lazy(() => import('./components/NotFoundView').then(m => ({ default: m.NotFoundView })));
+
 import { CookieConsentBanner } from './components/CookieConsentBanner';
 import { AdBannerSlot } from './components/AdBannerSlot';
 import { SleepCycleResult } from './types';
@@ -37,7 +39,6 @@ const getTabFromUrl = (): string => {
   const hash = window.location.hash.replace('#', '');
 
   let tab = 'home';
-  let isUnknownRoute = false;
 
   // Legacy Hash Migration
   if (hash === 'calculadora-horas-de-sueno') tab = 'age-calculator';
@@ -72,13 +73,8 @@ const getTabFromUrl = (): string => {
       }
     } catch(e) {}
   } else {
-    // 404 Route - Redirect to Home
-    isUnknownRoute = true;
-  }
-
-  if (isUnknownRoute) {
-    window.history.replaceState(null, '', '/');
-    return 'home';
+    // 404 Route
+    tab = '404';
   }
 
   return tab;
@@ -500,6 +496,7 @@ export default function App() {
         {currentTab === 'contact' && <ContactView setCurrentTab={setCurrentTab} />}
         {currentTab === 'privacy' && <PrivacyPolicyView setCurrentTab={setCurrentTab} />}
         {currentTab === 'terms' && <TermsView setCurrentTab={setCurrentTab} />}
+        {currentTab === '404' && <NotFoundView />}
         </Suspense>
 
       </main>
