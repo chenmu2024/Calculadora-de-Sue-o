@@ -82,12 +82,33 @@ export const Header: React.FC<HeaderProps> = ({
           <nav className="hidden lg:flex items-center gap-1" aria-label="Navegación principal">
             {navItems.map((item) => {
               const Icon = item.icon;
-              const active = currentTab === item.id;
+              const active = currentTab === item.id || (currentTab === 'home' && ['caffeine', 'cronotipo', 'faq'].includes(item.id));
+              
+              let href = '/';
+              if (item.id === 'age-calculator') href = '/calculadora-horas-de-sueno';
+              else if (item.id === 'nap') href = '/siestas';
+              else if (item.id === 'diary') href = '/diario-sueno';
+              else if (item.id === 'app-reviews') href = '/app-calculadora-de-sueno';
+              else if (item.id === 'blog') href = '/blog';
+              else if (item.id === 'sounds') href = '/sonidos';
+              else if (item.id === 'about') href = '/sobre-nosotros';
+              else if (item.id === 'contact') href = '/contacto';
+              else if (item.id === 'caffeine') href = '/#calculadora-cafeina';
+              else if (item.id === 'cronotipo') href = '/#test-cronotipo';
+              else if (item.id === 'faq') href = '/#faq';
+
               return (
-                <button
+                <a
                   key={item.id}
                   id={`nav-link-${item.id}`}
-                  onClick={() => setCurrentTab(item.id)}
+                  href={href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (!href.includes('#')) {
+                      window.history.pushState(null, '', href);
+                    }
+                    setCurrentTab(item.id);
+                  }}
                   aria-label={item.label}
                   className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                     active
@@ -97,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({
                 >
                   <Icon className="w-4 h-4 text-indigo-400" />
                   {item.label}
-                </button>
+                </a>
               );
             })}
           </nav>
@@ -172,11 +193,30 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="lg:hidden border-t border-slate-800 bg-slate-900 px-4 pt-2 pb-4 space-y-1" role="navigation" aria-label="Menú móvil">
           {navItems.map((item) => {
             const Icon = item.icon;
-            const active = currentTab === item.id;
+            const active = currentTab === item.id || (currentTab === 'home' && ['caffeine', 'cronotipo', 'faq'].includes(item.id));
+            
+            let href = '/';
+            if (item.id === 'age-calculator') href = '/calculadora-horas-de-sueno';
+            else if (item.id === 'nap') href = '/siestas';
+            else if (item.id === 'diary') href = '/diario-sueno';
+            else if (item.id === 'app-reviews') href = '/app-calculadora-de-sueno';
+            else if (item.id === 'blog') href = '/blog';
+            else if (item.id === 'sounds') href = '/sonidos';
+            else if (item.id === 'about') href = '/sobre-nosotros';
+            else if (item.id === 'contact') href = '/contacto';
+            else if (item.id === 'caffeine') href = '/#calculadora-cafeina';
+            else if (item.id === 'cronotipo') href = '/#test-cronotipo';
+            else if (item.id === 'faq') href = '/#faq';
+
             return (
-              <button
+              <a
                 key={item.id}
-                onClick={() => {
+                href={href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (!href.includes('#')) {
+                    window.history.pushState(null, '', href);
+                  }
                   setCurrentTab(item.id);
                   setMobileMenuOpen(false);
                 }}
@@ -188,7 +228,7 @@ export const Header: React.FC<HeaderProps> = ({
               >
                 <Icon className="w-5 h-5 text-indigo-400" />
                 {item.label}
-              </button>
+              </a>
             );
           })}
         </div>

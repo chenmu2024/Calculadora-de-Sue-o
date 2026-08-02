@@ -64,15 +64,27 @@ export const FloatingQuickNav: React.FC<FloatingQuickNavProps> = ({ onNavigateTa
           <div className="max-h-72 overflow-y-auto space-y-1 pr-1 custom-scrollbar">
             {navItems.map((item, idx) => {
               const IconComp = item.icon;
+              let href = '/';
+              if (item.tab === 'diary') href = '/diario-sueno';
+              else if (item.tab === 'nap') href = '/siestas';
+              else if (item.id) href = `/#${item.id}`;
+
               return (
-                <button
+                <a
                   key={idx}
-                  onClick={() => handleSelectNav(item.tab, item.id)}
+                  href={href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (!href.includes('#')) {
+                      window.history.pushState(null, '', href);
+                    }
+                    handleSelectNav(item.tab, item.id);
+                  }}
                   className="w-full flex items-center gap-2 px-2.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-indigo-600/30 transition-all text-left"
                 >
                   <IconComp className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
                   <span className="truncate">{item.label}</span>
-                </button>
+                </a>
               );
             })}
           </div>

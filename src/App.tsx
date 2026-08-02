@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Header } from './components/Header';
 import { Breadcrumbs } from './components/Breadcrumbs';
 import { SleepCalculatorWidget } from './components/SleepCalculatorWidget';
 import { SleepCycleVisualizer } from './components/SleepCycleVisualizer';
 import { SleepDebtCalculator } from './components/SleepDebtCalculator';
-import { SoundPlayerWidget } from './components/SoundPlayerWidget';
-import { AgeCalculatorView } from './components/AgeCalculatorView';
-import { AppReviewsView } from './components/AppReviewsView';
-import { ArticlesView } from './components/ArticlesView';
+const SoundPlayerWidget = lazy(() => import('./components/SoundPlayerWidget').then(m => ({ default: m.SoundPlayerWidget })));
+const AgeCalculatorView = lazy(() => import('./components/AgeCalculatorView').then(m => ({ default: m.AgeCalculatorView })));
+const AppReviewsView = lazy(() => import('./components/AppReviewsView').then(m => ({ default: m.AppReviewsView })));
+const ArticlesView = lazy(() => import('./components/ArticlesView').then(m => ({ default: m.ArticlesView })));
 import { SEOSection } from './components/SEOSection';
 import { Footer } from './components/Footer';
-import { NapCalculatorWidget } from './components/NapCalculatorWidget';
-import { SleepDiaryWidget } from './components/SleepDiaryWidget';
+const NapCalculatorWidget = lazy(() => import('./components/NapCalculatorWidget').then(m => ({ default: m.NapCalculatorWidget })));
+const SleepDiaryWidget = lazy(() => import('./components/SleepDiaryWidget').then(m => ({ default: m.SleepDiaryWidget })));
 import { SleepHygieneChecklist } from './components/SleepHygieneChecklist';
 import { ChronotypeTestWidget } from './components/ChronotypeTestWidget';
 import { CaffeineCalculatorWidget } from './components/CaffeineCalculatorWidget';
@@ -22,63 +22,80 @@ import { SleepCountdownTimer } from './components/SleepCountdownTimer';
 import { SleepSummaryReportModal } from './components/SleepSummaryReportModal';
 import { PwaOfflineBanner } from './components/PwaOfflineBanner';
 import { FloatingQuickNav } from './components/FloatingQuickNav';
-import { AboutUsView } from './components/AboutUsView';
-import { ContactView } from './components/ContactView';
-import { PrivacyPolicyView } from './components/PrivacyPolicyView';
-import { TermsView } from './components/TermsView';
+const AboutUsView = lazy(() => import('./components/AboutUsView').then(m => ({ default: m.AboutUsView })));
+const ContactView = lazy(() => import('./components/ContactView').then(m => ({ default: m.ContactView })));
+const PrivacyPolicyView = lazy(() => import('./components/PrivacyPolicyView').then(m => ({ default: m.PrivacyPolicyView })));
+const TermsView = lazy(() => import('./components/TermsView').then(m => ({ default: m.TermsView })));
 import { CookieConsentBanner } from './components/CookieConsentBanner';
 import { AdBannerSlot } from './components/AdBannerSlot';
 import { SleepCycleResult } from './types';
 
+const getTabFromUrl = (): string => {
+  if (typeof window === 'undefined') return 'home';
+
+  const pathname = window.location.pathname.replace(/\/$/, '') || '/';
+  const hash = window.location.hash.replace('#', '');
+
+  let tab = 'home';
+  let isUnknownRoute = false;
+
+  // Legacy Hash Migration
+  if (hash === 'calculadora-horas-de-sueno') tab = 'age-calculator';
+  else if (hash === 'app-calculadora-de-sueno') tab = 'app-reviews';
+  else if (hash === 'siestas' || hash === 'calculadora-siestas') tab = 'nap';
+  else if (hash === 'diario-sueno' || hash === 'diario') tab = 'diary';
+  else if (hash === 'blog' || hash.includes('como-calcular') || hash.includes('insomnio')) tab = 'blog';
+  else if (hash === 'sonidos' || hash === 'ruido-blanco') tab = 'sounds';
+  else if (hash === 'sobre-nosotros' || hash === 'about') tab = 'about';
+  else if (hash === 'contacto' || hash === 'contact') tab = 'contact';
+  else if (hash === 'politica-privacidad' || hash === 'privacy') tab = 'privacy';
+  else if (hash === 'terminos-de-uso' || hash === 'terms') tab = 'terms';
+  // If it's a structural hash like #faq or #calculadora-cafeina, keep tab as is based on path
+
+  // Clean Pathname Match
+  if (pathname === '/calculadora-horas-de-sueno') tab = 'age-calculator';
+  else if (pathname === '/app-calculadora-de-sueno') tab = 'app-reviews';
+  else if (pathname === '/siestas') tab = 'nap';
+  else if (pathname === '/diario-sueno') tab = 'diary';
+  else if (pathname === '/blog') tab = 'blog';
+  else if (pathname === '/sonidos') tab = 'sounds';
+  else if (pathname === '/sobre-nosotros') tab = 'about';
+  else if (pathname === '/contacto') tab = 'contact';
+  else if (pathname === '/politica-privacidad') tab = 'privacy';
+  else if (pathname === '/terminos-de-uso') tab = 'terms';
+  else if (pathname === '/' || pathname === '/calculadora') {
+    tab = 'home';
+    try {
+      const stored = localStorage.getItem('calc_lastTab');
+      if (stored && ['home', 'age-calculator', 'nap', 'diary', 'blog', 'sounds', 'app-reviews'].includes(stored)) {
+         tab = stored;
+      }
+    } catch(e) {}
+  } else {
+    // 404 Route - Redirect to Home
+    isUnknownRoute = true;
+  }
+
+  if (isUnknownRoute) {
+    window.history.replaceState(null, '', '/');
+    return 'home';
+  }
+
+  return tab;
+};
+
 export default function App() {
-  const [currentTab, setCurrentTab] = useState<string>('home');
+  const [currentTab, setCurrentTab] = useState<string>(getTabFromUrl);
   const [selectedResult, setSelectedResult] = useState<SleepCycleResult | null>(null);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
   const [isReportModalOpen, setIsReportModalOpen] = useState<boolean>(false);
 
-  // Sync with window.location.pathname & hash (for backward compatibility)
+  // Sync with popstate & hashchange
   useEffect(() => {
     const handleUrlChange = () => {
-      const pathname = window.location.pathname.replace(/\/$/, '') || '/';
-      const hash = window.location.hash.replace('#', '');
-
-      let tab = 'home';
-
-      // Legacy Hash Migration
-      if (hash === 'calculadora-horas-de-sueno') tab = 'age-calculator';
-      else if (hash === 'app-calculadora-de-sueno') tab = 'app-reviews';
-      else if (hash === 'siestas' || hash === 'calculadora-siestas') tab = 'nap';
-      else if (hash === 'diario-sueno' || hash === 'diario') tab = 'diary';
-      else if (hash === 'blog' || hash.includes('como-calcular') || hash.includes('insomnio')) tab = 'blog';
-      else if (hash === 'sonidos' || hash === 'ruido-blanco') tab = 'sounds';
-      else if (hash === 'sobre-nosotros' || hash === 'about') tab = 'about';
-      else if (hash === 'contacto' || hash === 'contact') tab = 'contact';
-      else if (hash === 'politica-privacidad' || hash === 'privacy') tab = 'privacy';
-      else if (hash === 'terminos-de-uso' || hash === 'terms') tab = 'terms';
-      // Clean Pathname Match
-      else if (pathname === '/calculadora-horas-de-sueno') tab = 'age-calculator';
-      else if (pathname === '/app-calculadora-de-sueno') tab = 'app-reviews';
-      else if (pathname === '/siestas') tab = 'nap';
-      else if (pathname === '/diario-sueno') tab = 'diary';
-      else if (pathname === '/blog') tab = 'blog';
-      else if (pathname === '/sonidos') tab = 'sounds';
-      else if (pathname === '/sobre-nosotros') tab = 'about';
-      else if (pathname === '/contacto') tab = 'contact';
-      else if (pathname === '/politica-privacidad') tab = 'privacy';
-      else if (pathname === '/terminos-de-uso') tab = 'terms';
-      else if (pathname === '/' || pathname === '/calculadora') {
-        try {
-          const stored = localStorage.getItem('calc_lastTab');
-          if (stored && ['home', 'age-calculator', 'nap', 'diary', 'blog', 'sounds', 'app-reviews'].includes(stored)) {
-             tab = stored;
-          }
-        } catch(e) {}
-      }
-
-      setCurrentTab(tab);
+      setCurrentTab(getTabFromUrl());
     };
 
-    handleUrlChange();
     window.addEventListener('popstate', handleUrlChange);
     window.addEventListener('hashchange', handleUrlChange);
 
@@ -194,8 +211,13 @@ export default function App() {
 
     // Clean Path Routing without #
     const targetPath = currentSeo.path;
-    if (window.location.pathname !== targetPath || window.location.hash) {
+    if (window.location.pathname !== targetPath) {
       window.history.pushState(null, '', targetPath);
+    }
+
+    // Scroll restoration (if no hash is present in URL)
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
     }
 
     // Dynamic Breadcrumb & WebPage Schema JSON-LD Injection for Google Rich Snippets
@@ -316,6 +338,7 @@ export default function App() {
         {/* Dynamic Breadcrumbs Navigation */}
         <Breadcrumbs currentTab={currentTab} setCurrentTab={setCurrentTab} />
 
+        <Suspense fallback={<div className="flex justify-center items-center py-32"><div className="animate-spin rounded-full h-12 w-12 border-4 border-indigo-500/20 border-t-indigo-500"></div></div>}>
         {/* Tab 1: Home (Calculadora de Sueño Principal) */}
         {currentTab === 'home' && (
           <div className="space-y-12">
@@ -477,6 +500,7 @@ export default function App() {
         {currentTab === 'contact' && <ContactView setCurrentTab={setCurrentTab} />}
         {currentTab === 'privacy' && <PrivacyPolicyView setCurrentTab={setCurrentTab} />}
         {currentTab === 'terms' && <TermsView setCurrentTab={setCurrentTab} />}
+        </Suspense>
 
       </main>
 

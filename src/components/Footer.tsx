@@ -36,34 +36,34 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentTab }) => {
             <h4 className="font-bold text-white text-sm mb-3">Herramientas</h4>
             <ul className="space-y-2">
               <li>
-                <button onClick={() => setCurrentTab('home')} className="hover:text-indigo-300 transition-colors text-left">
+                <a href="/" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/'); setCurrentTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-300 transition-colors block text-left">
                   Calculadora de Ciclos de Sueño
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setCurrentTab('nap')} className="hover:text-indigo-300 transition-colors text-left">
+                <a href="/siestas" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/siestas'); setCurrentTab('nap'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-300 transition-colors block text-left">
                   Calculadora de Siestas & Power Naps
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setCurrentTab('diary')} className="hover:text-indigo-300 transition-colors text-left">
+                <a href="/diario-sueno" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/diario-sueno'); setCurrentTab('diary'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-300 transition-colors block text-left">
                   Diario de Sueño TCC-I y Eficiencia
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setCurrentTab('age-calculator')} className="hover:text-indigo-300 transition-colors text-left">
+                <a href="/calculadora-horas-de-sueno" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/calculadora-horas-de-sueno'); setCurrentTab('age-calculator'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-300 transition-colors block text-left">
                   Calculador de Horas por Edad
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setCurrentTab('sounds')} className="hover:text-indigo-300 transition-colors text-left">
+                <a href="/sonidos" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/sonidos'); setCurrentTab('sounds'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-300 transition-colors block text-left">
                   Generador de Ruido Blanco
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setCurrentTab('app-reviews')} className="hover:text-indigo-300 transition-colors text-left">
+                <a href="/app-calculadora-de-sueno" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/app-calculadora-de-sueno'); setCurrentTab('app-reviews'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-300 transition-colors block text-left">
                   Comparativa Apps (Adidas / Runtastic)
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -73,29 +73,29 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentTab }) => {
             <h4 className="font-bold text-white text-sm mb-3">Institucional y Legal</h4>
             <ul className="space-y-2">
               <li>
-                <button onClick={() => { setCurrentTab('about'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-300 transition-colors">
+                <a href="/sobre-nosotros" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/sobre-nosotros'); setCurrentTab('about'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-300 transition-colors block">
                   Sobre Nosotros
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => { setCurrentTab('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-300 transition-colors">
+                <a href="/contacto" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/contacto'); setCurrentTab('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-300 transition-colors block">
                   Contacto y Soporte
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => { setCurrentTab('privacy'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-300 transition-colors">
+                <a href="/politica-privacidad" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/politica-privacidad'); setCurrentTab('privacy'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-300 transition-colors block">
                   Política de Privacidad
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => { setCurrentTab('terms'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-300 transition-colors">
+                <a href="/terminos-de-uso" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/terminos-de-uso'); setCurrentTab('terms'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-300 transition-colors block">
                   Términos y Condiciones de Uso
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setCurrentTab('faq')} className="hover:text-indigo-300 transition-colors">
+                <a href="/#faq" onClick={(e) => { e.preventDefault(); setCurrentTab('home'); setTimeout(() => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="hover:text-indigo-300 transition-colors block">
                   Preguntas Frecuentes (FAQ)
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -116,9 +116,9 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentTab }) => {
         <div className="pt-6 border-t border-slate-900 pb-2 text-[10px] text-slate-500">
           <p className="mb-2"><strong>Otras calculadoras y comparativas de sueño populares:</strong></p>
           <div className="flex flex-wrap gap-x-4 gap-y-2">
-            <button onClick={() => { setCurrentTab('app-reviews'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-400 underline decoration-slate-700 underline-offset-2">Comparativa de las mejores calculadoras de sueño</button>
-            <button onClick={() => { setCurrentTab('app-reviews'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-400 underline decoration-slate-700 underline-offset-2">Calculadoras de sueño alternativas a Runtastic y Adidas</button>
-            <button onClick={() => { setCurrentTab('app-reviews'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-400 underline decoration-slate-700 underline-offset-2">Mejores calculadoras de ciclo de sueño</button>
+            <a href="/app-calculadora-de-sueno" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/app-calculadora-de-sueno'); setCurrentTab('app-reviews'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-400 underline decoration-slate-700 underline-offset-2">Comparativa de las mejores calculadoras de sueño</a>
+            <a href="/app-calculadora-de-sueno" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/app-calculadora-de-sueno'); setCurrentTab('app-reviews'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-400 underline decoration-slate-700 underline-offset-2">Calculadoras de sueño alternativas a Runtastic y Adidas</a>
+            <a href="/app-calculadora-de-sueno" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/app-calculadora-de-sueno'); setCurrentTab('app-reviews'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-indigo-400 underline decoration-slate-700 underline-offset-2">Mejores calculadoras de ciclo de sueño</a>
           </div>
         </div>
 
@@ -127,21 +127,21 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentTab }) => {
             © 2026 <strong>Calculadora de Sueño</strong> | xn--calculadoradesueo-uxb.org. Todos los derechos reservados.
           </div>
           <div className="flex items-center gap-3">
-            <button onClick={() => { setCurrentTab('about'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-slate-300 cursor-pointer">
+            <a href="/sobre-nosotros" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/sobre-nosotros'); setCurrentTab('about'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-slate-300">
               Sobre Nosotros
-            </button>
+            </a>
             <span>•</span>
-            <button onClick={() => { setCurrentTab('privacy'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-slate-300 cursor-pointer">
+            <a href="/politica-privacidad" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/politica-privacidad'); setCurrentTab('privacy'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-slate-300">
               Política de Privacidad
-            </button>
+            </a>
             <span>•</span>
-            <button onClick={() => { setCurrentTab('terms'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-slate-300 cursor-pointer">
+            <a href="/terminos-de-uso" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/terminos-de-uso'); setCurrentTab('terms'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-slate-300">
               Términos de Uso
-            </button>
+            </a>
             <span>•</span>
-            <button onClick={() => { setCurrentTab('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-slate-300 cursor-pointer">
+            <a href="/contacto" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/contacto'); setCurrentTab('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-slate-300">
               Contacto
-            </button>
+            </a>
           </div>
         </div>
 
