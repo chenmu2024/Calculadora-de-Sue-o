@@ -6,17 +6,15 @@ interface CookieConsentBannerProps {
 }
 
 export const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({ setCurrentTab }) => {
-  const [showBanner, setShowBanner] = useState(false);
+  const [showBanner, setShowBanner] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return !localStorage.getItem('cookie_consent_status');
+    }
+    return true;
+  });
   const [showPreferences, setShowPreferences] = useState(false);
   const [analyticsConsent, setAnalyticsConsent] = useState(true);
   const [advertisingConsent, setAdvertisingConsent] = useState(true);
-
-  useEffect(() => {
-    const savedConsent = localStorage.getItem('cookie_consent_status');
-    if (!savedConsent) {
-      setShowBanner(true);
-    }
-  }, []);
 
   const handleAcceptAll = () => {
     localStorage.setItem('cookie_consent_status', 'accepted_all');
