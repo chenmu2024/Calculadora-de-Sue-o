@@ -64,6 +64,7 @@ const template = fs.readFileSync(templatePath, 'utf-8');
 
 function injectMeta(html, url, meta) {
   let modifiedHtml = html;
+  const fullUrl = `https://xn--calculadoradesueo-uxb.org${url === '/' ? '/' : url}`;
   
   modifiedHtml = modifiedHtml.replace(
     /<title>.*?<\/title>/i,
@@ -82,8 +83,25 @@ function injectMeta(html, url, meta) {
     `<meta property="og:description" content="${meta.desc}" />`
   );
   modifiedHtml = modifiedHtml.replace(
-    /<link rel="canonical" href="https:\/\/xn--calculadoradesueo-uxb.org(\/.*?)?"\s*\/>/i,
-    `<link rel="canonical" href="https://xn--calculadoradesueo-uxb.org${url === '/' ? '/' : url}" />`
+    /<meta name="twitter:title" content=".*?"\s*\/>/i,
+    `<meta name="twitter:title" content="${meta.title}" />`
+  );
+  modifiedHtml = modifiedHtml.replace(
+    /<meta name="twitter:description" content=".*?"\s*\/>/i,
+    `<meta name="twitter:description" content="${meta.desc}" />`
+  );
+  modifiedHtml = modifiedHtml.replace(
+    /<meta property="og:url" content=".*?"\s*\/>/i,
+    `<meta property="og:url" content="${fullUrl}" />`
+  );
+  modifiedHtml = modifiedHtml.replace(
+    /<link rel="canonical" href=".*?"\s*\/>/i,
+    `<link rel="canonical" href="${fullUrl}" />`
+  );
+  // Replace all hreflang URLs to match the current route
+  modifiedHtml = modifiedHtml.replace(
+    /<link rel="alternate" hreflang="(.*?)" href=".*?"\s*\/>/g,
+    `<link rel="alternate" hreflang="$1" href="${fullUrl}" />`
   );
   return modifiedHtml;
 }
@@ -95,7 +113,13 @@ for (const [route, meta] of Object.entries(seoData)) {
   if (route === '/') {
     fs.writeFileSync(path.join(distPath, 'index.html'), html);
   } else {
-    const routeDir = path.join(distPath, route.slice(1)); // remove leading slash
+    const routeName = route.slice(1); // remove leading slash
+    
+    // 1. Generate route.html so Cloudflare Pages serves /route with HTTP 200 directly without 301 redirect
+    fs.writeFileSync(path.join(distPath, `${routeName}.html`), html);
+    
+    // 2. Generate route/index.html for requests with trailing slash /route/
+    const routeDir = path.join(distPath, routeName);
     if (!fs.existsSync(routeDir)) {
       fs.mkdirSync(routeDir, { recursive: true });
     }
