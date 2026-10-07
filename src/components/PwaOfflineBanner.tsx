@@ -23,7 +23,7 @@ export const PwaOfflineBanner: React.FC = () => {
             <Smartphone className="w-3.5 h-3.5" />
           </span>
           <p className="line-clamp-1 sm:line-clamp-none">
-            <strong className="text-white font-bold">¡Acceso Instantáneo Off-line!</strong> Guarda <span className="text-amber-300 font-bold">CalculadoraDeSueño.es</span> en tu pantalla de inicio para usarte sin conexión.
+            <strong className="text-white font-bold">¡Acceso sin conexión!</strong> Guarda <span className="text-amber-300 font-bold">Calculadora de Sueño</span> en tu pantalla de inicio para volver a usar las páginas que ya hayas visitado.
           </p>
           <button
             onClick={() => setShowGuide(true)}
@@ -60,7 +60,7 @@ export const PwaOfflineBanner: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-lg font-black text-white">Instalar en la Pantalla de Inicio</h3>
-                <p className="text-xs text-slate-400">Funciona offline como una App nativa sin ocupar espacio.</p>
+                <p className="text-xs text-slate-400">Puede reutilizar recursos y páginas visitadas cuando pierdes la conexión.</p>
               </div>
             </div>
 
@@ -87,7 +87,7 @@ export const PwaOfflineBanner: React.FC = () => {
 
               <div className="bg-emerald-950/60 border border-emerald-800/80 p-3 rounded-2xl text-emerald-300 text-[11px] flex items-center gap-2">
                 <WifiOff className="w-4 h-4 shrink-0 text-emerald-400" />
-                <span>Una vez guardada, la calculadora funcionará sin conexión a Internet en cualquier momento.</span>
+                <span>Tras una primera visita online, el navegador guarda recursos esenciales y páginas visitadas para poder reutilizarlas sin conexión.</span>
               </div>
             </div>
 
