@@ -1,6 +1,5 @@
 {
   "name": "Calculadora de Sueño",
-  "description": "Calculadora de ciclos de sueño gratis online. Optimiza tu descanso calculando la hora ideal para dormir o despertarte sin cansancio.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "description": "Calculadora y herramientas informativas para estimar horarios de sueño, registrar hábitos y comprender mejor el descanso.",
+  "requestFramePermissions": []
 }
