@@ -150,7 +150,7 @@ export const SleepCalculatorWidget: React.FC<SleepCalculatorWidgetProps> = ({
       <div className="text-center max-w-3xl mx-auto mb-8 relative z-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold mb-4">
           <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-          <span>Calculadora de Sueño Gratis Online - Oficial 2026</span>
+          <span>Calculadora de Sueño Gratis Online · Estimación Orientativa</span>
         </div>
         
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
@@ -158,7 +158,7 @@ export const SleepCalculatorWidget: React.FC<SleepCalculatorWidgetProps> = ({
         </h1>
         
         <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-          ¡<strong className="text-white font-semibold">Calcula tu ciclo de sueño</strong> y despiértate sin cansancio ni inercia! Sincroniza la hora ideal para acostarte o despertarte con tu reloj biológico.
+          <strong className="text-white font-semibold">Estima horarios de sueño</strong> usando una duración de ciclo configurable y tu latencia para conciliar el sueño. Los ciclos reales varían entre personas y a lo largo de la noche.
         </p>
       </div>
 
@@ -388,7 +388,7 @@ export const SleepCalculatorWidget: React.FC<SleepCalculatorWidgetProps> = ({
                 ))}
               </div>
               <p className="text-[10px] text-slate-400 mt-1">
-                Ajusta la duración si conoces tu ritmo ultradiano personal (ej. madrugadores ~85m, nocturnos ~95m).
+                Explora distintos escenarios de duración. Un ciclo de sueño no dura exactamente lo mismo en todas las personas ni durante toda la noche.
               </p>
             </div>
           </div>
@@ -401,7 +401,7 @@ export const SleepCalculatorWidget: React.FC<SleepCalculatorWidgetProps> = ({
           Calculadora de ciclos de sueño: ¿A qué hora {mode === 'wake_time' ? 'acostarte' : 'despertarte'}?
         </h2>
         <p className="text-xs text-slate-400">
-          Calculado con latencia de {latencyMinutes} min y ciclos ultradianos de {cycleLengthMinutes} minutos.
+          Estimación con {latencyMinutes} min de latencia y ciclos de {cycleLengthMinutes} min. Prioriza dormir suficiente por encima de acertar un ciclo exacto.
         </p>
       </div>
 
@@ -428,7 +428,7 @@ export const SleepCalculatorWidget: React.FC<SleepCalculatorWidgetProps> = ({
                 <div className={`absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-xs font-extrabold uppercase tracking-wider text-white shadow-md ${
                   isOptimal ? 'bg-emerald-600' : 'bg-indigo-600'
                 }`}>
-                  {isOptimal ? '★ Mejor Opción (5 Ciclos)' : '★ Máximo Descanso (6 Ciclos)'}
+                  {isOptimal ? '★ Opción habitual (5 ciclos)' : '★ Opción larga (6 ciclos)'}
                 </div>
               )}
 
@@ -464,25 +464,7 @@ export const SleepCalculatorWidget: React.FC<SleepCalculatorWidgetProps> = ({
                   </span>
                 </div>
 
-                {/* Vitality Progress Meter */}
-                <div className="mb-3 bg-slate-950/60 p-2 rounded-xl border border-slate-800">
-                  <div className="flex items-center justify-between text-[11px] mb-1">
-                    <span className="text-slate-400">Nivel de Energía Matutino:</span>
-                    <span className={`font-bold ${
-                      res.vitalityScore && res.vitalityScore >= 90 ? 'text-emerald-400' : res.vitalityScore && res.vitalityScore >= 70 ? 'text-indigo-300' : 'text-amber-400'
-                    }`}>
-                      {res.vitalityScore}%
-                    </span>
-                  </div>
-                  <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                    <div
-                      className={`h-full rounded-full transition-all duration-500 ${
-                        res.vitalityScore && res.vitalityScore >= 90 ? 'bg-emerald-400' : res.vitalityScore && res.vitalityScore >= 70 ? 'bg-indigo-500' : 'bg-amber-400'
-                      }`}
-                      style={{ width: `${res.vitalityScore}%` }}
-                    />
-                  </div>
-                </div>
+                {
 
                 <p className="text-xs text-slate-300 leading-relaxed mb-4">
                   {res.description}
@@ -572,7 +554,7 @@ export const SleepCalculatorWidget: React.FC<SleepCalculatorWidgetProps> = ({
           </div>
 
           <p className="text-xs text-slate-300 mb-4 leading-relaxed">
-            Para garantizar que te duermas exactamente a tu hora calculada y aproveches al máximo tus ciclos de sueño, te recomendamos seguir este protocolo biológico:
+            Estos horarios son una aproximación útil para planificar el descanso. La duración de los ciclos y la facilidad para despertar varían, por lo que conviene priorizar una duración total suficiente y horarios regulares:
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
@@ -617,7 +599,7 @@ export const SleepCalculatorWidget: React.FC<SleepCalculatorWidgetProps> = ({
                 <span>⏰ Despertar Vivo</span>
               </div>
               <p className="text-slate-300 text-[11px] leading-snug">
-                Alarma ajustada al final exacto del ciclo ultradiano. ¡Cero inercia ni pesadez!
+                Alarma situada cerca del final estimado de un ciclo. Esto no garantiza eliminar la inercia del sueño.
               </p>
             </div>
           </div>
