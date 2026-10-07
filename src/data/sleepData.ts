@@ -281,397 +281,287 @@ export const FAQ_LIST: FAQItem[] = [
 export const ARTICLES: Article[] = [
   {
     slug: 'como-calcular-mi-ciclo-de-sueno',
-    title: '¿Cómo calcular mi ciclo de sueño de forma sencilla? Guía Científica Completa 2026',
-    metaDescription: 'Descubre cómo calcular mi ciclo de sueño paso a paso con la regla de los 90 minutos y 15 minutos de latencia. Guía científica con tablas, fórmulas y la calculadora de sueño oficial.',
-    h1: '¿Cómo calcular mi ciclo de sueño de forma sencilla? Guía Científica Completa',
-    date: '18 de Julio, 2026',
-    readTime: '15 min de lectura',
+    title: '¿Cómo calcular mi ciclo de sueño? Fórmula, ejemplos y límites',
+    metaDescription: 'Aprende cómo calcular mi ciclo de sueño con una fórmula orientativa, ejemplos de horarios y los límites reales de la regla de 90 minutos.',
+    h1: '¿Cómo calcular mi ciclo de sueño? Fórmula, ejemplos y límites',
+    date: 'Actualizado el 7 de octubre de 2026',
+    datePublished: '2026-07-18',
+    dateModified: '2026-10-07',
+    readTime: '9 min de lectura',
     category: 'Guías de Sueño y Neurociencia',
     targetKeywords: ['como calcular mi ciclo de sueño', 'calcular los ciclos de sueño', 'ciclo de sueño calculadora', 'calculadora de sueño', 'calculador de ciclos de sueño'],
-    summary: 'Aprende la matemática y neurofisiología detrás de tu cerebro mientras duermes: cómo calcular los ciclos de sueño con la regla de los 90 minutos, sincronización circadiana y control de latencia.',
+    summary: 'Una guía práctica para estimar horarios de sueño sin asumir que todos los ciclos duran exactamente 90 minutos ni que una calculadora puede medir tus fases reales.',
     contentMarkdown: `
-El descanso no se mide únicamente en cantidad de horas acumuladas en el colchón, sino en la **calidad neurofisiológica y continuidad estructural de tus ciclos de sueño**. Millones de personas se acuestan a las 11:00 PM, despiertan a las 7:00 AM (completando teóricamente 8 horas) y aun así experimentan un agotamiento abrumador, cefaleas leves e inercia motora al sonar el despertador. ¿Por qué ocurre este fenómeno? La respuesta médica radica en que la alarma ha interrumpido abruptamente una fase de **sueño profundo de ondas lentas (NREM Fase N3)** o una fase de actividad REM intensa.
+**Respuesta corta:** para calcular un horario orientativo puedes sumar o restar una latencia estimada y varios bloques de una duración de ciclo elegida. Esta web usa **90 minutos como valor inicial configurable**, pero no como una constante biológica: el [NHLBI](https://www.nhlbi.nih.gov/es/salud/sueno/estadios-del-sueno) explica que los ciclos suelen reiniciarse aproximadamente cada **80 a 100 minutos** y que normalmente se recorren de 4 a 6 ciclos por noche.
 
-En esta guía científica detallada aprenderás exactamente **cómo calcular mi ciclo de sueño** de forma sencilla y precisa, cómo funciona el reloj biológico central del hipotálamo y de qué manera puedes sincronizar tus horarios nocturnos para despertar siempre al final de un ciclo, sintiéndote vitalizado y enfocado.
+Por eso, una **calculadora de sueño** sirve para planificar horarios, no para saber con precisión en qué fase estarás al sonar la alarma. Sin EEG, polisomnografía u otros sensores, una página web no puede medir tus fases reales.
 
----
+## Fórmula orientativa para calcular los ciclos de sueño
 
-## 1. La Neurofisiología del Sueño: ¿Qué es un Ciclo Ultradiano?
+La fórmula de planificación es sencilla:
 
-El sueño humano no es un estado pasivo ni uniforme. A lo largo de la noche, el cerebro atraviesa una secuencia de estados metabólicos y electroencefalográficos organizados en bloques cíclicos denominados **ciclos ultradianos**.
+**Hora estimada = hora objetivo ± latencia ± (número de ciclos × duración elegida)**
 
-According to the research supported by the [National Sleep Foundation](https://www.sleepfoundation.org) and the [American Academy of Sleep Medicine](https://aasm.org), a normal adult sleep cycle lasts about **90 minutes**.
+Si quieres despertarte a las 07:00, supones 15 minutos para conciliar el sueño y usas 90 minutos por ciclo, cinco ciclos representan 7 horas y 30 minutos de sueño. El horario orientativo para ir a la cama sería aproximadamente las **23:15**.
 
-> **Diagrama de Fases de un Ciclo de Sueño:**
-> * **[ Vigilia / Despierto ]** ──► Latencia SOL (~15 min)
-> * **[ Fase N1: Adormecimiento ]** (5% del tiempo total)
-> * **[ Fase N2: Sueño Ligero ]** (45-55% del tiempo: Husos de sueño y complejos K)
-> * **[ Fase N3: Sueño Profundo ]** (15-25% del tiempo: Ondas Delta y Hormona GH)
-> * **[ Fase REM: Sueño Paradojal ]** (20-25% del tiempo: Ensueños vívidos y neuroplasticidad)
-> * **[ Fin del Ciclo ]** ──► Regreso ligero a N1 o despertar con la alarma
+Ese resultado no significa que tu quinto ciclo vaya a terminar exactamente a las 07:00. Significa únicamente que has construido un horario usando un modelo matemático transparente.
 
-### Las 4 Fases de un Ciclo de Sueño Explicadas en Detalle
+## Ejemplo: despertar a las 07:00
 
-Cada ciclo completo de 90 minutos se subdivide en dos categorías principales: **Sueño NREM (Non-Rapid Eye Movement)** y **Sueño REM (Rapid Eye Movement)**.
+| Escenario | Sueño planificado | Hora orientativa de acostarse con 15 min de latencia | Cómo interpretarlo |
+| --- | ---: | ---: | --- |
+| 6 ciclos de 90 min | 9 h | 21:45 | Ventana larga de sueño |
+| 5 ciclos de 90 min | 7 h 30 min | 23:15 | Dentro de una duración habitual para muchos adultos |
+| 4 ciclos de 90 min | 6 h | 00:45 | Por debajo de la recomendación general para adultos |
 
-#### Fase N1 (NREM 1: Transición y Adormecimiento)
-* **Duración:** De 1 a 7 minutos (representa aproximadamente el 5% del ciclo total).
-* **Características Biológicas:** El tono muscular comienza a relajarse, la frecuencia cardíaca disminuye y las ondas cerebrales pasan del ritmo Alfa (8-13 Hz) típico de la vigilia relajada al ritmo Theta (4-7 Hz).
-* **Fenómenos Asociados:** Es habitual experimentar **sacudidas mioclónicas** (sensación súbita de caer al vacío), producto de descargas motoras involuntarias mientras el sistema nervioso reduce su activación.
+La [American Academy of Sleep Medicine y la Sleep Research Society](https://aasm.org/resources/pdf/adultsleepdurationconsensus.pdf) recomiendan que los adultos duerman **7 o más horas por noche de forma regular**. Por eso, la opción de 6 horas puede aparecer como cálculo matemático, pero no debe interpretarse como una meta saludable de sueño regular.
 
-#### Fase N2 (NREM 2: Sueño Ligero y Consolidación Basal)
-* **Duración:** De 10 a 25 minutos en el primer ciclo, extendiéndose en ciclos posteriores (45-55% del tiempo total).
-* **Características Biológicas:** Cesan los movimientos oculares. El electroencefalograma (EEG) revela dos marcas distintivas de protección del descanso:
-  1. **Husos del sueño (Sleep Spindles):** Ráfagas rápidas de actividad cerebral de 11 a 16 Hz producidas por el núcleo reticular del tálamo para aislar al cerebro de ruidos ambientales ligeros.
-  2. **Complejos K:** Ondas bifásicas de alto voltaje que protegen el sueño e inician la consolidación de la memoria procedimental y motora.
-* **Importancia:** En esta fase disminuye la temperatura corporal central aproximadamente 1°C.
+## ¿Por qué 90 minutos no es una regla exacta?
 
-#### Fase N3 (NREM 3: Sueño Profundo de Ondas Lentas / SWS)
-* **Duración:** De 20 a 40 minutos en la primera mitad de la noche (15-25% del descanso total).
-* **Características Biológicas:** Dominado por ondas Delta de gran amplitud y baja frecuencia (< 2 Hz). La presión arterial cae, la respiración se vuelve rítmica y profunda, y el flujo sanguíneo hacia los músculos aumenta significativamente.
-* **Funciones Reparadoras:**
-  * **Liberación de Somatotropina (Hormona del Crecimiento / GH):** Estimula la reparación tisular, hipertrofia muscular y síntesis proteica.
-  * **Activación del Sistema Glinfático:** Descubierto por neurocientíficos y documentado en investigaciones del [PubMed / NCBI](https://www.ncbi.nlm.nih.gov), este canal glial elimina toxinas metabólicas acumuladas durante la vigilia, incluyendo la proteína Beta-Amiloide asociada al deterioro cognitivo.
+El sueño alterna fases NREM y REM. El tiempo dedicado a cada etapa cambia a lo largo de la noche y también entre personas. El NHLBI describe un ciclo que se reinicia cada 80–100 minutos, no un bloque fijo de 90 minutos.
 
-#### Fase REM (Rapid Eye Movement / Sueño Paradojal)
-* **Duración:** Inicia con 10 minutos en el primer ciclo y se prolonga hasta 30-60 minutos en los últimos ciclos de la madrugada (20-25% del descanso).
-* **Características Biológicas:** Activación cerebral intensa con ondas desincronizadas similares a la vigilia. Se producen movimientos oculares rápidos tras los párpados cerrados y una **atonía muscular periférica** (parálisis protectora para evitar que representemos físicamente los sueños).
-* **Funciones Cognitivas:**
-  * **Procesamiento Emocional:** El complejo amigdalino procesa experiencias estresantes del día.
-  * **Neuroplasticidad y Memoria Declarativa:** Integración de nuevos conocimientos y resolución creativa de problemas.
+En la práctica, el número 90 es útil como valor inicial porque queda en medio de ese intervalo. La calculadora permite cambiarlo para comparar escenarios de 80, 85, 90, 95 o 100 minutos.
 
----
+Lo importante es no confundir **precisión matemática** con **precisión fisiológica**. La hora calculada puede ser exacta dentro de la fórmula y, al mismo tiempo, seguir siendo una estimación del sueño real.
 
-## 2. La Fórmula Científica para Calcular los Ciclos de Sueño
+## ¿Despertar al final de un ciclo elimina la inercia del sueño?
 
-Para realizar un cálculo correcto y libre de errores de tu descanso, no basta con sumar múltiplos de 90 minutos a la hora de acostarte. Debes incluir en la ecuación el parámetro de la **Latencia de Inicio del Sueño (Sleep Onset Latency - SOL)**, que es el tiempo biológico que transcurre desde que apagas la luz y cierras los ojos hasta que entras formalmente en Fase N1.
+No se puede garantizar. La **inercia del sueño** es el periodo de somnolencia y menor rendimiento que puede aparecer después de despertar. El momento del despertar puede influir, pero también importan la duración total del descanso, la privación previa de sueño, el horario circadiano y las interrupciones nocturnas.
 
-Según la [Centers for Disease Control and Prevention (CDC)](https://www.cdc.gov/sleep), una latencia saludable en adultos oscila entre **10 y 20 minutos** (siendo **15 minutos** la media estadística utilizada por defecto en algoritmos médicos).
+Por eso, una **ciclo de sueño calculadora** puede ayudarte a explorar horarios, pero no debería prometer que despertarás “sin cansancio” o en una fase concreta.
 
-### La Ecuación Matemática Completa
+## Cómo usar la calculadora de forma útil
 
-**Hora de Despertar Ideal = Hora de Ir a la Cama + Latencia SOL (15 min) + (N × 90 minutos)**
+1. Empieza por una duración total de sueño suficiente.
+2. Introduce la hora a la que necesitas despertar.
+3. Ajusta la latencia si normalmente tardas más o menos en dormirte.
+4. Usa 90 minutos como punto de partida, no como verdad exacta.
+5. Compara varias opciones dentro de una duración total razonable.
+6. Observa durante varios días cómo te sientes al despertar.
+7. Mantén horarios relativamente consistentes cuando sea posible.
 
-Donde **N** representa el número entero de ciclos ultradianos planificados.
+Puedes hacer el cálculo directamente en la [calculadora de sueño](/).
 
-### Ejemplos Prácticos de Programación de Alarma
+## Factores que una fórmula no puede conocer
 
-A continuación se desglosan los escenarios recomendados para un adulto que necesita levantarse a las **7:00 AM**:
+Una calculadora horaria no sabe si esa noche tendrás microdespertares, enfermedad, consumo de alcohol, estrés, ruido ambiental, cambios de horario o un trastorno del sueño. Tampoco mide la actividad cerebral que se utiliza para clasificar las fases.
 
-| Número de Ciclos | Duración Efectiva de Sueño | Latencia SOL | Hora Exacta de Acostarse | Evaluación Clínica |
-| :--- | :--- | :--- | :--- | :--- |
-| **6 Ciclos** | 9 Horas (540 min) | 15 min | **9:45 PM** | **Rendimiento Óptimo:** Ideal para atletas, etapas de alta exigencia mental o recuperación de enfermedad. |
-| **5 Ciclos** | 7.5 Horas (450 min) | 15 min | **11:15 PM** | **Estándar de Oro:** Recomendación universal para el 85% de los adultos trabajadores. |
-| **4 Ciclos** | 6 Horas (360 min) | 15 min | **12:45 AM** | **Mínimo Aceptable:** Funcional para emergencias puntuales, no sostenible a largo plazo. |
-| **3 Ciclos** | 4.5 Horas (270 min) | 15 min | **2:15 AM** | **Riesgo Severo:** Produce privación aguda de descanso y declive en la velocidad de reacción. |
+Esto explica por qué dos noches con la misma hora de acostarse y despertar pueden sentirse muy diferentes.
 
-Para automatizar este proceso en un segundo sin tener que realizar cálculos matemáticos manuales cada noche, utiliza nuestra [calculadora de ciclos de sueño](/). El algoritmo calcula instantáneamente las ventanas exactas según si eliges tu hora de despertar o tu hora de acostarte.
+## Preguntas frecuentes
 
----
+### ¿Es mejor dormir 7,5 horas que 8 horas?
 
-## 3. La Inercia del Sueño: Por qué Despertar a Mitad de la Fase N3 Arruina tu Día
+No necesariamente. No existe una regla que haga que 7,5 horas sean universalmente mejores por corresponder a cinco bloques de 90 minutos. Si 8 horas encajan mejor con tus necesidades y horario, no hay razón para recortar el sueño solo para completar un múltiplo teórico.
 
-Si tu alarma suena mientras te encuentras en el fondo de la **Fase N3 (Sueño Profundo)**, el cerebro se ve forzado a pasar abruptamente de ondas Delta lentas e intensas a la frecuencia Beta acelerada de la vigilia. Este choque neuroquímico genera el fenómeno clínico de la **Inercia del Sueño (Sleep Inertia)**.
+### ¿Puedo elegir ciclos de 80 o 100 minutos?
 
-> **Sintomatología de la Inercia del Sueño:**
-> * Sensación de aturdimiento pesado o "niebla mental".
-> * Torpeza motora fina y disminución de la fuerza de agarre.
-> * Reducción de hasta un 40% en la velocidad de procesamiento cognitivo durante los primeros 30 a 60 minutos del día.
-> * Irritabilidad y deseo compulsivo de posponer la alarma (snooze).
+Sí. La herramienta permite explorar duraciones dentro del intervalo aproximado descrito por el NHLBI. Sigue siendo una simulación, no una medición personal.
 
-Al ajustar tus hábitos mediante un **[calculador de ciclos de sueño](/)**, coordinas la alarma para que resuene durante la ventana de transición al final de la Fase REM o inicio de N1. En esta fase, los niveles de cortisol matutino comiencen a elevarse naturalmente y el cuerpo está fisiológicamente listo para despertar con lucidez.
+### ¿Qué hago si me despierto cansado todos los días?
 
----
+Revisa primero duración, regularidad, horario y calidad del descanso. Si la somnolencia es intensa, persistente, afecta a conducir o trabajar, o existe ronquido con pausas respiratorias, una calculadora no es suficiente y conviene consultar a un profesional sanitario.
 
-## 4. Factores Biológicos y Ambientales que Alteran la Duración del Ciclo
+## Fuentes principales
 
-Es fundamental comprender que los 90 minutos son un valor promedio poblacional. Diversos factores cotidianos pueden alargar o acortar la duración de tus ciclos individuales:
-
-### A. La Sombra de la Cafeína y los Receptores de Adenosina
-La cafeína es un antagonista competitivo de la adenosina. Al ocupar los receptores A1 y A2A en el cerebro, impide que la presión homeostática de sueño envíe la señal de fatiga. Teniendo una vida media de aproximadamente **5.7 horas**, consumir un café a las 5:00 PM significa que a las 10:42 PM mantendrás el 50% de la sustancia activa en tu torrente sanguíneo, fragmentando la Fase N3. Puedes evaluar tu nivel residual usando nuestra **[calculadora de cafeína](/)**.
-
-### B. Impacto del Alcohol en la Arquitectura del Sueño
-Aunque el etanol tiene efectos sedantes iniciales que reducen la latencia de entrada al descanso, induce una alteración metabólica severa en la segunda mitad de la noche:
-* Suprime drásticamente la Fase REM.
-* Provoca microdespertares frecuentes por deshidratación y taquicardia compensatoria.
-* Incrementa los episodios de ronquido y apnea obstructiva.
-
-### C. Contaminación por Luz Azul Nocturna
-La exposición a pantallas de teléfonos inteligentes, monitores y televisores (que emiten luz en el espectro azul de 460 a 480 nm) inhibe la secreción de **melatonina** por parte de la glándula pineal. Esto retrasa la latencia inicial de 15 minutos a más de 45 o 60 minutos, descuadrando cualquier cálculo previo.
-
----
-
-## 5. Protocolo de 5 Pasos para Sincronizar tus Ciclos desde Hoy
-
-Para maximizar la eficacia de la **calculadora de ciclos de sueño**, sigue este protocolo comprobado por especialistas en salud circadiana de la [Harvard Medical School](https://health.harvard.edu):
-
-1. **Fija una Hora de Despertar Invariable:** Despiértate a la misma hora exacta los 7 días de la semana (incluidos sábados y domingos). Esto ancla el núcleo supraquiasmático.
-2. **Exposición a la Luz Solar Matutina:** Recibe de 10 a 15 minutos de luz solar directa en los primeros 30 minutos tras levantarte para suprimir la melatonina residual y activar el cortisol saludable.
-3. **Calcula tu Hora de Acostarte:** Ingresa tu hora de despertar fija en la **[calculadora de sueño online](/)** y elige la opción de 5 o 6 ciclos.
-4. **Crea una Ventana de Desconexión de 60 Minutos:** Apaga dispositivos electrónicos 1 hora antes de la hora sugerida y reduce la iluminación de tu hogar a tonos cálidos.
-5. **Registra tus Sensaciones en un Diario:** Utiliza nuestro **[diario de sueño digital](/diario-sueno)** para anotar si te despiertas de forma natural antes de la alarma o si experimentas fatiga, ajustando la latencia en la herramienta.
-
----
-
-## 6. Preguntas Frecuentes sobre el Cálculo de Ciclos (FAQ)
-
-### ¿Es mejor dormir 7 horas o 7.5 horas?
-Desde el punto de vista de la arquitectura circadiana, **7.5 horas es significativamente superior a 7 horas**. 7.5 horas corresponden exactamente a 5 ciclos completos de 90 minutos (5 × 90 = 450 minutos). Dormir 7 horas interrumpe abruptamente el quinto ciclo en plena fase REM o N3, generando inercia del sueño.
-
-### ¿Qué ocurre si me despierto espontáneamente 10 minutos antes de la alarma?
-Si te despiertas de forma natural 10 o 15 minutos antes de que suene tu despertador, **debes levantarte inmediatamente**. Tu cerebro ha completado un ciclo ultradiano de forma perfecta. Si vuelves a dormirte, iniciarás un nuevo ciclo que la alarma cortará a los pocos minutos, dejándote más cansado que antes.
-
-### ¿Los niños tienen los mismos ciclos de 90 minutos que los adultos?
-No. Los bebés y niños pequeños poseen ciclos ultradianos más cortos, de aproximadamente **50 a 60 minutos**. A medida que el sistema nervioso central se desarrolla durante la infancia, la duración del ciclo se expande gradualmente hasta estabilizarse en los 90 minutos del adulto hacia la adolescencia. Puedes consultar los requerimientos por rango de edad en nuestra sección para **[calcular horas de sueño por edad](/calculadora-horas-de-sueno)**.
-
----
-
-## 7. Referencias Científicas y Fuentes Médicas
-* National Sleep Foundation: *Sleep Timing and Duration Recommendations*. Disponible en [SleepFoundation.org](https://www.sleepfoundation.org).
-* Harvard Medical School Division of Sleep Medicine: *Understanding Sleep Cycles and Circadian Rhythms*. Disponible en [Health.Harvard.edu](https://health.harvard.edu).
-* Centers for Disease Control and Prevention (CDC): *Sleep and Sleep Disorders Clinical Data*. Disponible en [CDC.gov/sleep](https://www.cdc.gov/sleep).
-* National Institutes of Health (NIH): *Brain Basics: Understanding Sleep and Glymphatic Clearance*. Disponible en [NCBI PubMed](https://www.ncbi.nlm.nih.gov).
+* [NHLBI / NIH — Fases y etapas del sueño](https://www.nhlbi.nih.gov/es/salud/sueno/estadios-del-sueno): ciclos aproximados de 80–100 minutos y etapas del sueño.
+* [AASM / SRS — Recommended Amount of Sleep for a Healthy Adult](https://aasm.org/resources/pdf/adultsleepdurationconsensus.pdf): recomendación de 7 o más horas de sueño regular para adultos.
+* [Metodología y política editorial](/metodologia/): supuestos de las herramientas, criterios de fuentes y política de correcciones.
 `
   },
   {
     slug: 'como-calcular-las-horas-de-sueno',
-    title: '¿Cómo calcular las horas de sueño que necesitas? Fórmula, Edad y Deuda de Sueño',
-    metaDescription: 'Aprende cómo calcular las horas de sueño ideales según tu edad, estilo de vida y nivel de estrés. Descubre el cálculo de horas de sueño para saldar la deuda acumulada.',
+    title: '¿Cómo calcular las horas de sueño? Rangos por edad y ejemplos',
+    metaDescription: 'Consulta cómo calcular las horas de sueño con rangos por edad, ejemplos de horarios y referencias de AASM para niños, adolescentes y adultos.',
     h1: '¿Cómo calcular las horas de sueño que necesitas?',
-    date: '10 de Julio, 2026',
-    readTime: '16 min de lectura',
+    date: 'Actualizado el 7 de octubre de 2026',
+    datePublished: '2026-07-10',
+    dateModified: '2026-10-07',
+    readTime: '9 min de lectura',
     category: 'Salud y Cronobiología',
     targetKeywords: ['como calcular las horas de sueño', 'calculo de horas de sueño', 'calcular horas de sueño', 'calculadora de horas de sueño', 'calculador de horas de sueño'],
-    summary: 'Aprende a realizar un cálculo de horas de sueño preciso según tu edad, nivel de estrés, genética y déficit acumulado para eliminar la fatiga crónica.',
+    summary: 'Los rangos de sueño cambian con la edad. Esta guía explica cómo usarlos como referencia sin convertirlos en una prescripción individual.',
     contentMarkdown: `
-La afirmación popular de que "todas las personas deben dormir exactamente 8 horas cada noche" es una simplificación fisiológica inexacta. Si bien 8 horas representa una media conveniente desde el punto de vista estadístico, la necesidad real de descanso varía de manera sustancial en función de la edad biológica, la genética individual, la carga de entrenamiento físico, la salud metabólica y el estrés neurocognitivo.
+**Respuesta corta:** para **calcular las horas de sueño** conviene empezar por el rango recomendado para la edad y compararlo con el tiempo que realmente duermes. No existe una fórmula capaz de determinar con exactitud las necesidades individuales a partir de edad, estrés o actividad física.
 
-Saber **cómo calcular las horas de sueño** que requiere tu organismo es el primer paso para erradicar la fatiga crónica, mejorar la sensibilidad a la insulina y optimizar tu rendimiento diario. En esta guía integral exploraremos las pautas oficiales de la [World Health Organization (WHO)](https://www.who.int) y la [American Academy of Sleep Medicine](https://aasm.org), junto con metodologías avanzadas para medir y saldar la **deuda de sueño acumulada**.
+La [American Academy of Sleep Medicine (AASM)](https://aasm.org/advocacy/position-statements/child-sleep-duration-health-advisory/) publica rangos por edad para niños y adolescentes. Para adultos, la AASM y la Sleep Research Society recomiendan [7 o más horas por noche de forma regular](https://aasm.org/resources/pdf/adultsleepdurationconsensus.pdf).
 
----
+## Tabla de horas de sueño por edad
 
-## 1. Tabla Oficial de Horas de Sueño Recomendadas por Edad
+| Edad | Referencia de sueño |
+| --- | --- |
+| 4–12 meses | 12–16 horas por 24 h, incluidas siestas |
+| 1–2 años | 11–14 horas por 24 h, incluidas siestas |
+| 3–5 años | 10–13 horas por 24 h, incluidas siestas |
+| 6–12 años | 9–12 horas por 24 h |
+| 13–18 años | 8–10 horas por 24 h |
+| Adultos | 7 o más horas por noche de forma regular |
 
-A lo largo del desarrollo humano, las necesidades metabólicas y de neuroplasticidad se transforman. Durante los primeros meses de vida, el cerebro consume una cantidad masiva de energía para construir sinapsis, lo que requiere largas horas de descanso repartidas entre el día y la noche. En la edad adulta, la prioridad se desplaza hacia la conservación celular y el mantenimiento circadiano.
+Para menores de 4 meses la propia metodología del consenso pediátrico señala que no se estableció un rango equivalente por falta de evidencia suficiente. En edades avanzadas y en situaciones clínicas concretas, la necesidad personal también puede variar.
 
-> **Pautas de Necesidades Diarias de Sueño por Etapa:**
-> * **Bebés (4-12 meses):** 12 a 16 Horas al Día
-> * **Niños pequeños (1-5 años):** 10 a 14 Horas al Día
-> * **Escolares (6-12 años):** 9 a 12 Horas al Día
-> * **Adolescentes (13-17 años):** 8 a 10 Horas al Día
-> * **Adultos (18-64 años):** 7 a 9 Horas al Día (5 a 6 Ciclos)
-> * **Adultos Mayores (65+ años):** 7 a 8 Horas al Día
+Puedes consultar el rango correspondiente en la [calculadora de horas de sueño por edad](/calculadora-horas-de-sueno).
 
-A continuación se presenta el desglose clínico elaborado por consensos de la [National Sleep Foundation](https://www.sleepfoundation.org):
+## Cómo convertir un rango de horas en un horario
 
-| Rango de Edad | Horas Recomendadas | Ciclos Equivalentes | Función Fisiológica Principal |
-| :--- | :--- | :--- | :--- |
-| **Bebés (4-12 meses)** | 12 a 16 horas | 8 - 10 ciclos infantiles | Desarrollo acelerado del córtex cerebral y consolidación motora básica. |
-| **Niños pequeños (1-2 años)** | 11 a 14 horas | 7 - 9 ciclos | Secreción máxima de hormona del crecimiento (Somatotropina) en N3. |
-| **Preescolares (3-5 años)** | 10 a 13 horas | 6.5 - 8.5 ciclos | Maduración del sistema inmunitario y regulación emocional. |
-| **Escolares (6-12 años)** | 9 a 12 horas | 6 - 8 ciclos | Consolidación del aprendizaje académico y memoria declarativa. |
-| **Adolescentes (13-17 años)** | 8 a 10 horas | 5.5 - 7 ciclos | Reestructuración de circuitos prefrontales y remodelación hormonal. |
-| **Adultos (18-64 años)** | 7 a 9 horas | 5 - 6 ciclos | Mantenimiento metabólico, depuración glinfática y equilibrio emocional. |
-| **Adultos mayores (65+ años)** | 7 a 8 horas | 4.5 - 5.5 ciclos | Conservación cognitiva y prevención del estrés oxidativo. |
+Supón que un adulto quiere planificar 8 horas de sueño y necesita levantarse a las 07:00. Si estima que tarda 20 minutos en dormirse, debería estar preparado para dormir alrededor de las 22:40.
 
-Para obtener una recomendación adaptada a tu perfil en segundos, visita nuestro módulo interactivo de la **[calculadora de horas de sueño](/calculadora-horas-de-sueno)**.
+**Hora de acostarse = hora de despertar − duración objetivo − latencia estimada**
 
----
+Este cálculo es más directo que intentar adivinar una fase exacta del sueño. La latencia también es variable: una noche puedes tardar 10 minutos y otra bastante más.
 
-## 2. Los Dos Motores del Sueño: Presión Homeostática y Ritmo Circadiano
+## ¿Qué es la deuda de sueño?
 
-Para llevar a cabo un **cálculo de horas de sueño** personalizado, es necesario entender el modelo científico de dos procesos (*Two-Process Model of Sleep Regulation*), formulado originalmente por el Dr. Alexander Borbély:
+“Deuda de sueño” es una forma práctica de describir la diferencia acumulada entre una duración objetivo y el sueño registrado. Por ejemplo, si decides usar 8 horas como objetivo personal y duermes 6 horas durante tres noches, la diferencia matemática acumulada es de 6 horas.
 
-### Proceso S: La Presión Homeostática de Sueño
-A medida que permaneces despierto durante el día, las neuronas consumen trifosfato de adenosina (ATP) como fuente primaria de energía. Como subproducto de este consumo metabólico, se acumula **adenosina** en el espacio extracelular del cerebro.
-* Cuanto más tiempo pases despierto, mayor será la concentración de adenosina.
-* Al alcanzar un umbral crítico, la adenosina genera una intensa "presión de sueño" que te induce a dormir.
-* Durante la noche, el sueño profundo limpia la adenosina acumulada, reiniciando el contador a cero.
+Eso no significa que exista una cuenta biológica exacta que pueda saldarse hora por hora. El cuerpo no funciona como un banco de minutos de sueño. La métrica es útil para observar tendencias, no para diagnosticar un déficit clínico.
 
-### Proceso C: El Marcapasos Circadiano
-Dirigido por el **Núcleo Supraquiasmático (NSQ)** en el hipotálamo anterior, este reloj biológico interno de ~24.2 horas regula la secreción cíclica de hormonas:
-* **Cortisol:** Alcanza su pico matutino (CRH/ACTH) para promover el estado de alerta.
-* **Melatonina:** Su producción por la glándula pineal aumenta en la oscuridad, alcanzando su pico entre las 2:00 AM y las 4:00 AM.
+Nuestro [diario de sueño](/diario-sueno) permite registrar horarios para comparar semanas sin enviar esos datos a un diagnóstico automático.
 
-El momento perfecto para dormir ocurre cuando la **presión homeostática (Proceso S) es máxima** y el **estímulo circadiano de vigilia (Proceso C) cae**.
+## Duración, regularidad y calidad
 
----
+La duración es solo una dimensión del descanso. También importan:
 
-## 3. ¿Qué es la Deuda de Sueño y Cómo Afecta a tu Salud?
+* **Regularidad:** horarios que cambian mucho pueden dificultar la adaptación del ritmo sueño-vigilia.
+* **Continuidad:** despertares frecuentes reducen el tiempo de sueño efectivo.
+* **Momento del día:** el reloj circadiano influye en cuándo resulta más fácil dormir.
+* **Calidad percibida:** sentirse descansado o somnoliento aporta información que una fórmula no capta.
 
-Se define como **Deuda de Sueño (Sleep Debt)** la diferencia acumulada entre la cantidad de horas de descanso que tu cuerpo necesita biológicamente y las horas reales que duermes.
+El [NHLBI](https://www.nhlbi.nih.gov/health/sleep/sleep-wake-cycle) explica que el ritmo circadiano y la presión homeostática interactúan para regular sueño y vigilia, y que la luz, la oscuridad y los horarios influyen en ese sistema.
 
-Si tu requerimiento genético es de 8 horas por noche y durante 5 días laborables duermes únicamente 6 horas diarias, al llegar el fin de semana habrás acumulado una **deuda de sueño de 10 horas**.
+## ¿Debo sumar horas por hacer deporte, estar estresado o estar enfermo?
 
-**Deuda de Sueño Semanal = Suma de (Horas Necesarias Diarias - Horas Reales Dormidas)**
+No existe una regla universal del tipo “deportista +45 minutos” o “estrés +60 minutos” que una calculadora web pueda aplicar con rigor a todo el mundo. Algunas situaciones pueden aumentar la necesidad de descanso, pero la cantidad concreta debe observarse individualmente y, si existe una condición médica, valorarse profesionalmente.
 
-### Impacto Sistémico de la Deuda de Sueño Crónica
+Por ese motivo la calculadora por edad muestra el rango de referencia sin añadir automáticamente horas por embarazo, entrenamiento, estrés o enfermedad.
 
-Dormir menos de lo necesario de forma habitual se asocia con peores resultados de salud y rendimiento. La [American Academy of Sleep Medicine](https://www.aasm.org/resources/pdf/adultsleepdurationconsensus.pdf) recomienda que los adultos duerman **7 o más horas por noche de forma regular**. Dormir menos de 7 horas de manera habitual se asocia, entre otros efectos, con peor rendimiento, más errores y mayor riesgo de problemas cardiometabólicos.
+## ¿Qué pasa si trabajo de noche?
 
-La respuesta individual varía y una calculadora web no puede diagnosticar las consecuencias de la falta de sueño. Si la somnolencia diurna es intensa, persistente o afecta a actividades como conducir, conviene consultar a un profesional sanitario.
+El objetivo de duración sigue siendo importante, pero el horario se vuelve más difícil porque el sueño puede producirse en una fase circadiana menos favorable. La oscuridad del dormitorio, el ruido, la exposición a la luz y la consistencia del turno pueden influir.
 
----
+Una calculadora puede ayudarte a reservar una ventana de sueño, pero no corrige por sí sola un desajuste circadiano.
 
-## 4. Estrategia Científica para Saldar la Deuda de Sueño
+## Preguntas frecuentes
 
-Un error masivo consiste en intentar reparar 10 horas de deuda durmiendo 14 horas seguidas el domingo. Esta práctica genera el llamado **Jetlag Social**, desincronizando el reloj circadiano y provocando insomnio el domingo por la noche.
+### ¿Contar tiempo en cama es lo mismo que contar sueño?
 
-Para saldar la deuda de forma segura y efectiva, aplica las siguientes pautas médicas:
+No. El tiempo en cama incluye periodos despierto. El diario del sitio permite registrar ambos para observar la relación entre ellos.
 
-* **Estrategia de Extensión Progresiva:** Añade entre **30 y 60 minutos adicionales de sueño** cada noche durante 1 o 2 semanas consecutivas hasta eliminar los síntomas de cansancio matutino.
-* **Siestas de Potencia (Power Naps) de 20 Minutos:** Realiza una siesta entre la 1:00 PM y las 3:00 PM con una duración estricta de 20 minutos. Esto permite limpiar la adenosina del Proceso S sin entrar en Fase N3 profunda, evitando la inercia del sueño. Puedes calcular la duración de tus siestas en nuestra herramienta **[calculadora de siestas](/siestas)**.
-* **Consistencia del Fin de Semana:** No desvíes tu hora de despertar habitual en más de 60 minutos durante los fines de semana.
+### ¿Tengo que dormir exactamente ocho horas?
 
----
+No. Ocho horas es una cifra común, pero la recomendación para adultos se expresa como **7 o más horas** y existe variación individual. Niños y adolescentes tienen rangos distintos.
 
-## 5. Cronotipo y Preferencias Horarias
+### ¿Puedo calcular las horas de sueño de un niño con ciclos de 90 minutos?
 
-El **cronotipo** describe la tendencia de una persona a sentirse más activa y dormir más temprano o más tarde. Existen cuestionarios científicos que estudian preferencias matutinas y vespertinas, mientras que modelos populares como “león, oso, lobo y delfín” son marcos divulgativos y **no constituyen una clasificación clínica ni están determinados por un único gen**.
+No es recomendable convertir automáticamente las necesidades pediátricas en bloques adultos de 90 minutos. Para niños resulta más útil partir de los rangos por edad y del sueño total en 24 horas cuando corresponda.
 
-Nuestro test utiliza ese modelo únicamente como una forma sencilla de reflexionar sobre hábitos y preferencias horarias. No identifica una variante genética ni diagnostica un trastorno circadiano.
+## Fuentes principales
 
-Descubre tu perfil orientativo con nuestro **[test de cronotipo](/)** y usa el resultado como punto de partida para observar tus propios horarios.
-
----
-
-## 6. Preguntas Frecuentes sobre el Cálculo de Horas de Sueño (FAQ)
-
-### ¿Puedo entrenar a mi cuerpo para necesitar solo 4 o 5 horas de sueño?
-No es una meta recomendable para la mayoría de las personas. Se han descrito variantes genéticas raras asociadas con una necesidad de sueño más corta, pero no existe una prueba casera que permita asumir que una persona puede funcionar de forma saludable con 4 o 5 horas. Para adultos, la recomendación general es dormir **7 o más horas por noche de forma regular**.
-
-### ¿Contar las horas en la cama es lo mismo que contar horas de sueño?
-No. Existe una métrica clínica llamada **Eficiencia del Sueño**:
-
-**Eficiencia del Sueño (%) = (Tiempo Total Dormido / Tiempo Total en Cama) × 100**
-
-Una eficiencia del **85% o superior** se considera saludable. Pasar 9 horas en la cama pero permanecer despierto 2 horas por insomnio resulta en solo 7 horas de sueño real. Puedes registrar tu eficiencia en nuestro **[diario de sueño](/diario-sueno)**.
-
-### ¿Las calculadoras de horas de sueño sirven para personas que trabajan en turnos de noche?
-Sí. Los trabajadores nocturnos o en turnos rotativos deben aplicar la regla de los 90 minutos a su ventana de descanso diurno, utilizando persianas 100% opacas, antifaz y tapones para simular la oscuridad nocturna y proteger la secreción de melatonina.
-
----
-
-## 7. Referencias Científicas
-* World Health Organization (WHO): *Guidelines on Physical Activity, Sedentary Behaviour and Sleep*. Disponible en [WHO.int](https://www.who.int).
-* American Academy of Sleep Medicine (AASM): *Recommended Amount of Sleep for Pediatric and Adult Populations*. Disponible en [AASM.org](https://aasm.org).
-* National Institutes of Health (NIH): *Sleep Debt and Metabolic Health Interactions*. Disponible en [NCBI PubMed](https://www.ncbi.nlm.nih.gov).
-* CDC Healthy Sleep Guidelines. Disponible en [CDC.gov/sleep](https://www.cdc.gov/sleep).
+* [AASM — Child Sleep Duration Health Advisory](https://aasm.org/advocacy/position-statements/child-sleep-duration-health-advisory/): rangos pediátricos y de adolescentes.
+* [AASM / SRS — Recommended Amount of Sleep for a Healthy Adult](https://aasm.org/resources/pdf/adultsleepdurationconsensus.pdf): adultos.
+* [NHLBI — Your Sleep/Wake Cycle](https://www.nhlbi.nih.gov/health/sleep/sleep-wake-cycle): ritmo circadiano y presión de sueño.
+* [Metodología y política editorial](/metodologia/): cómo se seleccionan y actualizan las fuentes.
 `
   },
   {
     slug: 'guia-ciclo-de-sueno-calculadora',
-    title: 'Ciclo de sueño calculadora: Comparativa de aplicaciones, tecnología y ciencia',
-    metaDescription: 'Análisis completo de la tecnología detrás de las calculadoras de sueño online, apps históricas como Adidas Runtastic Sleep Better y sensores de frecuencia cardíaca.',
-    h1: 'Ciclo de sueño calculadora: Comparativa y tecnología detrás del descanso',
-    date: '02 de Julio, 2026',
-    readTime: '14 min de lectura',
+    title: 'Ciclo de sueño calculadora: web, apps y wearables comparados',
+    metaDescription: 'Compara una calculadora de sueño web, apps y wearables: qué datos usan, qué pueden estimar y por qué no sustituyen una medición clínica.',
+    h1: 'Ciclo de sueño calculadora: comparativa de web, apps y wearables',
+    date: 'Actualizado el 7 de octubre de 2026',
+    datePublished: '2026-07-02',
+    dateModified: '2026-10-07',
+    readTime: '8 min de lectura',
     category: 'Tecnología e Innovación',
     targetKeywords: ['ciclo de sueño calculadora', 'calculadoras de sueño', 'calculadora de sueño app', 'calculadora de sueño adidas', 'calculadora de sueño runtastic'],
-    summary: 'Analizamos cómo han evolucionado las calculadoras de sueño desde las primeras versiones como Adidas Runtastic hasta los modelos modernos basados en algoritmos y privacidad web.',
+    summary: 'Una comparación práctica entre calculadoras horarias, apps con sensores y wearables, con especial atención a sus límites y privacidad.',
     contentMarkdown: `
-La intersección entre la tecnología digital y la medicina de la salud circadiana ha transformado la manera en que comprendemos nuestro descanso. Lo que hace un par de décadas requería pasar la noche en un laboratorio especializado conectado a electrodos de **polisomnografía (PSG)**, hoy se puede estimar con notable precisión mediante un **calculador de ciclos de sueño** accesible desde cualquier navegador web o dispositivo móvil.
+**Respuesta corta:** una **ciclo de sueño calculadora** web calcula horarios a partir de horas y supuestos. Una app puede añadir movimiento o sonido y un wearable puede añadir señales fisiológicas, pero ninguno de esos métodos equivale por defecto a una polisomnografía clínica.
 
-En esta guía exhaustiva analizamos la evolución tecnológica de las **calculadoras de sueño**, la historia pionera de la app **Adidas / Runtastic Sleep Better**, las diferencias entre algoritmos matemáticos y sensores corporales, y cómo elegir la herramienta perfecta sin comprometer tu privacidad.
+El [NHLBI](https://www.nhlbi.nih.gov/es/salud/sueno/estadios-del-sueno) explica que los estudios de sueño utilizan sensores para registrar movimientos oculares y actividad cerebral con el fin de clasificar las fases. Una calculadora web no recoge esas señales.
 
----
+## Qué hace una calculadora de sueño web
 
-## 1. La Evolución de la Monitorización del Sueño: Del Laboratorio a la Web
+Una calculadora web como esta recibe datos sencillos:
 
-Historicamente, la evaluación del descanso se ha basado en tres grandes pilares tecnológicos:
+* hora de acostarse o despertar;
+* latencia estimada;
+* duración de ciclo elegida.
 
-> **Pilares Tecnológicos de Medición:**
-> 1. **Polisomnografía (PSG):** Estándar de oro clínico en laboratorio hospitalario.
-> 2. **Actigrafía y Sensórica:** Acelerómetros, micrófonos y PPG (Sleep Cycle, Smartwatches).
-> 3. **Calculadoras Web Algorítmicas:** Basadas en modelos poblacionales como nuestra **[calculadora de sueño](/)**.
+Con esos datos genera ventanas de horario. Su ventaja principal es la transparencia: puedes ver el supuesto utilizado y cambiarlo. Su principal límite es igual de claro: **no mide lo que ocurre mientras duermes**.
 
-1. **Polisomnografía (PSG):** Monitorea ondas cerebrales (EEG), movimientos oculares (EOG), tono muscular (EMG) y saturación de oxígeno (SpO2). Es el método de diagnóstico de referencia para trastornos como la apnea del sueño.
-2. **Actigrafía y Sensores en Dispositivos Móviles:** Miden los movimientos corporales en la cama mediante acelerómetros triaxiales y analizan patrones sonoros de respiración.
-3. **Calculadoras Algorítmicas Web:** Utilizan modelos biométricos de ciclos ultradianos promedio (90 minutos) combinados con la latencia de inicio (SOL) programable por el usuario.
+## Qué puede añadir una app móvil
 
----
+Una app puede utilizar acelerómetro, micrófono u otros sensores disponibles en el teléfono. Eso permite registrar movimiento o sonido y construir estimaciones adicionales.
 
-## 2. El Caso Histórico: Calculadora de Sueño Adidas / Runtastic Sleep Better
+La precisión depende del dispositivo, el algoritmo, la posición del teléfono, el entorno y la variable que se intente medir. Una app que detecta movimiento no está midiendo directamente la actividad cerebral.
 
-En la historia de las aplicaciones de salud móvil, uno de los hitos más recordados fue el desarrollo de **Runtastic Sleep Better**, creada por la firma austríaca Runtastic y posteriormente integrada en el ecosistema global de **Adidas Runtastic**.
+## Qué puede añadir un wearable
 
-### Innovaciones Introducidas por Runtastic Sleep Better
-* **Registro de Variables de Estilo de Vida:** Fue una de las primeras aplicaciones que permitió al usuario marcar si había realizado entrenamiento físico, consumido alcohol, ingerido cafeína o sufrido un día de alto estrés antes de acostarse.
-* **Correlación con Fases Lunares:** Intentó analizar la influencia de la luna llena en la calidad del sueño profundo.
-* **Integración con el Deporte:** Permitía a los atletas de running evaluar cómo afectaban sus kilómetros diarios a la eficiencia de la recuperación nocturna.
+Relojes, anillos y pulseras pueden combinar movimiento con frecuencia cardíaca, variabilidad de frecuencia cardíaca, temperatura u otras señales. Esos datos permiten crear modelos más ricos que una simple fórmula horaria.
 
-### ¿Por qué los Usuarios Migraron a Calculadoras Web Gratuitas?
-Con el paso del tiempo, las grandes aplicaciones móviles sufrieron transformaciones corporativas:
-* **Suscripciones de Pago Obligatorias:** Muchas herramientas pasaron a modelos *Freemium* agresivos con cuotas mensuales elevadas.
-* **Consumo Intensivo de Batería:** Mantener la aplicación en primer plano con el micrófono y acelerómetro activos durante toda la noche degradaba la salud de la batería del smartphone.
-* **Preocupaciones de Privacidad de Datos:** La recolección de archivos de audio nocturnos y datos de geolocalización generó recelo entre los usuarios.
+Aun así, una estimación de “sueño profundo” o “REM” de un dispositivo de consumo no debe interpretarse automáticamente como equivalente a la clasificación clínica de un estudio de sueño.
 
-Esto impulsó el surgimiento de plataformas web directas y respetuosas de la privacidad como nuestra **[calculadora de sueño](/)**, que brindan resultados inmediatos en 1 segundo, son 100% gratuitas y no requieren instalar software ni ceder datos personales.
+## Comparativa rápida
 
----
+| Tipo de herramienta | Datos principales | Valor más claro | Límite principal |
+| --- | --- | --- | --- |
+| Calculadora web | Hora, latencia y supuestos | Planificar horarios | No mide fases |
+| App móvil | Hora + sensores del teléfono | Registrar patrones y sonidos | Depende del dispositivo y contexto |
+| Wearable | Movimiento + señales fisiológicas | Tendencias personales | Las fases siguen siendo estimaciones |
+| Estudio de sueño | Sensores clínicos, incluida actividad cerebral | Evaluación clínica cuando está indicada | Requiere equipamiento y supervisión |
 
-## 3. Matriz Comparativa: Calculadoras Web vs. Apps vs. Wearables
+## ¿Qué ocurre con Adidas / Runtastic Sleep Better?
 
-Para seleccionar la mejor **calculadora de sueño app** o herramienta online según tus necesidades particulares, analiza la siguiente tabla comparativa desarrollada con criterios de la [Sleep Research Society](https://www.sleepresearchsociety.org):
+Las búsquedas de **calculadora de sueño adidas** y **calculadora de sueño runtastic** suelen referirse a herramientas o aplicaciones históricas del ecosistema Runtastic/Adidas relacionadas con el registro del descanso. Esta página no pretende representar ni sustituir oficialmente esos productos.
 
-| Criterio de Evaluación | Calculadora Web (xn--calculadoradesueo-uxb.org) | Apps de Alarma Inteligente (Sleep Cycle, Pillow) | Wearables y Anillos (Apple Watch, Oura, Garmin) |
-| :--- | :--- | :--- | :--- |
-| **Costo** | **100% Gratis sin publicidad invasiva** | Freemium (10€ - 40€/año) | Elevado (200€ - 500€ de hardware) |
-| **Instalación** | **Ninguna (Acceso directo web)** | Requiere descarga de App Store / Play Store | Requiere hardware dedicado |
-| **Privacidad** | Los cálculos principales se realizan localmente; las cookies de terceros dependen del consentimiento | Depende de cada app y de sus permisos | Variable según fabricante y sincronización |
-| **Consumo de Batería** | No necesita permanecer midiendo durante la noche | Depende del uso de sensores y del dispositivo | Consume la batería del wearable |
-| **Precisión de Fases** | No mide fases; solo estima horarios | Estimación basada en movimiento/sonido | Estimación basada en sensores fisiológicos; no equivale a polisomnografía |
-| **Uso Ideal** | **Planificar alarmas diarias y evitar la inercia del sueño** | Analizar ronquidos u obstrucciones sonoras | Atletas que requieren métricas de carga fisiológica |
+Si lo que buscas hoy es una herramienta para calcular una hora orientativa de dormir o despertar, puedes usar la [calculadora de sueño](/). Si necesitas registrar señales nocturnas, una aplicación o wearable puede ofrecer datos que una calculadora horaria no tiene.
 
----
+## Privacidad: qué conviene revisar
 
-## 4. La Ciencia de la Variabilidad de la Frecuencia Cardíaca (HRV) en la Monitorización
+Antes de usar cualquier app o wearable, comprueba:
 
-La **Variabilidad de la Frecuencia Cardíaca (HRV - Heart Rate Variability)** es una de las señales fisiológicas que algunos wearables combinan con movimiento y otros sensores para estimar recuperación y sueño. Por sí sola no identifica con precisión las fases del sueño.
+1. Qué sensores utiliza.
+2. Si guarda audio.
+3. Si necesita una cuenta.
+4. Qué datos se sincronizan con la nube.
+5. Si permite borrar o exportar información.
+6. Si el servicio sigue funcionando sin una suscripción.
 
-La HRV mide las variaciones microsecundarias en el intervalo entre latido y latido (intervalos R-R):
-* **HRV Alta (Predominio Parasimpático):** Indica que el sistema nervioso autónomo está en estado de restauración y relajación profunda (típico de la Fase N3).
-* **HRV Baja (Predominio Simpático):** Refleja estrés, inflamación, digestión pesada o presencia de alcohol en sangre.
+En esta web, los cálculos principales se realizan en el navegador. Las preferencias opcionales de analítica o publicidad, cuando existan, deben respetar la selección de consentimiento.
 
-Puedes aprender a gestionar el estrés antes de acostarte utilizando nuestro listado de hábitos en la [Lista de Verificación de Higiene del Sueño](https://xn--calculadoradesueo-uxb.org/blog).
+## Cómo elegir según tu objetivo
 
----
+### Solo quiero saber a qué hora acostarme
 
-## 5. Guía Paso a Paso para Combinar Herramientas y Optimizar tu Descanso
+Una calculadora web es suficiente para explorar ventanas horarias. No necesitas un sensor para hacer una resta de horas.
 
-Para lograr un descanso perfecto cada noche, te sugerimos implementar el siguiente protocolo integrado de 4 herramientas disponibles en nuestra plataforma:
+### Quiero observar tendencias durante semanas
 
-> **Flujo Integrado de Optimización del Descanso:**
-> * **[Paso 1: Test de Cronotipo]** ──► Determina si eres León, Oso, Lobo o Delfín.
-> * **[Paso 2: Calculadora de Cafeína]** ──► Establece tu hora límite para tomar café.
-> * **[Paso 3: Calculadora de Sueño]** ──► Sincroniza tu alarma a bloques de 90 minutos.
-> * **[Paso 4: Diario de Sueño]** ──► Registra tu eficiencia y nivel de energía.
+Un diario de sueño, una app o un wearable puede ser más útil porque permite comparar días. Puedes empezar con el [diario de sueño](/diario-sueno).
 
-1. **Determina tu perfil biológico:** Realiza el **[test de cronotipo](/calculadora-horas-de-sueno)** para conocer tus ventanas naturales de máxima melatonina.
-2. **Controla el consumo de estimulantes:** Utiliza la **[calculadora de cafeína](/)** para garantizar que tu nivel de cafeína residual a la hora de acostarte sea inferior a 25 mg.
-3. **Planifica tus ciclos ultradianos:** Ingresa tu hora fijada en la **[calculadora de sueño](/)** para ajustar tu despertador a bloques de 90 minutos.
-4. **Analiza tus resultados:** Revisa tus anotaciones semanales en la sección de **[comparativa de calculadoras de sueño](/app-calculadora-de-sueno)** y en nuestro **[diario de sueño](/diario-sueno)**.
+### Quiero saber si tengo apnea o un trastorno del sueño
 
----
+Ninguna comparativa de apps debería sustituir una evaluación sanitaria. Si existen pausas respiratorias, somnolencia peligrosa, insomnio persistente u otros síntomas relevantes, corresponde hablar con un profesional.
 
-## 6. Preguntas Frecuentes (FAQ)
+## Preguntas frecuentes
 
-### ¿Por qué la calculadora web es más rápida que una app tradicional?
-Nuestra plataforma [xn--calculadoradesueo-uxb.org](https://xn--calculadoradesueo-uxb.org/) está desarrollada sobre una arquitectura progresiva de alta velocidad que procesa las fórmulas matemáticas directamente en el cliente. No requiere realizar peticiones lentas a servidores ni cargar elementos de rastreo publicitario.
+### ¿Una app que despierta en “fase ligera” sabe exactamente en qué fase estoy?
 
-### ¿Una calculadora de ciclos de sueño funciona igual si duermo con pareja?
-Sí. El cálculo matemático de los 90 minutos se aplica a la fisiología individual de cada ser humano. Sin embargo, si tu pareja se mueve con frecuencia durante la noche, esto podría provocar microdespertares no conscientes en tu Fase N2. En esos casos, usar una calculadora ajustada a la misma hora de acostarse ayuda a sincronizar las fases de ambos.
+No necesariamente. La respuesta depende de qué sensores utilice y de cómo valide su algoritmo. La fase real del sueño se clasifica clínicamente con señales que una simple calculadora web no recoge.
 
-### ¿Dónde puedo leer más sobre comparativas de aplicaciones móviles de descanso?
-Puedes consultar nuestro análisis detallado de plataformas en la sección [Análisis de Apps de Sueño](https://xn--calculadoradesueo-uxb.org/app-calculadora-de-sueno), donde desglosamos pros, contras y precios de alternativas como Sleep Cycle, Pillow, Calm y Adidas Runtastic.
+### ¿Un wearable es siempre mejor que una calculadora web?
 
----
+No. Es más complejo y recoge más señales, pero si tu único objetivo es reservar 8 horas para dormir, una herramienta sencilla puede ser suficiente.
 
-## 7. Referencias Científicas y Enlaces Externos
-* Sleep Research Society: *Actigraphy and Digital Sleep Tracking Standards*. Disponible en [SleepResearchSociety.org](https://www.sleepresearchsociety.org).
-* National Institutes of Health (NIH): *Polysomnography and Sleep Stage Classification*. Disponible en [NCBI PubMed](https://www.ncbi.nlm.nih.gov).
-* Sleep Foundation: *Sleep App Technology and Accuracy Reviews*. Disponible en [SleepFoundation.org](https://www.sleepfoundation.org).
+### ¿Por qué esta web permite cambiar la duración del ciclo?
+
+Porque el ciclo no es un bloque universal de 90 minutos. El intervalo de 80–100 minutos descrito por el NHLBI justifica mostrar el supuesto y permitir ajustarlo.
+
+## Fuentes principales
+
+* [NHLBI / NIH — Fases y etapas del sueño](https://www.nhlbi.nih.gov/es/salud/sueno/estadios-del-sueno): fases, ciclos y medición mediante estudios de sueño.
+* [NHLBI — Your Sleep/Wake Cycle](https://www.nhlbi.nih.gov/health/sleep/sleep-wake-cycle): ritmo circadiano y factores que influyen en sueño/vigilia.
+* [Metodología y política editorial](/metodologia/): criterios del sitio para herramientas, fuentes y correcciones.
 `
   }
 ];
-
