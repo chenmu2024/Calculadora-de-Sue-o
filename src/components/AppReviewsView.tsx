@@ -18,10 +18,10 @@ export const AppReviewsView: React.FC = () => {
   });
 
   const [voteCounts, setVoteCounts] = useState<VoteState>({
-    'sleep-cycle': 1420,
-    'adidas-runtastic': 890,
-    'pillow': 750,
-    'calm': 1120
+    'sleep-cycle': 0,
+    'adidas-runtastic': 0,
+    'pillow': 0,
+    'calm': 0
   });
 
   const handleVote = (appId: string) => {
@@ -59,7 +59,7 @@ export const AppReviewsView: React.FC = () => {
           Las Mejores Opciones de Calculadora de Sueño App
         </h1>
         <p className="text-slate-300 text-base leading-relaxed">
-          Analizamos las aplicaciones móviles más destacadas para monitorizar tus ciclos de sueño, incluyendo la historia de la famosa <strong className="text-white font-semibold">calculadora de sueño Adidas (Runtastic)</strong> y sus alternativas actuales.
+          Comparamos tipos de aplicaciones y herramientas para registrar o planificar el sueño, incluyendo la historia de <strong className="text-white font-semibold">Runtastic Sleep Better</strong>. Las puntuaciones mostradas son una valoración editorial interna, no promedios de App Store o Google Play.
         </p>
       </div>
 
@@ -133,9 +133,12 @@ export const AppReviewsView: React.FC = () => {
                     <h3 className="text-xl font-bold text-white">{app.name}</h3>
                   </div>
 
-                  <div className="flex items-center gap-1 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-xl text-amber-300 font-bold text-sm shrink-0">
+                  <div
+                    className="flex items-center gap-1 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-xl text-amber-300 font-bold text-sm shrink-0"
+                    title="Valoración editorial interna, no puntuación de una tienda de aplicaciones"
+                  >
                     <Star className="w-4 h-4 fill-amber-300 text-amber-300" />
-                    <span>{app.score}</span>
+                    <span>{app.score}/5 editorial</span>
                   </div>
                 </div>
 
