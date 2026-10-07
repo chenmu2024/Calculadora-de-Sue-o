@@ -221,7 +221,6 @@ notFoundHtml = notFoundHtml.replace(
 );
 fs.writeFileSync(path.join(distPath, '404.html'), notFoundHtml);
 
-const today = new Date().toISOString().slice(0, 10);
 const sitemapItems = [
   ...CORE_ROUTES.map((route) => ({
     path: route.path,
@@ -239,7 +238,6 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapItems.map((item) => `  <url>
     <loc>${SITE_URL}${item.path === '/' ? '' : item.path}</loc>
-    <lastmod>${today}</lastmod>
     <changefreq>${item.changefreq}</changefreq>
     <priority>${item.priority.toFixed(2)}</priority>
   </url>`).join('\n')}
