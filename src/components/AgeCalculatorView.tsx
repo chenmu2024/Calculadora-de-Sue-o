@@ -341,7 +341,7 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
               <div className="font-bold text-sm flex items-center gap-1.5">
                 <span>🌅 Alondra Mañanera</span>
               </div>
-              <div className="text-xs opacity-80 mt-1">Pico de energía a las 8 AM. Acostarse temprano (~9:30 PM).</div>
+              <div className="text-xs opacity-80 mt-1">Preferencia por actividad y sueño más tempranos.</div>
             </button>
 
             <button
@@ -353,7 +353,7 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
               <div className="font-bold text-sm flex items-center gap-1.5">
                 <span>🐻 Intermedio (Oso)</span>
               </div>
-              <div className="text-xs opacity-80 mt-1">Sincronizado con el sol. Acostarse ~11:00 PM, despertar ~7:00 AM.</div>
+              <div className="text-xs opacity-80 mt-1">Preferencia intermedia, sin un desplazamiento marcado hacia mañana o noche.</div>
             </button>
 
             <button
@@ -365,7 +365,7 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
               <div className="font-bold text-sm flex items-center gap-1.5">
                 <span>🦉 Búho Nocturno</span>
               </div>
-              <div className="text-xs opacity-80 mt-1">Mayor creatividad a las 9 PM. Acostarse tarde (~12:30 AM).</div>
+              <div className="text-xs opacity-80 mt-1">Preferencia por actividad y sueño más tardíos.</div>
             </button>
           </div>
 
@@ -373,7 +373,7 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
           <div className="bg-gradient-to-r from-indigo-950/90 to-slate-900 border border-indigo-500/40 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
             <div>
               <div className="text-xs text-indigo-300 font-bold mb-1">
-                Horario Sugerido para {selectedGroup.name} ({chronotype === 'lark' ? 'Alondra' : chronotype === 'owl' ? 'Búho' : 'Estándar'}):
+                Ejemplo de horario para {selectedGroup.name} ({chronotype === 'lark' ? 'Alondra' : chronotype === 'owl' ? 'Búho' : 'Estándar'}):
               </div>
               <div className="flex items-center gap-3 text-white font-extrabold text-lg sm:text-xl">
                 <span className="text-indigo-300">🌙 Acostarse: {schedule.bedStr}</span>
@@ -381,7 +381,7 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
                 <span className="text-emerald-300">☀️ Despertar: {schedule.wakeStr}</span>
               </div>
               <div className="text-[11px] text-slate-400 mt-1">
-                Total descanso: <strong className="text-white">{schedule.avgHours.toFixed(1)} Horas</strong> ({Math.round((schedule.avgHours / 1.5) * 10) / 10} Ciclos)
+                Duración usada para el ejemplo: <strong className="text-white">{schedule.avgHours.toFixed(1)} horas</strong>
               </div>
             </div>
 
@@ -390,7 +390,7 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
                 href={getGoogleCalendarUrl(
                   `Alarma Recomendada (${selectedGroup.name})`,
                   schedule.wake24,
-                  `Recordatorio de despertar biológico para ${selectedGroup.name}`
+                  `Recordatorio de despertar para ${selectedGroup.name}`
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -462,8 +462,8 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
               const wakeDate = new Date();
               wakeDate.setHours(h || 7, m || 0, 0, 0);
 
-              // Calculate 3 bedtime options: Optimal (Max Hours), Standard (Min Hours), Minimum (-1.5h)
-              const latencyMin = 15; // 15 mins to fall asleep
+              // Three examples that stay inside the general recommended range.
+              const latencyMin = 15; // configurable planning assumption
 
               const calcBedObj = (hoursNeeded: number) => {
                 const bDate = new Date(wakeDate.getTime() - (hoursNeeded * 60 + latencyMin) * 60 * 1000);
@@ -472,20 +472,21 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
                 return { time12, time24 };
               };
 
+              const midHours = (adjustedMin + adjustedMax) / 2;
               const bedOpt = calcBedObj(adjustedMax);
-              const bedStd = calcBedObj(adjustedMin);
-              const bedMin = calcBedObj(Math.max(4, adjustedMin - 1.5));
+              const bedStd = calcBedObj(midHours);
+              const bedMin = calcBedObj(adjustedMin);
 
               return (
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                   <div className="bg-slate-950 p-3.5 rounded-xl border border-emerald-500/30 flex flex-col justify-between space-y-2">
                     <div>
                       <div className="text-emerald-400 font-bold mb-1 flex items-center justify-between">
-                        <span>🌟 Descanso Óptimo</span>
+                        <span>Extremo superior del rango</span>
                         <span className="text-[10px] bg-emerald-950 text-emerald-300 px-1.5 py-0.5 rounded">{adjustedMax.toFixed(1)}h</span>
                       </div>
                       <div className="text-lg font-black text-white">{bedOpt.time12}</div>
-                      <div className="text-[10px] text-slate-400 mt-1">Ir a la cama a esta hora garantiza la máxima regeneración celular.</div>
+                      <div className="text-[10px] text-slate-400 mt-1">Ejemplo calculado usando el extremo superior del rango general de horas.</div>
                     </div>
                     {onSyncToMainCalculator && (
                       <button
@@ -505,11 +506,11 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
                   <div className="bg-slate-950 p-3.5 rounded-xl border border-indigo-500/30 flex flex-col justify-between space-y-2">
                     <div>
                       <div className="text-indigo-300 font-bold mb-1 flex items-center justify-between">
-                        <span>✅ Descanso Estándar</span>
-                        <span className="text-[10px] bg-indigo-950 text-indigo-300 px-1.5 py-0.5 rounded">{adjustedMin.toFixed(1)}h</span>
+                        <span>Punto medio del rango</span>
+                        <span className="text-[10px] bg-indigo-950 text-indigo-300 px-1.5 py-0.5 rounded">{midHours.toFixed(1)}h</span>
                       </div>
                       <div className="text-lg font-black text-white">{bedStd.time12}</div>
-                      <div className="text-[10px] text-slate-400 mt-1">Cumple el volumen mínimo recomendado para el rendimiento diario.</div>
+                      <div className="text-[10px] text-slate-400 mt-1">Ejemplo calculado usando el punto medio del rango general.</div>
                     </div>
                     {onSyncToMainCalculator && (
                       <button
@@ -529,11 +530,11 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
                   <div className="bg-slate-950 p-3.5 rounded-xl border border-amber-500/30 flex flex-col justify-between space-y-2">
                     <div>
                       <div className="text-amber-300 font-bold mb-1 flex items-center justify-between">
-                        <span>⚠️ Descanso Mínimo</span>
-                        <span className="text-[10px] bg-amber-950 text-amber-300 px-1.5 py-0.5 rounded">{(adjustedMin - 1.5).toFixed(1)}h</span>
+                        <span>Extremo inferior del rango</span>
+                        <span className="text-[10px] bg-amber-950 text-amber-300 px-1.5 py-0.5 rounded">{adjustedMin.toFixed(1)}h</span>
                       </div>
                       <div className="text-lg font-black text-white">{bedMin.time12}</div>
-                      <div className="text-[10px] text-slate-400 mt-1">Límite mínimo ocasional para evitar inercia del sueño intensa.</div>
+                      <div className="text-[10px] text-slate-400 mt-1">Ejemplo calculado usando el extremo inferior del rango recomendado para la edad.</div>
                     </div>
                     {onSyncToMainCalculator && (
                       <button
@@ -570,7 +571,6 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
                 <th className="py-3 px-3">Etapa Vital</th>
                 <th className="py-3 px-3">Rango de Edad</th>
                 <th className="py-3 px-3">Horas Recomendadas</th>
-                <th className="py-3 px-3">Ciclos Ultradianos</th>
                 <th className="py-3 px-3">Función Biológica Principal</th>
               </tr>
             </thead>
@@ -580,7 +580,6 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
                   <td className="py-3 px-3 font-bold">{g.name}</td>
                   <td className="py-3 px-3">{g.ageRange}</td>
                   <td className="py-3 px-3 text-amber-300 font-bold">{g.recHoursMin} - {g.recHoursMax} hrs</td>
-                  <td className="py-3 px-3">{g.recCyclesMin} - {g.recCyclesMax} ciclos</td>
                   <td className="py-3 px-3 text-slate-400 text-[11px]">{g.description.substring(0, 90)}...</td>
                 </tr>
               ))}
