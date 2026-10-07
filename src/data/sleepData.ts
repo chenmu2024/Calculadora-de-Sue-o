@@ -354,7 +354,7 @@ A continuación se desglosan los escenarios recomendados para un adulto que nece
 | **4 Ciclos** | 6 Horas (360 min) | 15 min | **12:45 AM** | **Mínimo Aceptable:** Funcional para emergencias puntuales, no sostenible a largo plazo. |
 | **3 Ciclos** | 4.5 Horas (270 min) | 15 min | **2:15 AM** | **Riesgo Severo:** Produce privación aguda de descanso y declive en la velocidad de reacción. |
 
-Para automatizar este proceso en un segundo sin tener que realizar cálculos matemáticos manuales cada noche, utiliza nuestra [calculadora de ciclos de sueño](#home). El algoritmo calcula instantáneamente las ventanas exactas según si eliges tu hora de despertar o tu hora de acostarte.
+Para automatizar este proceso en un segundo sin tener que realizar cálculos matemáticos manuales cada noche, utiliza nuestra [calculadora de ciclos de sueño](/). El algoritmo calcula instantáneamente las ventanas exactas según si eliges tu hora de despertar o tu hora de acostarte.
 
 ---
 
@@ -368,7 +368,7 @@ Si tu alarma suena mientras te encuentras en el fondo de la **Fase N3 (Sueño Pr
 > * Reducción de hasta un 40% en la velocidad de procesamiento cognitivo durante los primeros 30 a 60 minutos del día.
 > * Irritabilidad y deseo compulsivo de posponer la alarma (snooze).
 
-Al ajustar tus hábitos mediante un **[calculador de ciclos de sueño](#home)**, coordinas la alarma para que resuene durante la ventana de transición al final de la Fase REM o inicio de N1. En esta fase, los niveles de cortisol matutino comiencen a elevarse naturalmente y el cuerpo está fisiológicamente listo para despertar con lucidez.
+Al ajustar tus hábitos mediante un **[calculador de ciclos de sueño](/)**, coordinas la alarma para que resuene durante la ventana de transición al final de la Fase REM o inicio de N1. En esta fase, los niveles de cortisol matutino comiencen a elevarse naturalmente y el cuerpo está fisiológicamente listo para despertar con lucidez.
 
 ---
 
@@ -377,7 +377,7 @@ Al ajustar tus hábitos mediante un **[calculador de ciclos de sueño](#home)**,
 Es fundamental comprender que los 90 minutos son un valor promedio poblacional. Diversos factores cotidianos pueden alargar o acortar la duración de tus ciclos individuales:
 
 ### A. La Sombra de la Cafeína y los Receptores de Adenosina
-La cafeína es un antagonista competitivo de la adenosina. Al ocupar los receptores A1 y A2A en el cerebro, impide que la presión homeostática de sueño envíe la señal de fatiga. Teniendo una vida media de aproximadamente **5.7 horas**, consumir un café a las 5:00 PM significa que a las 10:42 PM mantendrás el 50% de la sustancia activa en tu torrente sanguíneo, fragmentando la Fase N3. Puedes evaluar tu nivel residual usando nuestra **[calculadora de cafeína](#home)**.
+La cafeína es un antagonista competitivo de la adenosina. Al ocupar los receptores A1 y A2A en el cerebro, impide que la presión homeostática de sueño envíe la señal de fatiga. Teniendo una vida media de aproximadamente **5.7 horas**, consumir un café a las 5:00 PM significa que a las 10:42 PM mantendrás el 50% de la sustancia activa en tu torrente sanguíneo, fragmentando la Fase N3. Puedes evaluar tu nivel residual usando nuestra **[calculadora de cafeína](/)**.
 
 ### B. Impacto del Alcohol en la Arquitectura del Sueño
 Aunque el etanol tiene efectos sedantes iniciales que reducen la latencia de entrada al descanso, induce una alteración metabólica severa en la segunda mitad de la noche:
@@ -396,9 +396,9 @@ Para maximizar la eficacia de la **calculadora de ciclos de sueño**, sigue este
 
 1. **Fija una Hora de Despertar Invariable:** Despiértate a la misma hora exacta los 7 días de la semana (incluidos sábados y domingos). Esto ancla el núcleo supraquiasmático.
 2. **Exposición a la Luz Solar Matutina:** Recibe de 10 a 15 minutos de luz solar directa en los primeros 30 minutos tras levantarte para suprimir la melatonina residual y activar el cortisol saludable.
-3. **Calcula tu Hora de Acostarte:** Ingresa tu hora de despertar fija en la **[calculadora de sueño online](#home)** y elige la opción de 5 o 6 ciclos.
+3. **Calcula tu Hora de Acostarte:** Ingresa tu hora de despertar fija en la **[calculadora de sueño online](/)** y elige la opción de 5 o 6 ciclos.
 4. **Crea una Ventana de Desconexión de 60 Minutos:** Apaga dispositivos electrónicos 1 hora antes de la hora sugerida y reduce la iluminación de tu hogar a tonos cálidos.
-5. **Registra tus Sensaciones en un Diario:** Utiliza nuestro **[diario de sueño digital](#diario-sueno)** para anotar si te despiertas de forma natural antes de la alarma o si experimentas fatiga, ajustando la latencia en la herramienta.
+5. **Registra tus Sensaciones en un Diario:** Utiliza nuestro **[diario de sueño digital](/diario-sueno)** para anotar si te despiertas de forma natural antes de la alarma o si experimentas fatiga, ajustando la latencia en la herramienta.
 
 ---
 
@@ -411,7 +411,7 @@ Desde el punto de vista de la arquitectura circadiana, **7.5 horas es significat
 Si te despiertas de forma natural 10 o 15 minutos antes de que suene tu despertador, **debes levantarte inmediatamente**. Tu cerebro ha completado un ciclo ultradiano de forma perfecta. Si vuelves a dormirte, iniciarás un nuevo ciclo que la alarma cortará a los pocos minutos, dejándote más cansado que antes.
 
 ### ¿Los niños tienen los mismos ciclos de 90 minutos que los adultos?
-No. Los bebés y niños pequeños poseen ciclos ultradianos más cortos, de aproximadamente **50 a 60 minutos**. A medida que el sistema nervioso central se desarrolla durante la infancia, la duración del ciclo se expande gradualmente hasta estabilizarse en los 90 minutos del adulto hacia la adolescencia. Puedes consultar los requerimientos por rango de edad en nuestra sección para **[calcular horas de sueño por edad](#calculadora-horas-de-sueno)**.
+No. Los bebés y niños pequeños poseen ciclos ultradianos más cortos, de aproximadamente **50 a 60 minutos**. A medida que el sistema nervioso central se desarrolla durante la infancia, la duración del ciclo se expande gradualmente hasta estabilizarse en los 90 minutos del adulto hacia la adolescencia. Puedes consultar los requerimientos por rango de edad en nuestra sección para **[calcular horas de sueño por edad](/calculadora-horas-de-sueno)**.
 
 ---
 
@@ -463,7 +463,7 @@ A continuación se presenta el desglose clínico elaborado por consensos de la [
 | **Adultos (18-64 años)** | 7 a 9 horas | 5 - 6 ciclos | Mantenimiento metabólico, depuración glinfática y equilibrio emocional. |
 | **Adultos mayores (65+ años)** | 7 a 8 horas | 4.5 - 5.5 ciclos | Conservación cognitiva y prevención del estrés oxidativo. |
 
-Para obtener una recomendación adaptada a tu perfil en segundos, visita nuestro módulo interactivo de la **[calculadora de horas de sueño](#calculadora-horas-de-sueno)**.
+Para obtener una recomendación adaptada a tu perfil en segundos, visita nuestro módulo interactivo de la **[calculadora de horas de sueño](/calculadora-horas-de-sueno)**.
 
 ---
 
@@ -496,12 +496,9 @@ Si tu requerimiento genético es de 8 horas por noche y durante 5 días laborabl
 
 ### Impacto Sistémico de la Deuda de Sueño Crónica
 
-Estudios publicados por el [National Center for Biotechnology Information (NCBI)](https://www.ncbi.nlm.nih.gov) demuestran que mantener una deuda de sueño superior a 5 horas semanales desencadena consecuencias severas:
+Dormir menos de lo necesario de forma habitual se asocia con peores resultados de salud y rendimiento. La [American Academy of Sleep Medicine](https://www.aasm.org/resources/pdf/adultsleepdurationconsensus.pdf) recomienda que los adultos duerman **7 o más horas por noche de forma regular**. Dormir menos de 7 horas de manera habitual se asocia, entre otros efectos, con peor rendimiento, más errores y mayor riesgo de problemas cardiometabólicos.
 
-1. **Alteración Hormonal y Aumento de Peso:** Disminución de los niveles de **leptina** (hormona de la saciedad) e incremento de la **ghrelina** (hormona del apetito), aumentando en un 45% la preferencia por carbohidratos refinados.
-2. **Resistencia a la Insulina:** Reducción de la tolerancia a la glucosa similar a estados prediabéticos tras solo una semana de restricción de sueño a 5 horas.
-3. **Inmunodesregulación:** Reducción del 70% en la actividad de las células *Natural Killer* (NK), aumentando la vulnerabilidad a infecciones virales.
-4. **Deterioro Cognitivo Equivalente a la Embriaguez:** Estar despierto durante 18 horas continuas produce un deterioro de la velocidad de reacción equivalente a una concentración de alcohol en sangre del 0.05%.
+La respuesta individual varía y una calculadora web no puede diagnosticar las consecuencias de la falta de sueño. Si la somnolencia diurna es intensa, persistente o afecta a actividades como conducir, conviene consultar a un profesional sanitario.
 
 ---
 
@@ -512,35 +509,32 @@ Un error masivo consiste en intentar reparar 10 horas de deuda durmiendo 14 hora
 Para saldar la deuda de forma segura y efectiva, aplica las siguientes pautas médicas:
 
 * **Estrategia de Extensión Progresiva:** Añade entre **30 y 60 minutos adicionales de sueño** cada noche durante 1 o 2 semanas consecutivas hasta eliminar los síntomas de cansancio matutino.
-* **Siestas de Potencia (Power Naps) de 20 Minutos:** Realiza una siesta entre la 1:00 PM y las 3:00 PM con una duración estricta de 20 minutos. Esto permite limpiar la adenosina del Proceso S sin entrar en Fase N3 profunda, evitando la inercia del sueño. Puedes calcular la duración de tus siestas en nuestra herramienta **[calculadora de siestas](#siestas)**.
+* **Siestas de Potencia (Power Naps) de 20 Minutos:** Realiza una siesta entre la 1:00 PM y las 3:00 PM con una duración estricta de 20 minutos. Esto permite limpiar la adenosina del Proceso S sin entrar en Fase N3 profunda, evitando la inercia del sueño. Puedes calcular la duración de tus siestas en nuestra herramienta **[calculadora de siestas](/siestas)**.
 * **Consistencia del Fin de Semana:** No desvíes tu hora de despertar habitual en más de 60 minutos durante los fines de semana.
 
 ---
 
-## 5. La Influencia de los Cronotipos: ¿Eres León, Oso, Lobo o Delfín?
+## 5. Cronotipo y Preferencias Horarias
 
-El Dr. Michael Breus y la investigación en cronobiología clasifican a los seres humanos en cuatro **cronotipos principales** determinados por variaciones en el gen PER3:
+El **cronotipo** describe la tendencia de una persona a sentirse más activa y dormir más temprano o más tarde. Existen cuestionarios científicos que estudian preferencias matutinas y vespertinas, mientras que modelos populares como “león, oso, lobo y delfín” son marcos divulgativos y **no constituyen una clasificación clínica ni están determinados por un único gen**.
 
-1. **Cronotipo León (Madrugadores natos, ~15% de la población):** Despiertan con energía a las 5:00-6:00 AM y alcanzan su pico de productividad por la mañana. Necesitan acostarse temprano (9:30-10:00 PM).
-2. **Cronotipo Oso (Sincronizados con el sol, ~55% de la población):** Su ritmo sigue la luz solar. Rinden al máximo a media mañana y necesitan estrictamente entre 7.5 y 8 horas de sueño.
-3. **Cronotipo Lobo (Nocturnos / Búhos, ~15% de la población):** Tienen dificultades para despertar temprano. Su pico de creatividad surge a partir de las 6:00 PM. Requieren ajustar sus ciclos a horarios más tardíos.
-4. **Cronotipo Delfín (Sueño ligero / Insomne, ~15% de la población):** Presentan fragmentación del sueño y alta sensibilidad a estímulos. Prosperan con rutinas de relajación estrictas.
+Nuestro test utiliza ese modelo únicamente como una forma sencilla de reflexionar sobre hábitos y preferencias horarias. No identifica una variante genética ni diagnostica un trastorno circadiano.
 
-Descubre cuál es tu perfil genético realizando nuestro **[test de cronotipo](#calculadora-horas-de-sueno)** en 2 minutos.
+Descubre tu perfil orientativo con nuestro **[test de cronotipo](/)** y usa el resultado como punto de partida para observar tus propios horarios.
 
 ---
 
 ## 6. Preguntas Frecuentes sobre el Cálculo de Horas de Sueño (FAQ)
 
 ### ¿Puedo entrenar a mi cuerpo para necesitar solo 4 o 5 horas de sueño?
-No. Menos del **1% de la población mundial** posee la mutación genética rara en el gen DEC2 que permite funcionar sin déficit cognitivo con solo 5 horas de descanso. Intentar forzar esta reducción sin poseer dicha mutación causa daño neurodegenerativo acumulativo.
+No es una meta recomendable para la mayoría de las personas. Se han descrito variantes genéticas raras asociadas con una necesidad de sueño más corta, pero no existe una prueba casera que permita asumir que una persona puede funcionar de forma saludable con 4 o 5 horas. Para adultos, la recomendación general es dormir **7 o más horas por noche de forma regular**.
 
 ### ¿Contar las horas en la cama es lo mismo que contar horas de sueño?
 No. Existe una métrica clínica llamada **Eficiencia del Sueño**:
 
 **Eficiencia del Sueño (%) = (Tiempo Total Dormido / Tiempo Total en Cama) × 100**
 
-Una eficiencia del **85% o superior** se considera saludable. Pasar 9 horas en la cama pero permanecer despierto 2 horas por insomnio resulta en solo 7 horas de sueño real. Puedes registrar tu eficiencia en nuestro **[diario de sueño](#diario-sueno)**.
+Una eficiencia del **85% o superior** se considera saludable. Pasar 9 horas en la cama pero permanecer despierto 2 horas por insomnio resulta en solo 7 horas de sueño real. Puedes registrar tu eficiencia en nuestro **[diario de sueño](/diario-sueno)**.
 
 ### ¿Las calculadoras de horas de sueño sirven para personas que trabajan en turnos de noche?
 Sí. Los trabajadores nocturnos o en turnos rotativos deben aplicar la regla de los 90 minutos a su ventana de descanso diurno, utilizando persianas 100% opacas, antifaz y tapones para simular la oscuridad nocturna y proteger la secreción de melatonina.
@@ -578,7 +572,7 @@ Historicamente, la evaluación del descanso se ha basado en tres grandes pilares
 > **Pilares Tecnológicos de Medición:**
 > 1. **Polisomnografía (PSG):** Estándar de oro clínico en laboratorio hospitalario.
 > 2. **Actigrafía y Sensórica:** Acelerómetros, micrófonos y PPG (Sleep Cycle, Smartwatches).
-> 3. **Calculadoras Web Algorítmicas:** Basadas en modelos poblacionales como nuestra **[calculadora de sueño](#home)**.
+> 3. **Calculadoras Web Algorítmicas:** Basadas en modelos poblacionales como nuestra **[calculadora de sueño](/)**.
 
 1. **Polisomnografía (PSG):** Monitorea ondas cerebrales (EEG), movimientos oculares (EOG), tono muscular (EMG) y saturación de oxígeno (SpO2). Es el método de diagnóstico de referencia para trastornos como la apnea del sueño.
 2. **Actigrafía y Sensores en Dispositivos Móviles:** Miden los movimientos corporales en la cama mediante acelerómetros triaxiales y analizan patrones sonoros de respiración.
@@ -601,7 +595,7 @@ Con el paso del tiempo, las grandes aplicaciones móviles sufrieron transformaci
 * **Consumo Intensivo de Batería:** Mantener la aplicación en primer plano con el micrófono y acelerómetro activos durante toda la noche degradaba la salud de la batería del smartphone.
 * **Preocupaciones de Privacidad de Datos:** La recolección de archivos de audio nocturnos y datos de geolocalización generó recelo entre los usuarios.
 
-Esto impulsó el surgimiento de plataformas web directas y respetuosas de la privacidad como nuestra **[calculadora de sueño](#home)**, que brindan resultados inmediatos en 1 segundo, son 100% gratuitas y no requieren instalar software ni ceder datos personales.
+Esto impulsó el surgimiento de plataformas web directas y respetuosas de la privacidad como nuestra **[calculadora de sueño](/)**, que brindan resultados inmediatos en 1 segundo, son 100% gratuitas y no requieren instalar software ni ceder datos personales.
 
 ---
 
@@ -613,16 +607,16 @@ Para seleccionar la mejor **calculadora de sueño app** o herramienta online seg
 | :--- | :--- | :--- | :--- |
 | **Costo** | **100% Gratis sin publicidad invasiva** | Freemium (10€ - 40€/año) | Elevado (200€ - 500€ de hardware) |
 | **Instalación** | **Ninguna (Acceso directo web)** | Requiere descarga de App Store / Play Store | Requiere hardware dedicado |
-| **Privacidad** | **Máxima (Cero recolección de audio/datos)** | Media (Almacena audios y patrones) | Variable (Sincronización en la nube) |
-| **Consumo de Batería** | **0% durante la noche** | 15% - 30% por noche | Batería del propio reloj |
-| **Precisión de Fases** | Estimación algorítmica perfecta para planificación | Estimación basada en movimiento/sonido | Estimación basada en Variabilidad de Frecuencia Cardíaca (HRV) |
+| **Privacidad** | Los cálculos principales se realizan localmente; las cookies de terceros dependen del consentimiento | Depende de cada app y de sus permisos | Variable según fabricante y sincronización |
+| **Consumo de Batería** | No necesita permanecer midiendo durante la noche | Depende del uso de sensores y del dispositivo | Consume la batería del wearable |
+| **Precisión de Fases** | No mide fases; solo estima horarios | Estimación basada en movimiento/sonido | Estimación basada en sensores fisiológicos; no equivale a polisomnografía |
 | **Uso Ideal** | **Planificar alarmas diarias y evitar la inercia del sueño** | Analizar ronquidos u obstrucciones sonoras | Atletas que requieren métricas de carga fisiológica |
 
 ---
 
 ## 4. La Ciencia de la Variabilidad de la Frecuencia Cardíaca (HRV) en la Monitorización
 
-En la tecnología de vanguardia, el indicador biométrico más sólido para evaluar la calidad del sueño es la **Variabilidad de la Frecuencia Cardíaca (HRV - Heart Rate Variability)**.
+La **Variabilidad de la Frecuencia Cardíaca (HRV - Heart Rate Variability)** es una de las señales fisiológicas que algunos wearables combinan con movimiento y otros sensores para estimar recuperación y sueño. Por sí sola no identifica con precisión las fases del sueño.
 
 La HRV mide las variaciones microsecundarias en el intervalo entre latido y latido (intervalos R-R):
 * **HRV Alta (Predominio Parasimpático):** Indica que el sistema nervioso autónomo está en estado de restauración y relajación profunda (típico de la Fase N3).
@@ -642,10 +636,10 @@ Para lograr un descanso perfecto cada noche, te sugerimos implementar el siguien
 > * **[Paso 3: Calculadora de Sueño]** ──► Sincroniza tu alarma a bloques de 90 minutos.
 > * **[Paso 4: Diario de Sueño]** ──► Registra tu eficiencia y nivel de energía.
 
-1. **Determina tu perfil biológico:** Realiza el **[test de cronotipo](#calculadora-horas-de-sueno)** para conocer tus ventanas naturales de máxima melatonina.
-2. **Controla el consumo de estimulantes:** Utiliza la **[calculadora de cafeína](#home)** para garantizar que tu nivel de cafeína residual a la hora de acostarte sea inferior a 25 mg.
-3. **Planifica tus ciclos ultradianos:** Ingresa tu hora fijada en la **[calculadora de sueño](#home)** para ajustar tu despertador a bloques de 90 minutos.
-4. **Analiza tus resultados:** Revisa tus anotaciones semanales en la sección de **[comparativa de calculadoras de sueño](#app-reviews)** y en nuestro **[diario de sueño](#diario-sueno)**.
+1. **Determina tu perfil biológico:** Realiza el **[test de cronotipo](/calculadora-horas-de-sueno)** para conocer tus ventanas naturales de máxima melatonina.
+2. **Controla el consumo de estimulantes:** Utiliza la **[calculadora de cafeína](/)** para garantizar que tu nivel de cafeína residual a la hora de acostarte sea inferior a 25 mg.
+3. **Planifica tus ciclos ultradianos:** Ingresa tu hora fijada en la **[calculadora de sueño](/)** para ajustar tu despertador a bloques de 90 minutos.
+4. **Analiza tus resultados:** Revisa tus anotaciones semanales en la sección de **[comparativa de calculadoras de sueño](/app-calculadora-de-sueno)** y en nuestro **[diario de sueño](/diario-sueno)**.
 
 ---
 
