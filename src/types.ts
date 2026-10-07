@@ -5,7 +5,6 @@ export interface SleepCycleResult {
   time24: string; // "06:30"
   cycles: number; // e.g. 5 or 6
   cycleLengthMinutes?: number; // e.g. 90, 85, 95
-  vitalityScore?: number; // e.g. 100, 95, 75, 50, 30
   totalMinutes: number; // e.g. 465 (7h 45m including 15m latency)
   hours: number; // e.g. 7.5
   hoursFormatted: string; // "7h 30m"
