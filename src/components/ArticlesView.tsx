@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BookOpen, Calendar, Clock, ArrowLeft, Share2, Tag, ChevronRight, Check, Play, Pause, RotateCcw, Volume2, Sparkles, Video, ShieldCheck, User, Search, MessageCircle, ExternalLink } from 'lucide-react';
 import { ARTICLES } from '../data/sleepData';
 import { Article } from '../types';
-import { SITE_NAME, SITE_URL } from '../config/siteConfig';
+import { SEO_BY_TAB, SITE_NAME, SITE_URL } from '../config/siteConfig';
 
 const getArticleSlugFromPath = (): string | null => {
   if (typeof window === 'undefined') return null;
@@ -30,9 +30,23 @@ export const ArticlesView: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (!selectedArticle) return;
+    const robots = document.querySelector('meta[name="robots"]');
+
+    if (!selectedArticle) {
+      const blogSeo = SEO_BY_TAB.blog;
+      const blogUrl = `${SITE_URL}/blog`;
+      document.title = blogSeo.title;
+      document.querySelector('meta[name="description"]')?.setAttribute('content', blogSeo.desc);
+      document.querySelector('link[rel="canonical"]')?.setAttribute('href', blogUrl);
+      document.querySelector('meta[property="og:title"]')?.setAttribute('content', blogSeo.title);
+      document.querySelector('meta[property="og:description"]')?.setAttribute('content', blogSeo.desc);
+      document.querySelector('meta[property="og:url"]')?.setAttribute('content', blogUrl);
+      robots?.setAttribute('content', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
+      return;
+    }
 
     const canonicalUrl = `${SITE_URL}/blog/${selectedArticle.slug}`;
+    robots?.setAttribute('content', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
     document.title = selectedArticle.title;
 
     let metaDesc = document.querySelector('meta[name="description"]');
