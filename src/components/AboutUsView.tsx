@@ -18,7 +18,7 @@ export const AboutUsView: React.FC<AboutUsViewProps> = ({ setCurrentTab }) => {
           Sobre Nosotros - Calculadora de Sueño
         </h1>
         <p className="text-slate-300 text-base leading-relaxed">
-          Somos la plataforma de divulgación científica y herramientas de cronobiología de acceso libre referente en español, dedicada a ayudarte a dormir mejor y despertar con energía.
+          Somos un proyecto independiente de herramientas y divulgación sobre el sueño en español, creado para facilitar cálculos orientativos y explicar sus límites con fuentes verificables.
         </p>
       </div>
 
@@ -37,7 +37,7 @@ export const AboutUsView: React.FC<AboutUsViewProps> = ({ setCurrentTab }) => {
         </div>
 
         <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-          En <strong>xn--calculadoradesueo-uxb.org</strong>, creemos que un descanso reparador no debería ser un lujo ni depender de costosas suscripciones. Naciese con el objetivo de proporcionar a millones de hispanohablantes algoritmos precisos basados en la regla de los 90 minutos de ultradián, la escala de somnolencia de Epworth y los principios de la Terapia Cognitivo-Conductual para el Insomnio (TCC-I).
+          En <strong>xn--calculadoradesueo-uxb.org</strong>, creemos que un descanso reparador no debería ser un lujo ni depender de costosas suscripciones. Naciese con el objetivo de proporcionar a millones de hispanohablantes herramientas orientativas basadas en rangos de duración del sueño, latencia configurable y principios generales de higiene del sueño. Ninguna calculadora sustituye una evaluación clínica.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
@@ -47,13 +47,13 @@ export const AboutUsView: React.FC<AboutUsViewProps> = ({ setCurrentTab }) => {
           </div>
 
           <div className="bg-slate-900/90 p-4 rounded-2xl border border-slate-800 space-y-1">
-            <span className="text-2xl font-black text-indigo-300 block">Privacidad 0% Data</span>
+            <span className="text-2xl font-black text-indigo-300 block">Privacidad Local</span>
             <span className="text-xs text-slate-300 font-medium">Cálculos 100% locales en tu propio navegador.</span>
           </div>
 
           <div className="bg-slate-900/90 p-4 rounded-2xl border border-slate-800 space-y-1">
-            <span className="text-2xl font-black text-amber-300 block">E-E-A-T Rigor</span>
-            <span className="text-xs text-slate-300 font-medium">Contenidos revisados bajo guías AASM y NSF.</span>
+            <span className="text-2xl font-black text-amber-300 block">Fuentes Verificables</span>
+            <span className="text-xs text-slate-300 font-medium">Priorizamos referencias primarias y organizaciones reconocidas, enlazadas cuando corresponde.</span>
           </div>
         </div>
       </div>
@@ -108,50 +108,32 @@ export const AboutUsView: React.FC<AboutUsViewProps> = ({ setCurrentTab }) => {
         </div>
       </div>
 
-      {/* Medical Editorial Team & EEAT Doctor Credentials Card */}
+      {/* Editorial transparency */}
       <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-indigo-600/30 border border-indigo-500/40 flex items-center justify-center text-amber-300">
             <Users className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider block">Dirección Médica & E-E-A-T</span>
+            <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider block">Transparencia Editorial</span>
             <h2 className="text-xl font-bold text-white">
-              Comité Científico y Revisión Clínica
+              Cómo Elaboramos y Revisamos el Contenido
             </h2>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-indigo-950 border-2 border-indigo-500/50 flex items-center justify-center text-indigo-300 font-bold text-lg">
-                MF
-              </div>
-              <div>
-                <h3 className="font-bold text-white text-sm">Dra. Marta Fernández</h3>
-                <span className="text-xs text-indigo-300 font-semibold block">Especialista en Neurofisiología y Medicina del Sueño</span>
-                <span className="text-[10px] text-slate-500 font-mono">Colegiada Nº 282809112</span>
-              </div>
-            </div>
+            <h3 className="font-bold text-white text-sm">Fuentes y límites</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Supervisa la precisión algorítmica de los ciclos de 90 minutos, latencia de sueño y las directrices de higiene circadiana según la American Academy of Sleep Medicine (AASM).
+              Las guías enlazan organizaciones y publicaciones que el lector puede consultar. Evitamos presentar una estimación matemática como diagnóstico o medición clínica del sueño.
             </p>
           </div>
 
           <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-indigo-950 border-2 border-emerald-500/50 flex items-center justify-center text-emerald-300 font-bold text-lg">
-                CR
-              </div>
-              <div>
-                <h3 className="font-bold text-white text-sm">Dr. Carlos Ruiz</h3>
-                <span className="text-xs text-emerald-300 font-semibold block">Especialista en Psicología Clínica y TCC-I</span>
-                <span className="text-[10px] text-slate-500 font-mono">Colegiado Nº 28391004</span>
-              </div>
-            </div>
+            <h3 className="font-bold text-white text-sm">Correcciones y actualización</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Desarrollador de los protocolos de cálculo del Diario de Sueño TCC-I y la técnica de restricción del tiempo en cama para el manejo del insomnio.
+              Si una recomendación, enlace o herramienta queda desactualizada, puede notificarse desde la página de contacto. Corregimos afirmaciones cuando la evidencia o las guías cambian.
             </p>
           </div>
         </div>
