@@ -46,9 +46,13 @@ jobs:
           test -f dist/blog/como-calcular-mi-ciclo-de-sueno/index.html
           test -f dist/blog/como-calcular-las-horas-de-sueno/index.html
           test -f dist/blog/guia-ciclo-de-sueno-calculadora/index.html
+          test -f dist/metodologia/index.html
 
           grep -q 'data-prerender="true"' dist/index.html
           grep -q 'rel="canonical" href="https://xn--calculadoradesueo-uxb.org/blog/como-calcular-mi-ciclo-de-sueno"' dist/blog/como-calcular-mi-ciclo-de-sueno/index.html
           grep -q 'meta name="robots" content="noindex, follow"' dist/404.html
           grep -q 'https://xn--calculadoradesueo-uxb.org/blog/como-calcular-mi-ciclo-de-sueno' dist/sitemap.xml
           grep -q 'https://xn--calculadoradesueo-uxb.org/calculadora-horas-de-sueno' dist/sitemap.xml
+          grep -q 'https://xn--calculadoradesueo-uxb.org/metodologia/' dist/sitemap.xml
+          grep -q 'datePublished' dist/blog/como-calcular-mi-ciclo-de-sueno/index.html
+          grep -q 'Respuesta directa' dist/index.html
