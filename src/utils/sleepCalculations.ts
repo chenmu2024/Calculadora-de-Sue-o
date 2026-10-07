@@ -63,17 +63,17 @@ export function calculateSleepTimes(
       badgeText = `5 Ciclos (${hoursTotal}h - Opción Habitual)`;
       description = 'Una ventana de 7,5 horas puede encajar en el rango de sueño recomendado para muchos adultos. El final de un ciclo es solo una estimación.';
     } else if (cycles === 4) {
-      qualityTag = 'good';
-      badgeText = `4 Ciclos (${hoursTotal}h - Mínimo Aceptable)`;
-      description = 'Adecuado para días de ritmo acelerado. No se recomienda mantener menos de 5 ciclos de forma prolongada.';
-    } else if (cycles === 3) {
       qualityTag = 'minimum';
-      badgeText = `3 Ciclos (${hoursTotal}h - Ligero)`;
-      description = 'Solo para emergencias u horarios reducidos. Experimentarás cansancio vespertino.';
+      badgeText = `4 Ciclos (${hoursTotal}h - Sueño Corto)`;
+      description = 'Seis horas está por debajo de la recomendación habitual de al menos 7 horas para adultos. No debe presentarse como una meta de sueño regular.';
+    } else if (cycles === 3) {
+      qualityTag = 'short';
+      badgeText = `3 Ciclos (${hoursTotal}h - Insuficiente)`;
+      description = 'Cuatro horas y media de sueño es insuficiente para la mayoría de los adultos y no es una recomendación de esta herramienta.';
     } else {
       qualityTag = 'short';
-      badgeText = `2 Ciclos (${hoursTotal}h - Insuficiente)`;
-      description = 'Corta duración. Posible déficit acumulado e inercia de sueño.';
+      badgeText = `2 Ciclos (${hoursTotal}h - Muy Insuficiente)`;
+      description = 'Tres horas de sueño es una duración muy corta y no es una recomendación de esta herramienta.';
     }
 
     results.push({
