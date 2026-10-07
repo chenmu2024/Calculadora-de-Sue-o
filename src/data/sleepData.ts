@@ -14,14 +14,25 @@ export const AGE_GROUPS: AgeGroupConfig[] = [
   },
   {
     id: 'toddler',
-    name: 'Niños pequeños (1-5 años)',
-    ageRange: '1 a 5 años',
-    recHoursMin: 10,
+    name: 'Niños pequeños (1-2 años)',
+    ageRange: '1 a 2 años',
+    recHoursMin: 11,
     recHoursMax: 14,
     recCyclesMin: 7,
     recCyclesMax: 9,
-    description: 'Período vital de crecimiento físico y hormona Somatotropina que se libera principalmente en fases de sueño profundo (Fase N3).',
-    tips: ['Evitar pantallas 2 horas antes de dormir', 'Cuentos y luz cálida', 'Cenar ligero 1.5h antes']
+    description: 'En esta etapa el sueño total incluye el descanso nocturno y las siestas. Mantener rutinas regulares ayuda a consolidar hábitos de sueño.',
+    tips: ['Mantener una rutina tranquila antes de dormir', 'Reducir estímulos intensos al final del día', 'Consultar al pediatra si hay problemas persistentes de sueño']
+  },
+  {
+    id: 'preschool',
+    name: 'Preescolares (3-5 años)',
+    ageRange: '3 a 5 años',
+    recHoursMin: 10,
+    recHoursMax: 13,
+    recCyclesMin: 6,
+    recCyclesMax: 8,
+    description: 'Las necesidades de sueño siguen siendo altas y pueden incluir siesta según el niño. La regularidad de horarios suele ser más útil que perseguir un número exacto de ciclos.',
+    tips: ['Mantener horarios consistentes', 'Crear una rutina relajante antes de dormir', 'Evitar pantallas justo antes de acostarse']
   },
   {
     id: 'child',
@@ -53,8 +64,8 @@ export const AGE_GROUPS: AgeGroupConfig[] = [
     recHoursMax: 9,
     recCyclesMin: 5,
     recCyclesMax: 6,
-    description: 'El estándar de oro fisiológico: 5 a 6 ciclos completos de 90 minutos garantizan óptimo rendimiento físico y cognitivo.',
-    tips: ['Temperatura ideal 18°C-21°C', 'Cero cafeína 8 horas antes de dormir', 'Consistencia en hora de despertar']
+    description: 'Para adultos, la referencia general es dormir al menos 7 horas de forma regular. La duración exacta que necesita cada persona puede variar.',
+    tips: ['Mantener una habitación cómoda y oscura', 'Evitar cafeína cerca de la hora de dormir si afecta al descanso', 'Mantener una hora de despertar relativamente consistente']
   },
   {
     id: 'senior',
@@ -65,7 +76,7 @@ export const AGE_GROUPS: AgeGroupConfig[] = [
     recCyclesMin: 4.5,
     recCyclesMax: 5.5,
     description: 'El patrón de sueño se fragmenta de forma natural, pero la necesidad metabólica de descanso reparación sigue siendo de 7-8 horas.',
-    tips: ['Siestas diurnas de no más de 20 minutos', 'Mantener actividad física matutina o vespertina suave']
+    tips: ['Si las siestas dificultan el sueño nocturno, revisar su duración y horario', 'Mantener actividad física adecuada a la condición de cada persona']
   }
 ];
 
