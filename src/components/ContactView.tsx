@@ -24,16 +24,14 @@ export const ContactView: React.FC<ContactViewProps> = ({ setCurrentTab }) => {
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      // Store mock lead locally
-      try {
-        const saved = JSON.parse(localStorage.getItem('contact_submissions') || '[]');
-        saved.push({ ...formData, date: new Date().toISOString() });
-        localStorage.setItem('contact_submissions', JSON.stringify(saved));
-      } catch (e) {}
-    }, 800);
+    const subject = encodeURIComponent(`[${formData.subject}] Mensaje de ${formData.name}`);
+    const body = encodeURIComponent(
+      `Nombre: ${formData.name}\nCorreo de respuesta: ${formData.email}\n\n${formData.message}`
+    );
+
+    window.location.href = `mailto:contacto@xn--calculadoradesueo-uxb.org?subject=${subject}&body=${body}`;
+    setIsSubmitting(false);
+    setSubmitted(true);
   };
 
   return (
@@ -84,19 +82,8 @@ export const ContactView: React.FC<ContactViewProps> = ({ setCurrentTab }) => {
               </div>
 
               <div className="space-y-1 pt-2 border-t border-slate-800">
-                <span className="text-slate-400 font-semibold flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5 text-amber-300" />
-                  Tiempo de Respuesta:
-                </span>
-                <p className="text-slate-300">Respondemos a todas las consultas en menos de 24 a 48 horas laborables.</p>
-              </div>
-
-              <div className="space-y-1 pt-2 border-t border-slate-800">
-                <span className="text-slate-400 font-semibold flex items-center gap-1">
-                  <MapPin className="w-3.5 h-3.5 text-sky-400" />
-                  Sede y Cobertura:
-                </span>
-                <p className="text-slate-300">Madrid, España | Servicio Digital Global en Español.</p>
+                <span className="text-slate-400 font-semibold block">Cómo funciona el formulario:</span>
+                <p className="text-slate-300">El botón abre tu aplicación de correo con el mensaje preparado. El sitio no almacena el contenido del formulario ni afirma haberlo enviado por sí mismo.</p>
               </div>
             </div>
           </div>
@@ -136,9 +123,9 @@ export const ContactView: React.FC<ContactViewProps> = ({ setCurrentTab }) => {
               <div className="w-12 h-12 rounded-full bg-emerald-600/30 border border-emerald-500 flex items-center justify-center mx-auto text-emerald-300">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-white">¡Mensaje Enviado con Éxito!</h3>
+              <h3 className="text-lg font-bold text-white">Borrador de correo preparado</h3>
               <p className="text-xs text-emerald-200 leading-relaxed max-w-md mx-auto">
-                Hemos recibido tu solicitud correctamente. Nuestro equipo revisará tu mensaje y te responderá al correo <strong>{formData.email}</strong> a la brevedad.
+                Se ha intentado abrir tu aplicación de correo con el mensaje preparado. Comprueba el borrador y pulsa enviar desde tu proveedor de correo. Si no se abrió, escribe directamente a contacto@xn--calculadoradesueo-uxb.org.
               </p>
               <button
                 onClick={() => {
@@ -147,7 +134,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ setCurrentTab }) => {
                 }}
                 className="mt-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white border border-slate-700 transition-colors"
               >
-                Enviar Otro Mensaje
+                Preparar Otro Mensaje
               </button>
             </div>
           ) : (
