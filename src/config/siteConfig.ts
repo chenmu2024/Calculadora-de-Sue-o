@@ -10,7 +10,6 @@ export type SiteTab =
   | 'blog'
   | 'sounds'
   | 'about'
-  | 'methodology'
   | 'contact'
   | 'privacy'
   | 'terms';
@@ -173,27 +172,6 @@ export const CORE_ROUTES: SiteRouteConfig[] = [
     directAnswer: 'Calculadora de Sueño es un proyecto web independiente en español. Su propósito es ayudar a planificar horarios y comprender conceptos básicos del descanso mediante herramientas transparentes, no ofrecer diagnóstico médico.',
     changefreq: 'monthly',
     priority: 0.6
-  },
-  {
-    tab: 'methodology',
-    path: '/metodologia',
-    title: 'Metodología, Fuentes y Política Editorial | Calculadora de Sueño',
-    desc: 'Cómo funcionan los cálculos, qué fuentes usamos, cómo corregimos errores y cuáles son los límites editoriales y médicos del sitio.',
-    h1: 'Metodología, Fuentes y Política Editorial',
-    intro: 'Explicamos de forma pública cómo se calculan los horarios, qué supuestos usa cada herramienta, cómo seleccionamos fuentes y cómo gestionamos correcciones.',
-    directAnswer: 'Los cálculos del sitio son modelos de planificación basados en entradas del usuario y supuestos explícitos; no miden fisiología real. Las afirmaciones médicas o de salud se revisan contra fuentes primarias o consensos reconocidos y se corrigen cuando la evidencia cambia.',
-    keyFacts: [
-      '90 minutos es un valor inicial configurable; NHLBI describe ciclos de aproximadamente 80–100 minutos.',
-      'No publicamos credenciales médicas, estadísticas, reseñas o resultados que no podamos verificar.',
-      'El contenido puede usar automatización como apoyo editorial, pero las afirmaciones sensibles deben quedar respaldadas por fuentes visibles.'
-    ],
-    sourceLinks: [
-      { label: 'NHLBI: fases del sueño', href: NHLBI_STAGES },
-      { label: 'AASM: adultos', href: AASM_ADULT },
-      { label: 'AASM: pediatría', href: AASM_CHILD }
-    ],
-    changefreq: 'monthly',
-    priority: 0.55
   },
   {
     tab: 'contact',
