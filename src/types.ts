@@ -57,6 +57,8 @@ export interface Article {
   metaDescription: string;
   h1: string;
   date: string;
+  datePublished: string;
+  dateModified: string;
   readTime: string;
   category: string;
   targetKeywords: string[];
