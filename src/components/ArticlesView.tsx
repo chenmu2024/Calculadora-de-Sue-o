@@ -2,9 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { BookOpen, Calendar, Clock, ArrowLeft, Share2, Tag, ChevronRight, Check, Play, Pause, RotateCcw, Volume2, Sparkles, Video, ShieldCheck, User, Search, MessageCircle, ExternalLink } from 'lucide-react';
 import { ARTICLES } from '../data/sleepData';
 import { Article } from '../types';
+import { SITE_NAME, SITE_URL } from '../config/siteConfig';
+
+const getArticleSlugFromPath = (): string | null => {
+  if (typeof window === 'undefined') return null;
+  const match = window.location.pathname.match(/^\/blog\/([^/]+)\/?$/);
+  return match ? decodeURIComponent(match[1]) : null;
+};
 
 export const ArticlesView: React.FC = () => {
-  const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
+  const [selectedSlug, setSelectedSlug] = useState<string | null>(getArticleSlugFromPath);
   const [shareCopied, setShareCopied] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('Todas');
@@ -15,50 +22,74 @@ export const ArticlesView: React.FC = () => {
 
   const selectedArticle = ARTICLES.find((a) => a.slug === selectedSlug);
 
-  // Inject Article JSON-LD for Google Rich Results when reading an article
+  // Keep article URLs, metadata and structured data aligned with the visible article.
   useEffect(() => {
-    if (selectedArticle) {
-      const articleSchema = {
-        '@context': 'https://schema.org',
-        '@type': 'Article',
-        'headline': selectedArticle.h1,
-        'description': selectedArticle.summary,
-        'image': 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=1200&auto=format&fit=crop',
-        'datePublished': '2026-01-15T08:00:00+00:00',
-        'dateModified': '2026-07-23T08:00:00+00:00',
-        'author': {
-          '@type': 'Organization',
-          'name': 'Equipo de Cronobiología de Calculadora de Sueño España',
-          'url': 'https://xn--calculadoradesueo-uxb.org/sobre-nosotros'
-        },
-        'publisher': {
-          '@type': 'Organization',
-          'name': 'Calculadora de Sueño',
-          'url': 'https://xn--calculadoradesueo-uxb.org/',
-          'logo': {
-            '@type': 'ImageObject',
-            'url': 'https://xn--calculadoradesueo-uxb.org/logo.png'
-          }
-        },
-        'mainEntityOfPage': {
-          '@type': 'WebPage',
-          '@id': `https://xn--calculadoradesueo-uxb.org/blog?article=${selectedArticle.slug}`
-        }
-      };
+    const syncFromUrl = () => setSelectedSlug(getArticleSlugFromPath());
+    window.addEventListener('popstate', syncFromUrl);
+    return () => window.removeEventListener('popstate', syncFromUrl);
+  }, []);
 
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.id = 'article-json-ld';
-      script.text = JSON.stringify(articleSchema);
-      document.head.appendChild(script);
+  useEffect(() => {
+    if (!selectedArticle) return;
 
-      return () => {
-        const existing = document.getElementById('article-json-ld');
-        if (existing) {
-          document.head.removeChild(existing);
-        }
-      };
+    const canonicalUrl = `${SITE_URL}/blog/${selectedArticle.slug}`;
+    document.title = selectedArticle.title;
+
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
     }
+    metaDesc.setAttribute('content', selectedArticle.metaDescription);
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', canonicalUrl);
+
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', selectedArticle.title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', selectedArticle.metaDescription);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl);
+
+    document.getElementById('prerender-jsonld')?.remove();
+    document.getElementById('article-json-ld')?.remove();
+
+    const articleSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: selectedArticle.h1,
+      description: selectedArticle.metaDescription,
+      mainEntityOfPage: canonicalUrl,
+      inLanguage: 'es',
+      author: {
+        '@type': 'Organization',
+        name: SITE_NAME,
+        url: SITE_URL
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: SITE_NAME,
+        url: SITE_URL,
+        logo: {
+          '@type': 'ImageObject',
+          url: `${SITE_URL}/android-chrome-512x512.png`
+        }
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'article-json-ld';
+    script.text = JSON.stringify(articleSchema);
+    document.head.appendChild(script);
+
+    return () => {
+      document.getElementById('article-json-ld')?.remove();
+    };
   }, [selectedArticle]);
 
   useEffect(() => {
@@ -257,25 +288,11 @@ export const ArticlesView: React.FC = () => {
 
     return (
       <article className="max-w-4xl mx-auto py-8 space-y-8">
-        {/* SERP Schema VideoObject for Google SERP feature */}
-        {isCycleArticle && (
-          <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "VideoObject",
-              "name": "Cómo calcular tu ciclo de sueño en 60 segundos",
-              "description": "Aprende el método científico exacto de los 90 minutos y 15 minutos de latencia para despertar fresco y sin inercia del sueño.",
-              "thumbnailUrl": "https://xn--calculadoradesueo-uxb.org/og-video-thumbnail.jpg",
-              "uploadDate": "2026-01-15T08:00:00+00:00",
-              "duration": "PT1M",
-              "contentUrl": "https://xn--calculadoradesueo-uxb.org/video-ciclo-sueno-60s.mp4",
-              "embedUrl": "https://xn--calculadoradesueo-uxb.org/blog"
-            })}
-          </script>
-        )}
-
         <button
-          onClick={() => setSelectedSlug(null)}
+          onClick={() => {
+            setSelectedSlug(null);
+            window.history.pushState(null, '', '/blog');
+          }}
           className="inline-flex items-center gap-2 text-xs font-bold text-indigo-400 hover:text-indigo-300 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -297,7 +314,7 @@ export const ArticlesView: React.FC = () => {
             </span>
             <span className="flex items-center gap-1 text-emerald-400 font-bold bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-800">
               <ShieldCheck className="w-3.5 h-3.5" />
-              Revisión Médica
+              Fuentes revisadas
             </span>
           </div>
 
@@ -307,22 +324,18 @@ export const ArticlesView: React.FC = () => {
 
           <div className="flex items-center gap-2 text-xs text-slate-400">
             <User className="w-4 h-4 text-indigo-400" />
-            <span>Escrito por: <strong className="text-slate-200">Dra. M. Fernández (Cronobiología)</strong></span>
+            <span>Publicado por: <strong className="text-slate-200">Equipo editorial de Calculadora de Sueño</strong></span>
           </div>
 
-          {/* Medical Review E-E-A-T Card */}
-          <div className="bg-slate-950/80 border border-emerald-500/30 rounded-2xl p-3.5 flex flex-col sm:flex-row items-start sm:items-center gap-3 text-xs text-slate-300">
-            <div className="flex items-center gap-2.5 shrink-0">
-              <div className="p-2 bg-emerald-950 rounded-xl border border-emerald-800 text-emerald-300">
-                <ShieldCheck className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="font-bold text-white text-xs">Revisado Médicamente</div>
-                <div className="text-slate-400 text-[11px]">Dra. Elena Gómez (Col. 282868120)</div>
-              </div>
+          <div className="bg-slate-950/80 border border-emerald-500/30 rounded-2xl p-3.5 flex items-start gap-3 text-xs text-slate-300">
+            <div className="p-2 bg-emerald-950 rounded-xl border border-emerald-800 text-emerald-300 shrink-0">
+              <ShieldCheck className="w-5 h-5" />
             </div>
-            <div className="sm:border-l sm:border-slate-800 sm:pl-3 text-slate-400 text-[11px]">
-              Verificado con los consensos de la <strong>Sociedad Española del Sueño (SES)</strong> y guías clínicas <strong>AASM 2026</strong>.
+            <div>
+              <div className="font-bold text-white text-xs">Transparencia editorial</div>
+              <div className="text-slate-400 text-[11px] leading-relaxed">
+                Contenido divulgativo basado en las fuentes enlazadas. No constituye diagnóstico, tratamiento ni asesoramiento médico individual.
+              </div>
             </div>
           </div>
 
@@ -368,11 +381,11 @@ export const ArticlesView: React.FC = () => {
               <div className="flex items-center gap-2">
                 <Video className="w-5 h-5 text-amber-300" />
                 <h2 className="text-lg font-black text-white">
-                  Vídeo Tutorial (60s): Cómo calcular tu ciclo de sueño
+                  Tutorial interactivo (60s): Cómo estimar un horario de sueño
                 </h2>
               </div>
               <span className="text-xs font-bold text-amber-300 bg-amber-950 px-2.5 py-0.5 rounded border border-amber-800">
-                SERP Video Module
+                Guía interactiva
               </span>
             </div>
 
@@ -419,7 +432,7 @@ export const ArticlesView: React.FC = () => {
                   className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-md"
                 >
                   {isVideoPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-                  <span>{isVideoPlaying ? 'Pausar Vídeo' : 'Reproducir Vídeo (60s)'}</span>
+                  <span>{isVideoPlaying ? 'Pausar guía' : 'Iniciar guía (60s)'}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -447,8 +460,8 @@ export const ArticlesView: React.FC = () => {
             </div>
             <button
               onClick={() => {
-                window.location.hash = '#home';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.history.pushState(null, '', '/');
+                window.dispatchEvent(new PopStateEvent('popstate'));
               }}
               className="whitespace-nowrap px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-sm shadow-lg shadow-indigo-600/30 transition-all flex items-center gap-2"
             >
@@ -472,7 +485,7 @@ export const ArticlesView: React.FC = () => {
     );
   }
 
-  const categories = ['Todas', 'Ciencia del Sueño', 'Insomnio & TCC-I', 'Hábitos & Cafeína', 'Fisiología'];
+  const categories = ['Todas', 'Ciencia del Sueño', 'Insomnio & TCC-I', 'Hábitos & Cafeína', 'Fisiología', 'Tecnología e Innovación'];
 
   const filteredArticles = ARTICLES.filter((art) => {
     const matchesCategory = selectedCategory === 'Todas' || art.category.toLowerCase().includes(selectedCategory.toLowerCase());
@@ -553,7 +566,11 @@ export const ArticlesView: React.FC = () => {
           {filteredArticles.map((art) => (
             <div
               key={art.slug}
-              onClick={() => setSelectedSlug(art.slug)}
+              onClick={() => {
+                setSelectedSlug(art.slug);
+                window.history.pushState(null, '', `/blog/${art.slug}`);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl flex flex-col justify-between cursor-pointer hover:border-indigo-500/50 hover:bg-slate-850 transition-all group"
             >
               <div>
