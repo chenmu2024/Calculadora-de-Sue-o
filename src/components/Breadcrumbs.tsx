@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ChevronRight, Home } from 'lucide-react';
 
 interface BreadcrumbsProps {
@@ -11,8 +11,14 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ currentTab, setCurrent
     switch (currentTab) {
       case 'home':
         return { category: 'Calculadoras', name: 'Calculadora Principal de Sueño' };
+      case 'age-calculator':
+        return { category: 'Calculadoras', name: 'Horas de Sueño por Edad' };
+      case 'nap':
+        return { category: 'Calculadoras', name: 'Calculadora de Siestas' };
+      case 'app-reviews':
+        return { category: 'Comparativas', name: 'Apps y Herramientas de Sueño' };
       case 'chronotype':
-        return { category: 'Diagnóstico', name: 'Test de Cronotipo (León, Oso, Lobo, Delfín)' };
+        return { category: 'Herramientas', name: 'Test de Cronotipo Orientativo' };
       case 'caffeine':
         return { category: 'Herramientas', name: 'Calculadora de Cafeína y Melatonina' };
       case 'diary':
@@ -36,62 +42,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ currentTab, setCurrent
 
   const info = getTabInfo();
 
-  useEffect(() => {
-    const tabPaths: Record<string, string> = {
-      home: '/',
-      'age-calculator': '/calculadora-horas-de-sueno',
-      nap: '/siestas',
-      diary: '/diario-sueno',
-      'app-reviews': '/app-calculadora-de-sueno',
-      blog: '/blog',
-      sounds: '/sonidos',
-      about: '/sobre-nosotros',
-      contact: '/contacto',
-      privacy: '/politica-privacidad',
-      terms: '/terminos-de-uso'
-    };
-    const currentPath = tabPaths[currentTab] || '/';
-    const baseUrl = 'https://xn--calculadoradesueo-uxb.org';
-    const itemUrl = currentPath === '/' ? `${baseUrl}/` : `${baseUrl}${currentPath}`;
 
-    const breadcrumbSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      'itemListElement': [
-        {
-          '@type': 'ListItem',
-          'position': 1,
-          'name': 'Inicio',
-          'item': `${baseUrl}/`
-        },
-        {
-          '@type': 'ListItem',
-          'position': 2,
-          'name': info.category,
-          'item': itemUrl
-        },
-        {
-          '@type': 'ListItem',
-          'position': 3,
-          'name': info.name,
-          'item': itemUrl
-        }
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.id = 'breadcrumbs-json-ld';
-    script.text = JSON.stringify(breadcrumbSchema);
-    document.head.appendChild(script);
-
-    return () => {
-      const existing = document.getElementById('breadcrumbs-json-ld');
-      if (existing) {
-        document.head.removeChild(existing);
-      }
-    };
-  }, [currentTab, info]);
 
   return (
     <nav aria-label="Navegación de migas de pan" className="mb-6 pt-2">
