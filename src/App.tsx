@@ -31,6 +31,7 @@ const NotFoundView = lazy(() => import('./components/NotFoundView').then(m => ({
 import { CookieConsentBanner } from './components/CookieConsentBanner';
 import { AdBannerSlot } from './components/AdBannerSlot';
 import { SleepCycleResult } from './types';
+import { SEO_BY_TAB, SITE_URL, SiteTab } from './config/siteConfig';
 
 const getTabFromUrl = (): string => {
   if (typeof window === 'undefined') return 'home';
@@ -58,7 +59,7 @@ const getTabFromUrl = (): string => {
   else if (pathname === '/app-calculadora-de-sueno') tab = 'app-reviews';
   else if (pathname === '/siestas') tab = 'nap';
   else if (pathname === '/diario-sueno') tab = 'diary';
-  else if (pathname === '/blog') tab = 'blog';
+  else if (pathname === '/blog' || pathname.startsWith('/blog/')) tab = 'blog';
   else if (pathname === '/sonidos') tab = 'sounds';
   else if (pathname === '/sobre-nosotros') tab = 'about';
   else if (pathname === '/contacto') tab = 'contact';
@@ -110,72 +111,26 @@ export default function App() {
     }
   }, [currentTab]);
 
-  // Dynamic Document Meta Engine (Title, Description, Canonical, OG, Path Routing & Schema)
+  // Dynamic metadata for client-side navigation. Article routes manage their own metadata.
   useEffect(() => {
-    const seoData: { [key: string]: { title: string; desc: string; path: string } } = {
-      home: {
-        title: 'Calculadora de Sueño | Ciclos de 90 Minutos',
-        desc: 'Calculadora de ciclos de sueño de 90 minutos. Descubre tu hora ideal para despertar con energía, calcula tu descanso y test de cronotipo.',
-        path: '/'
-      },
-      'age-calculator': {
-        title: 'Horas de Sueño por Edad - Calculadora Científica Recomendada',
-        desc: 'Descubre cuántas horas de sueño necesitas según tu edad con la tabla oficial de la National Sleep Foundation. Recomendaciones de 0 a 65+ años.',
-        path: '/calculadora-horas-de-sueno'
-      },
-      nap: {
-        title: 'Calculadora de Siestas y Power Naps - Evita la Inercia del Sueño',
-        desc: 'Calcula el tiempo ideal para tu siesta de 20 o 90 minutos. Evita despertar aturdido y recarga energía al máximo sin alterar tu sueño nocturno.',
-        path: '/siestas'
-      },
-      diary: {
-        title: 'Diario de Sueño TCC-I - Calcula tu Eficiencia de Sueño Real',
-        desc: 'Herramienta de Registro y Diario de Sueño para Terapia Cognitivo Conductual del Insomnio (TCC-I). Mide tu eficiencia de sueño y genera informes para médicos.',
-        path: '/diario-sueno'
-      },
-      'app-reviews': {
-        title: 'Las Mejores Apps de Sueño Comparativa - Adidas Runtastic y Alternativas',
-        desc: 'Análisis detallado y comparativa de las mejores aplicaciones para monitorizar el sueño en 2026: Adidas Runtastic Sleep Better, Sleep Cycle y calculadores online.',
-        path: '/app-calculadora-de-sueno'
-      },
-      blog: {
-        title: 'Guías de Higiene del Sueño y Cronobiología - Artículos Médicos',
-        desc: 'Artículos científicos sobre insomnio, apnea del sueño, ritmos circadianos, cafeína y cronotipo revisados por neurólogos y especialistas en medicina del sueño.',
-        path: '/blog'
-      },
-      sounds: {
-        title: 'Reproductor de Ruido Blanco, Rosa y Marrón para Dormir Mejor',
-        desc: 'Generador y reproductor de sonido relajante para inducir el sueño. Escucha ruido blanco, lluvia, olas del mar y ruido rosa sin anuncios.',
-        path: '/sonidos'
-      },
-      about: {
-        title: 'Sobre Nosotros - Misión y Rigor Científico | Calculadora de Sueño',
-        desc: 'Conoce al equipo de cronobiología y médicos especialistas detrás de CalculadoraDeSueño.es. Compromiso con la salud circadiana y la divulgación rigurosa.',
-        path: '/sobre-nosotros'
-      },
-      contact: {
-        title: 'Contacto y Soporte - Calculadora de Sueño España',
-        desc: 'Ponte en contacto con nuestro equipo médico y técnico para consultas, sugerencias de funcionalidades o reportes de usabilidad.',
-        path: '/contacto'
-      },
-      privacy: {
-        title: 'Política de Privacidad y Proteccion de Datos | xn--calculadoradesueo-uxb.org',
-        desc: 'Garantía de privacidad total. Todos tus datos del diario de sueño y cálculos se guardan 100% de forma local en tu dispositivo.',
-        path: '/politica-privacidad'
-      },
-      terms: {
-        title: 'Términos y Condiciones de Uso | xn--calculadoradesueo-uxb.org',
-        desc: 'Términos de servicio de la aplicación web Calculadora de Sueño. Información médica de carácter divulgativo e informativo.',
-        path: '/terminos-de-uso'
-      }
-    };
+    const pathname = window.location.pathname.replace(/\/$/, '') || '/';
+    const isArticleRoute = currentTab === 'blog' && pathname.startsWith('/blog/');
 
-    const currentSeo = seoData[currentTab] || seoData['home'];
+    // Article metadata is rendered statically at build time and updated by ArticlesView on client navigation.
+    if (isArticleRoute) return;
 
-    // Update Page Title
+    const robots = document.querySelector('meta[name="robots"]');
+    if (currentTab === '404') {
+      document.title = 'Página no encontrada | Calculadora de Sueño';
+      robots?.setAttribute('content', 'noindex, follow');
+      return;
+    }
+
+    robots?.setAttribute('content', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
+
+    const currentSeo = SEO_BY_TAB[currentTab as SiteTab] || SEO_BY_TAB.home;
     document.title = currentSeo.title;
 
-    // Update Meta Description
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
       metaDesc = document.createElement('meta');
@@ -184,78 +139,67 @@ export default function App() {
     }
     metaDesc.setAttribute('content', currentSeo.desc);
 
-    // Update OpenGraph Title & Description
-    let ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', currentSeo.title);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', currentSeo.title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', currentSeo.desc);
 
-    let ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute('content', currentSeo.desc);
+    const targetUrl = `${SITE_URL}${currentSeo.path === '/' ? '/' : currentSeo.path}`;
 
-    // Update Canonical & OG URL
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    const baseUrl = 'https://xn--calculadoradesueo-uxb.org';
-    const targetUrl = currentSeo.path === '/' ? `${baseUrl}/` : `${baseUrl}${currentSeo.path}`;
     canonical.setAttribute('href', targetUrl);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', targetUrl);
 
-    let ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) ogUrl.setAttribute('content', targetUrl);
+    document.querySelector('link[rel="alternate"][hreflang="es"]')?.setAttribute('href', targetUrl);
+    document.querySelector('link[rel="alternate"][hreflang="x-default"]')?.setAttribute('href', targetUrl);
 
-    // Clean Path Routing without #
-    const targetPath = currentSeo.path;
-    if (window.location.pathname !== targetPath) {
-      window.history.pushState(null, '', targetPath);
+    if (window.location.pathname !== currentSeo.path) {
+      window.history.pushState(null, '', currentSeo.path);
     }
 
-    // Scroll restoration (if no hash is present in URL)
-    if (!window.location.hash) {
-      window.scrollTo(0, 0);
-    }
+    if (!window.location.hash) window.scrollTo(0, 0);
 
-    // Dynamic Breadcrumb & WebPage Schema JSON-LD Injection for Google Rich Snippets
     const dynamicSchema = {
       '@context': 'https://schema.org',
       '@graph': [
         {
           '@type': 'BreadcrumbList',
-          'itemListElement': [
+          itemListElement: [
             {
               '@type': 'ListItem',
-              'position': 1,
-              'name': 'Inicio',
-              'item': `${baseUrl}/`
+              position: 1,
+              name: 'Inicio',
+              item: `${SITE_URL}/`
             },
-            ...(currentTab !== 'home' ? [
-              {
-                '@type': 'ListItem',
-                'position': 2,
-                'name': currentSeo.title.split('|')[0].trim(),
-                'item': targetUrl
-              }
-            ] : [])
+            ...(currentTab !== 'home'
+              ? [{
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: currentSeo.h1,
+                  item: targetUrl
+                }]
+              : [])
           ]
         },
         {
-          '@type': 'MedicalWebPage',
+          '@type': 'WebPage',
           '@id': targetUrl,
-          'url': targetUrl,
-          'name': currentSeo.title,
-          'description': currentSeo.desc,
-          'inLanguage': 'es-ES',
-          'reviewedBy': {
-            '@type': 'Person',
-            'name': 'Dra. Elena Gómez',
-            'jobTitle': 'Especialista en Neurofisiología Clínica y Medicina del Sueño',
-            'medicalSpecialty': 'SleepMedicine'
+          url: targetUrl,
+          name: currentSeo.title,
+          description: currentSeo.desc,
+          inLanguage: 'es',
+          isPartOf: {
+            '@type': 'WebSite',
+            name: 'Calculadora de Sueño',
+            url: `${SITE_URL}/`
           },
-          'publisher': {
+          publisher: {
             '@type': 'Organization',
-            'name': 'Calculadora de Sueño España',
-            'url': `${baseUrl}/`
+            name: 'Calculadora de Sueño',
+            url: `${SITE_URL}/`
           }
         }
       ]
@@ -269,7 +213,6 @@ export default function App() {
       document.head.appendChild(scriptTag);
     }
     scriptTag.textContent = JSON.stringify(dynamicSchema);
-
   }, [currentTab]);
 
   const handleSelectResultForVisualizer = (res: SleepCycleResult) => {
