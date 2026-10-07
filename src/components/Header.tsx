@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Clock, Smartphone, BookOpen, Volume2, HelpCircle, Menu, X, Zap, BookMarked, Compass, Coffee, Info, Mail, Globe } from 'lucide-react';
+import React, { useState } from 'react';
+import { Moon, Sun, Clock, Smartphone, BookOpen, Volume2, HelpCircle, Menu, X, Zap, BookMarked, Compass, Coffee, Info, Mail } from 'lucide-react';
 
 interface HeaderProps {
   currentTab: string;
@@ -15,27 +15,6 @@ export const Header: React.FC<HeaderProps> = ({
   setIsDarkMode
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [selectedRegion, setSelectedRegion] = useState('es-ES');
-  const [showRegionDropdown, setShowRegionDropdown] = useState(false);
-
-  useEffect(() => {
-    // Dynamically sync HTML lang attribute and head meta canonical/og:locale
-    document.documentElement.lang = selectedRegion.split('-')[0] || 'es';
-    
-    const ogLocaleMeta = document.querySelector('meta[property="og:locale"]');
-    if (ogLocaleMeta) {
-      ogLocaleMeta.setAttribute('content', selectedRegion.replace('-', '_'));
-    }
-  }, [selectedRegion]);
-
-  const regions = [
-    { code: 'es-ES', label: 'España (es-ES)', flag: '🇪🇸' },
-    { code: 'es-MX', label: 'México (es-MX)', flag: '🇲🇽' },
-    { code: 'es-AR', label: 'Argentina (es-AR)', flag: '🇦🇷' },
-    { code: 'es-CO', label: 'Colombia (es-CO)', flag: '🇨🇴' },
-    { code: 'es-US', label: 'EE.UU. (es-US)', flag: '🇺🇸' },
-  ];
-
   const navItems = [
     { id: 'home', label: 'Calculadora', icon: Clock },
     { id: 'age-calculator', label: 'Horas por Edad', icon: Clock },
@@ -73,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({
                 Calculadora de Sueño
               </span>
               <span className="hidden sm:block text-xs text-indigo-400 font-medium">
-                xn--calculadoradesueo-uxb.org
+                Herramientas de sueño en español
               </span>
             </div>
           </div>
@@ -125,44 +104,6 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Action Controls */}
           <div className="flex items-center gap-2">
-            {/* International Region Switcher */}
-            <div className="relative">
-              <button
-                id="btn-region-select"
-                onClick={() => setShowRegionDropdown(!showRegionDropdown)}
-                title="Seleccionar Región e Idioma (Hreflang)"
-                aria-label="Seleccionar Región de habla hispana"
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors"
-              >
-                <Globe className="w-3.5 h-3.5 text-indigo-400" />
-                <span>{regions.find(r => r.code === selectedRegion)?.flag || '🇪🇸'}</span>
-                <span className="hidden sm:inline">{selectedRegion.split('-')[1]}</span>
-              </button>
-
-              {showRegionDropdown && (
-                <div className="absolute right-0 mt-2 w-44 bg-slate-900 border border-slate-700 rounded-xl shadow-xl py-1 z-50 text-xs">
-                  <div className="px-3 py-1.5 text-[10px] font-bold text-indigo-400 uppercase tracking-wider border-b border-slate-800">
-                    Región (Google SEO)
-                  </div>
-                  {regions.map((reg) => (
-                    <button
-                      key={reg.code}
-                      onClick={() => {
-                        setSelectedRegion(reg.code);
-                        setShowRegionDropdown(false);
-                      }}
-                      className={`w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-slate-800 transition-colors ${
-                        selectedRegion === reg.code ? 'text-amber-300 font-bold bg-slate-800/50' : 'text-slate-300'
-                      }`}
-                    >
-                      <span>{reg.flag}</span>
-                      <span>{reg.label}</span>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
             {/* Dark / Light Toggle */}
             <button
               id="btn-theme-toggle"
