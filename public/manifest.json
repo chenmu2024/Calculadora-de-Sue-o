@@ -1,7 +1,7 @@
 {
-  "name": "Calculadora de Sueño - Ciclos y Cronobiología",
+  "name": "Calculadora de Sueño - Herramientas de Descanso",
   "short_name": "CalculadoraSueño",
-  "description": "Calculadora de ciclos de sueño de 90 minutos, test de cronotipo, metabolización de cafeína y diario TCC-I.",
+  "description": "Calculadora y herramientas informativas para estimar horarios de sueño, registrar hábitos y consultar guías sobre descanso.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",
