@@ -464,8 +464,6 @@ export const SleepCalculatorWidget: React.FC<SleepCalculatorWidgetProps> = ({
                   </span>
                 </div>
 
-                {
-
                 <p className="text-xs text-slate-300 leading-relaxed mb-4">
                   {res.description}
                 </p>
