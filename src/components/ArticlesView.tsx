@@ -74,10 +74,12 @@ export const ArticlesView: React.FC = () => {
 
     const articleSchema = {
       '@context': 'https://schema.org',
-      '@type': 'Article',
+      '@type': 'BlogPosting',
       headline: selectedArticle.h1,
       description: selectedArticle.metaDescription,
       mainEntityOfPage: canonicalUrl,
+      datePublished: selectedArticle.datePublished,
+      dateModified: selectedArticle.dateModified,
       inLanguage: 'es',
       author: {
         '@type': 'Organization',
