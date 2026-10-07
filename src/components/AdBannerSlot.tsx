@@ -14,11 +14,6 @@ export const AdBannerSlot: React.FC<AdBannerSlotProps> = ({
   adSlot,
   className = ''
 }) => {
-  // If no active AdSense ID or slot is provided, do not render any empty placeholder box
-  if (!adClient || !adSlot) {
-    return null;
-  }
-
   useEffect(() => {
     // Attempt to trigger Google AdSense script push if adClient is present
     if (adClient && adSlot && typeof window !== 'undefined') {
@@ -30,6 +25,11 @@ export const AdBannerSlot: React.FC<AdBannerSlotProps> = ({
       }
     }
   }, [adClient, adSlot]);
+
+  // Keep hook order stable even when ad configuration is added later.
+  if (!adClient || !adSlot) {
+    return null;
+  }
 
   // Dimension classes based on ad format
   const formatClasses = {
