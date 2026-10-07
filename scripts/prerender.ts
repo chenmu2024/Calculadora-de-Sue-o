@@ -139,12 +139,23 @@ function writeRoute(routePath: string, html: string) {
 
 for (const route of CORE_ROUTES) {
   const canonical = `${SITE_URL}${route.path === '/' ? '/' : route.path}`;
+  const sourceLinks = route.sourceLinks?.length
+    ? `<p><strong>Fuentes:</strong> ${route.sourceLinks.map((source) => `<a href="${source.href}">${escapeHtml(source.label)}</a>`).join(' · ')}</p>`
+    : '';
+  const keyFacts = route.keyFacts?.length
+    ? `<ul>${route.keyFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join('')}</ul>`
+    : '';
+  const answerBlock = route.directAnswer
+    ? `<section><h2>Respuesta directa</h2><p>${escapeHtml(route.directAnswer)}</p>${keyFacts}${sourceLinks}</section>`
+    : '';
+
   const body = `
     <nav aria-label="Breadcrumb"><a href="/">Inicio</a>${route.path !== '/' ? ` / <span>${escapeHtml(route.h1)}</span>` : ''}</nav>
     <article>
       <h1>${escapeHtml(route.h1)}</h1>
       <p>${escapeHtml(route.intro)}</p>
-      <p><a href="/">Calculadora de sueño</a> · <a href="/calculadora-horas-de-sueno">Horas por edad</a> · <a href="/siestas">Siestas</a> · <a href="/diario-sueno">Diario de sueño</a> · <a href="/blog">Guías</a></p>
+      ${answerBlock}
+      <p><a href="/">Calculadora de sueño</a> · <a href="/calculadora-horas-de-sueno">Horas por edad</a> · <a href="/siestas">Siestas</a> · <a href="/diario-sueno">Diario de sueño</a> · <a href="/blog">Guías</a> · <a href="/metodologia/">Metodología y fuentes</a></p>
     </article>`;
 
   const schema = {
@@ -179,10 +190,12 @@ for (const article of ARTICLES) {
 
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: article.h1,
     description: article.metaDescription,
     mainEntityOfPage: canonical,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified,
     inLanguage: 'es',
     author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     publisher: {
@@ -231,7 +244,12 @@ const sitemapItems = [
     path: `/blog/${article.slug}`,
     priority: 0.8,
     changefreq: 'monthly' as const
-  }))
+  })),
+  {
+    path: '/metodologia/',
+    priority: 0.55,
+    changefreq: 'monthly' as const
+  }
 ];
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
