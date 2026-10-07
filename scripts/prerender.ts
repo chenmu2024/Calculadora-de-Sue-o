@@ -196,6 +196,31 @@ for (const article of ARTICLES) {
   writeRoute(routePath, injectSnapshot(injectHead(template, routePath, article.title, article.metaDescription, schema), body));
 }
 
+const notFoundTitle = 'Página no encontrada | Calculadora de Sueño';
+const notFoundDesc = 'La página solicitada no existe. Vuelve a la calculadora o explora las guías disponibles.';
+const notFoundBody = `
+  <article>
+    <h1>Página no encontrada</h1>
+    <p>La URL solicitada no existe o ha cambiado.</p>
+    <p><a href="/">Volver a la calculadora</a> · <a href="/blog">Ver guías</a></p>
+  </article>`;
+let notFoundHtml = injectSnapshot(
+  injectHead(template, '/404', notFoundTitle, notFoundDesc, {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: notFoundTitle,
+    description: notFoundDesc,
+    url: `${SITE_URL}/404`,
+    inLanguage: 'es'
+  }),
+  notFoundBody
+);
+notFoundHtml = notFoundHtml.replace(
+  /<meta name="robots" content=".*?"\s*\/>/i,
+  '<meta name="robots" content="noindex, follow" />'
+);
+fs.writeFileSync(path.join(distPath, '404.html'), notFoundHtml);
+
 const today = new Date().toISOString().slice(0, 10);
 const sitemapItems = [
   ...CORE_ROUTES.map((route) => ({
