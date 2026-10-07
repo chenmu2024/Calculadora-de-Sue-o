@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ShieldCheck, Cookie, Settings, Check, X, Info } from 'lucide-react';
+import React, { useState } from 'react';
+import { Cookie, Settings, Check, X } from 'lucide-react';
 
 interface CookieConsentBannerProps {
   setCurrentTab: (tab: string) => void;
@@ -13,8 +13,8 @@ export const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({ setCur
     return true;
   });
   const [showPreferences, setShowPreferences] = useState(false);
-  const [analyticsConsent, setAnalyticsConsent] = useState(true);
-  const [advertisingConsent, setAdvertisingConsent] = useState(true);
+  const [analyticsConsent, setAnalyticsConsent] = useState(false);
+  const [advertisingConsent, setAdvertisingConsent] = useState(false);
 
   const handleAcceptAll = () => {
     localStorage.setItem('cookie_consent_status', 'accepted_all');
@@ -40,7 +40,7 @@ export const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({ setCur
   return (
     <div 
       role="region" 
-      aria-label="Aviso de Consentimiento de Cookies GDPR y Google AdSense"
+      aria-label="Aviso de preferencias de privacidad"
       className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6 bg-slate-900/95 backdrop-blur-lg border-t border-indigo-500/30 text-slate-200 shadow-2xl"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
@@ -49,10 +49,10 @@ export const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({ setCur
         <div className="space-y-1.5 max-w-3xl">
           <div className="flex items-center gap-2 text-indigo-400 font-bold text-xs sm:text-sm">
             <Cookie className="w-4 h-4 text-amber-300" />
-            <span>Aviso de Cookies y Privacidad de Google AdSense (GDPR / CCPA)</span>
+            <span>Cookies y Preferencias de Privacidad</span>
           </div>
           <p className="text-xs text-slate-300 leading-relaxed">
-            Utilizamos cookies propias necesarias para recordar tus cálculos y cookies de terceros (incluido Google AdSense) para personalizar contenido publicitario y analizar el tráfico. Puedes aceptar todas o personalizar tu consentimiento según tus preferencias.
+            Usamos almacenamiento local para recordar preferencias y datos que decides guardar en tu dispositivo. Si se habilitan servicios opcionales de analítica o publicidad, deberán respetar la selección que guardes aquí.
           </p>
         </div>
 
@@ -80,8 +80,8 @@ export const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({ setCur
 
               <div className="flex items-center justify-between p-2 rounded-xl bg-slate-900 border border-slate-800">
                 <label htmlFor="ads-consent-checkbox" className="cursor-pointer flex-1 mr-2">
-                  <div className="font-bold text-white">Cookies de Anuncios Personalizados (Google AdSense)</div>
-                  <div className="text-[11px] text-slate-400">Anuncios relevantes basados en navegación mediante red de socios de Google.</div>
+                  <div className="font-bold text-white">Publicidad opcional</div>
+                  <div className="text-[11px] text-slate-400">Permite servicios publicitarios cuando estén configurados en el sitio.</div>
                 </label>
                 <input 
                   id="ads-consent-checkbox"
