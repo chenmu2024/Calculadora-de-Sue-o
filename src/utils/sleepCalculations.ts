@@ -53,31 +53,25 @@ export function calculateSleepTimes(
     let qualityTag: SleepCycleResult['qualityTag'] = 'good';
     let badgeText = `${cycles} Ciclos (${hoursTotal}h)`;
     let description = '';
-    let vitalityScore = 80;
 
     if (cycles === 6) {
       qualityTag = 'recommended';
-      vitalityScore = 100;
-      badgeText = `6 Ciclos (${hoursTotal}h - Máximo Descanso)`;
-      description = 'Ideal para jóvenes, deportistas y personas que recuperan sueño o realizan gran esfuerzo físico.';
+      badgeText = `6 Ciclos (${hoursTotal}h - Opción Larga)`;
+      description = 'Una ventana de 9 horas entra dentro del rango habitual recomendado para muchos adultos. La necesidad individual puede variar.';
     } else if (cycles === 5) {
       qualityTag = 'optimal';
-      vitalityScore = 95;
-      badgeText = `5 Ciclos (${hoursTotal}h - ¡Recomendado Óptimo!)`;
-      description = 'El estándar de oro para el 90% de los adultos sanos. Te despertarás revitalizado sin inercia de sueño.';
+      badgeText = `5 Ciclos (${hoursTotal}h - Opción Habitual)`;
+      description = 'Una ventana de 7,5 horas puede encajar en el rango de sueño recomendado para muchos adultos. El final de un ciclo es solo una estimación.';
     } else if (cycles === 4) {
       qualityTag = 'good';
-      vitalityScore = 75;
       badgeText = `4 Ciclos (${hoursTotal}h - Mínimo Aceptable)`;
       description = 'Adecuado para días de ritmo acelerado. No se recomienda mantener menos de 5 ciclos de forma prolongada.';
     } else if (cycles === 3) {
       qualityTag = 'minimum';
-      vitalityScore = 50;
       badgeText = `3 Ciclos (${hoursTotal}h - Ligero)`;
       description = 'Solo para emergencias u horarios reducidos. Experimentarás cansancio vespertino.';
     } else {
       qualityTag = 'short';
-      vitalityScore = 30;
       badgeText = `2 Ciclos (${hoursTotal}h - Insuficiente)`;
       description = 'Corta duración. Posible déficit acumulado e inercia de sueño.';
     }
@@ -87,7 +81,6 @@ export function calculateSleepTimes(
       time24,
       cycles,
       cycleLengthMinutes,
-      vitalityScore,
       totalMinutes: totalWithLatencyMins,
       hours: hoursTotal,
       hoursFormatted,
