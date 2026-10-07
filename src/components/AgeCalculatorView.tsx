@@ -14,11 +14,6 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
   const [ageWarning, setAgeWarning] = useState<string | null>(null);
   const [chronotype, setChronotype] = useState<'owl' | 'lark' | 'neutral'>('neutral');
 
-  // Life Modifiers state
-  const [isAthlete, setIsAthlete] = useState<boolean>(false);
-  const [isPregnant, setIsPregnant] = useState<boolean>(false);
-  const [isHighStress, setIsHighStress] = useState<boolean>(false);
-  const [isSick, setIsSick] = useState<boolean>(false);
   const [targetWakeTime, setTargetWakeTime] = useState<string>('07:00');
   const [copyDiagnosisSuccess, setCopyDiagnosisSuccess] = useState<boolean>(false);
 
@@ -36,7 +31,7 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
 
   const handleShareDiagnosis = () => {
     const text = `📊 Mi Recomendación de Sueño (${selectedGroup.name} - ${inputExactAge} años):\n` +
-      `• Horas recomendadas: ${adjustedMin.toFixed(1)} - ${adjustedMax.toFixed(1)} hrs (${selectedGroup.recCyclesMin}-${selectedGroup.recCyclesMax} ciclos)\n` +
+      `• Rango orientativo: ${adjustedMin.toFixed(1)} - ${adjustedMax.toFixed(1)} horas\n` +
       `• Horario sugerido: Acostarse ${schedule.bedStr} ➔ Despertar ${schedule.wakeStr}\n` +
       `Calcula tu horario ideal en: ${window.location.href}`;
 
@@ -74,8 +69,10 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
 
     if (num < 1) {
       setSelectedAgeId('baby');
-    } else if (num >= 1 && num < 6) {
+    } else if (num >= 1 && num < 3) {
       setSelectedAgeId('toddler');
+    } else if (num >= 3 && num < 6) {
+      setSelectedAgeId('preschool');
     } else if (num >= 6 && num < 13) {
       setSelectedAgeId('child');
     } else if (num >= 13 && num < 18) {
@@ -87,38 +84,12 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
     }
   };
 
-  const selectedGroup = AGE_GROUPS.find((g) => g.id === selectedAgeId) || AGE_GROUPS[4];
+  const selectedGroup = AGE_GROUPS.find((g) => g.id === selectedAgeId) || AGE_GROUPS[5];
 
-  // Calculate modifier offset
-  let extraHours = 0;
-  if (isAthlete) extraHours += 0.75;
-  if (isPregnant) extraHours += 1.25;
-  if (isHighStress) extraHours += 0.5;
-  if (isSick) extraHours += 1.5;
+  const adjustedMin = selectedGroup.recHoursMin;
+  const adjustedMax = selectedGroup.recHoursMax;
 
-  const adjustedMin = selectedGroup.recHoursMin + extraHours;
-  const adjustedMax = selectedGroup.recHoursMax + extraHours;
 
-  // Expected Sleep Architecture breakdown by age group
-  const getArchitecture = (id: string) => {
-    switch (id) {
-      case 'baby':
-        return { rem: 50, deep: 30, light: 20, note: '50% REM primordial para neurogénesis acelerada y aprendizaje sensorial' };
-      case 'toddler':
-        return { rem: 30, deep: 30, light: 40, note: 'Pico de Sueño Profundo para secreción masiva de Hormona del Crecimiento (GH)' };
-      case 'child':
-        return { rem: 25, deep: 25, light: 50, note: 'Consolidación de memoria académica y motora fina' };
-      case 'teen':
-        return { rem: 25, deep: 20, light: 55, note: 'Fase circadiana retrasada 2h biológicamente por melatonina tardía' };
-      case 'senior':
-        return { rem: 20, deep: 12, light: 68, note: 'Reducción natural de fase N3 (Profunda); vital optimizar eficiencia postural' };
-      case 'adult':
-      default:
-        return { rem: 22, deep: 20, light: 58, note: 'Equilibrio óptimo para reparación muscular (N3) y equilibrio emocional (REM)' };
-    }
-  };
-
-  const arch = getArchitecture(selectedGroup.id);
 
   // Calculate recommended bed/wake times based on chronotype offset
   const getRecommendedSchedule = () => {
@@ -159,13 +130,13 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
       <div className="text-center max-w-3xl mx-auto space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold">
           <Clock className="w-3.5 h-3.5 text-amber-300" />
-          <span>Calculador Oficial de Horas de Sueño por Edad 2026</span>
+          <span>Calculadora de Horas de Sueño por Edad</span>
         </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
           Calculadora de Horas de Sueño Recomendadas
         </h1>
         <p className="text-slate-300 text-base leading-relaxed">
-          Descubre el volumen exacto de <strong className="text-white font-semibold">horas de descanso y ciclos ultradianos</strong> recomendados según las pautas clínicas de la National Sleep Foundation.
+          Consulta un <strong className="text-white font-semibold">rango orientativo de horas de sueño</strong> según la edad. Las necesidades individuales varían y esta herramienta no sustituye una valoración clínica.
         </p>
       </div>
 
@@ -208,7 +179,7 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
         </div>
 
         {/* Age Group Quick Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
           {AGE_GROUPS.map((group) => {
             const isSelected = group.id === selectedAgeId;
             return (
@@ -217,7 +188,8 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
                 onClick={() => {
                   setSelectedAgeId(group.id);
                   if (group.id === 'baby') setInputExactAge('0.5');
-                  else if (group.id === 'toddler') setInputExactAge('3');
+                  else if (group.id === 'toddler') setInputExactAge('2');
+                  else if (group.id === 'preschool') setInputExactAge('4');
                   else if (group.id === 'child') setInputExactAge('9');
                   else if (group.id === 'teen') setInputExactAge('15');
                   else if (group.id === 'adult') setInputExactAge('28');
@@ -236,57 +208,6 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
           })}
         </div>
 
-        {/* Life Situation Modifiers Selector */}
-        <div className="pt-4 border-t border-slate-800">
-          <div className="flex items-center gap-2 mb-3">
-            <Sliders className="w-4 h-4 text-amber-300" />
-            <span className="text-xs font-bold text-white uppercase tracking-wider">
-              Ajuste por Condición Fisiológica Especial:
-            </span>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-            <button
-              onClick={() => setIsAthlete(!isAthlete)}
-              className={`p-2.5 rounded-xl border flex items-center gap-2 transition-all ${
-                isAthlete ? 'bg-amber-950/80 border-amber-500 text-amber-200 font-bold' : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <span>🏃 Atleta / Ejercicio Intenso</span>
-              <span className="ml-auto text-[10px] bg-amber-500/20 px-1.5 py-0.5 rounded text-amber-300">+0.75h</span>
-            </button>
-
-            <button
-              onClick={() => setIsPregnant(!isPregnant)}
-              className={`p-2.5 rounded-xl border flex items-center gap-2 transition-all ${
-                isPregnant ? 'bg-violet-950/80 border-violet-500 text-violet-200 font-bold' : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <span>🤰 Embarazo / Lactancia</span>
-              <span className="ml-auto text-[10px] bg-violet-500/20 px-1.5 py-0.5 rounded text-violet-300">+1.25h</span>
-            </button>
-
-            <button
-              onClick={() => setIsHighStress(!isHighStress)}
-              className={`p-2.5 rounded-xl border flex items-center gap-2 transition-all ${
-                isHighStress ? 'bg-indigo-950/80 border-indigo-500 text-indigo-200 font-bold' : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <span>📑 Estrés / Examen Intenso</span>
-              <span className="ml-auto text-[10px] bg-indigo-500/20 px-1.5 py-0.5 rounded text-indigo-300">+0.5h</span>
-            </button>
-
-            <button
-              onClick={() => setIsSick(!isSick)}
-              className={`p-2.5 rounded-xl border flex items-center gap-2 transition-all ${
-                isSick ? 'bg-emerald-950/80 border-emerald-500 text-emerald-200 font-bold' : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <span>🤒 Enfermedad / Recuperación</span>
-              <span className="ml-auto text-[10px] bg-emerald-500/20 px-1.5 py-0.5 rounded text-emerald-300">+1.5h</span>
-            </button>
-          </div>
-        </div>
       </div>
 
       {/* Detailed Result & Range Bar Card */}
@@ -295,13 +216,13 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider">
-                Diagnóstico Biológico Personalizado
+                Estimación Orientativa por Edad
               </span>
               <button
                 type="button"
                 onClick={handleShareDiagnosis}
                 className="ml-2 inline-flex items-center gap-1 text-[11px] font-bold text-amber-300 hover:text-amber-200 bg-amber-950/60 hover:bg-amber-900/80 px-2.5 py-1 rounded-full border border-amber-700/60 transition-colors"
-                title="Compartir diagnóstico"
+                title="Compartir estimación"
               >
                 {copyDiagnosisSuccess ? (
                   <>
@@ -311,7 +232,7 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
                 ) : (
                   <>
                     <Share2 className="w-3 h-3 text-amber-300" />
-                    <span>Compartir Diagnóstico</span>
+                    <span>Compartir Estimación</span>
                   </>
                 )}
               </button>
@@ -330,11 +251,7 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
               {adjustedMin.toFixed(1)} - {adjustedMax.toFixed(1)} Horas
             </div>
             <div className="text-xs text-indigo-200 font-semibold mt-1">
-              {extraHours > 0 ? (
-                <span className="text-amber-300 font-bold"> Incluye +{extraHours}h por factores especiales</span>
-              ) : (
-                <span>Equivalente a <strong className="text-white">{selectedGroup.recCyclesMin} - {selectedGroup.recCyclesMax} Ciclos</strong></span>
-              )}
+              Rango general por grupo de edad; la necesidad personal puede variar.
             </div>
           </div>
         </div>
@@ -342,8 +259,8 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
         {/* Visual Sleep Range Gauge */}
         <div className="my-6 bg-slate-950/80 p-5 rounded-2xl border border-slate-800 space-y-2">
           <div className="flex justify-between text-xs font-bold text-slate-300">
-            <span>Escala Recomendada de Descanso:</span>
-            <span className="text-amber-300 font-black">Zona Óptima: {adjustedMin.toFixed(1)}h - {adjustedMax.toFixed(1)}h</span>
+            <span>Rango General de Referencia:</span>
+            <span className="text-amber-300 font-black">Rango orientativo: {adjustedMin.toFixed(1)}h - {adjustedMax.toFixed(1)}h</span>
           </div>
           
           <div className="w-full bg-slate-800 h-4 rounded-full overflow-hidden flex relative">
@@ -353,61 +270,22 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
             </div>
             {/* Recommended range */}
             <div style={{ width: `${((adjustedMax - adjustedMin) / 16) * 100}%` }} className="bg-gradient-to-r from-emerald-500 to-indigo-500 h-full flex items-center justify-center text-[10px] text-white font-black shadow-inner">
-              ★ RECOMENDADO ({adjustedMin.toFixed(1)}h-{adjustedMax.toFixed(1)}h)
+              RANGO ORIENTATIVO ({adjustedMin.toFixed(1)}h-{adjustedMax.toFixed(1)}h)
             </div>
             {/* Above recommended */}
             <div className="flex-1 bg-violet-500/30 h-full flex items-center justify-center text-[9px] text-violet-300 font-bold">
-              Excesivo (&gt;{adjustedMax.toFixed(1)}h)
+              Por encima del rango (&gt;{adjustedMax.toFixed(1)}h)
             </div>
           </div>
         </div>
 
-        {/* Sleep Architecture Breakdown by Age Group */}
         <div className="bg-slate-950/80 border border-slate-800 rounded-2xl p-5 my-6">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <Layers className="w-5 h-5 text-indigo-400" />
-              <h3 className="text-sm sm:text-base font-extrabold text-white">
-                Distribución Fisiológica Esperada de Fases ({selectedGroup.name})
-              </h3>
-            </div>
-            <span className="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">
-              Patrón Típico
-            </span>
-          </div>
-
-          <p className="text-xs text-slate-400 mb-3 leading-relaxed">
-            💡 {arch.note}
+          <h3 className="text-sm sm:text-base font-extrabold text-white mb-2">
+            Sobre las fases del sueño
+          </h3>
+          <p className="text-xs text-slate-400 leading-relaxed">
+            La proporción de sueño ligero, profundo y REM cambia con la edad y también de una noche a otra. Esta calculadora no mide fases del sueño ni asigna porcentajes individuales; para medirlas se requieren dispositivos o estudios específicos.
           </p>
-
-          <div className="space-y-2">
-            <div className="h-6 w-full rounded-xl overflow-hidden flex text-[10px] font-black text-white text-center">
-              <div style={{ width: `${arch.deep}%` }} className="bg-indigo-600 flex items-center justify-center truncate px-1">
-                Profundo N3 ({arch.deep}%)
-              </div>
-              <div style={{ width: `${arch.rem}%` }} className="bg-violet-500 flex items-center justify-center truncate px-1">
-                REM ({arch.rem}%)
-              </div>
-              <div style={{ width: `${arch.light}%` }} className="bg-slate-700 flex items-center justify-center truncate px-1">
-                Ligero ({arch.light}%)
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1">
-              <span className="flex items-center gap-1">
-                <span className="w-2.5 h-2.5 rounded-full bg-indigo-600 inline-block" />
-                Sueño Profundo (N3): <strong className="text-slate-200">Reparación Celular</strong>
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="w-2.5 h-2.5 rounded-full bg-violet-500 inline-block" />
-                Sueño REM: <strong className="text-slate-200">Memoria y Emociones</strong>
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="w-2.5 h-2.5 rounded-full bg-slate-700 inline-block" />
-                Sueño Ligero: <strong className="text-slate-200">Transición Circadiana</strong>
-              </span>
-            </div>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-6">
@@ -442,15 +320,15 @@ export const AgeCalculatorView: React.FC<AgeCalculatorViewProps> = ({ onSyncToMa
           <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
             <h3 className="text-lg font-bold text-white flex items-center gap-2">
               <Lightbulb className="w-5 h-5 text-amber-300" />
-              2. Generador de Horario Ideal según tu Cronotipo
+              2. Ejemplo de Horario según tu Preferencia
             </h3>
             <span className="text-xs text-indigo-300 bg-indigo-950 px-2.5 py-1 rounded-md border border-indigo-800 font-semibold">
-              Regulado por gen PER3
+              Preferencia horaria orientativa
             </span>
           </div>
 
           <p className="text-xs text-slate-300 mb-4 leading-relaxed">
-            Ajusta tu ritmo biológico según prefieras levantarte temprano o acostarte tarde para generar tu ventana personalizada de descanso.
+            Elige una preferencia matutina, neutra o vespertina para generar un ejemplo de horario usando el punto medio del rango de horas recomendado.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
