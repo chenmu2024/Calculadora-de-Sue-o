@@ -23,6 +23,7 @@ import { SleepSummaryReportModal } from './components/SleepSummaryReportModal';
 import { PwaOfflineBanner } from './components/PwaOfflineBanner';
 import { FloatingQuickNav } from './components/FloatingQuickNav';
 const AboutUsView = lazy(() => import('./components/AboutUsView').then(m => ({ default: m.AboutUsView })));
+const MethodologyView = lazy(() => import('./components/MethodologyView').then(m => ({ default: m.MethodologyView })));
 const ContactView = lazy(() => import('./components/ContactView').then(m => ({ default: m.ContactView })));
 const PrivacyPolicyView = lazy(() => import('./components/PrivacyPolicyView').then(m => ({ default: m.PrivacyPolicyView })));
 const TermsView = lazy(() => import('./components/TermsView').then(m => ({ default: m.TermsView })));
@@ -49,6 +50,7 @@ const getTabFromUrl = (): string => {
   else if (hash === 'blog' || hash.includes('como-calcular') || hash.includes('insomnio')) tab = 'blog';
   else if (hash === 'sonidos' || hash === 'ruido-blanco') tab = 'sounds';
   else if (hash === 'sobre-nosotros' || hash === 'about') tab = 'about';
+  else if (hash === 'metodologia' || hash === 'methodology') tab = 'methodology';
   else if (hash === 'contacto' || hash === 'contact') tab = 'contact';
   else if (hash === 'politica-privacidad' || hash === 'privacy') tab = 'privacy';
   else if (hash === 'terminos-de-uso' || hash === 'terms') tab = 'terms';
@@ -62,6 +64,7 @@ const getTabFromUrl = (): string => {
   else if (pathname === '/blog' || pathname.startsWith('/blog/')) tab = 'blog';
   else if (pathname === '/sonidos') tab = 'sounds';
   else if (pathname === '/sobre-nosotros') tab = 'about';
+  else if (pathname === '/metodologia') tab = 'methodology';
   else if (pathname === '/contacto') tab = 'contact';
   else if (pathname === '/politica-privacidad') tab = 'privacy';
   else if (pathname === '/terminos-de-uso') tab = 'terms';
@@ -436,6 +439,7 @@ export default function App() {
 
         {/* Institutional & Legal Pages */}
         {currentTab === 'about' && <AboutUsView setCurrentTab={setCurrentTab} />}
+        {currentTab === 'methodology' && <MethodologyView />}
         {currentTab === 'contact' && <ContactView setCurrentTab={setCurrentTab} />}
         {currentTab === 'privacy' && <PrivacyPolicyView setCurrentTab={setCurrentTab} />}
         {currentTab === 'terms' && <TermsView setCurrentTab={setCurrentTab} />}
